@@ -1,8 +1,9 @@
-# SeisIO.jl
+# SeisBase.jl
 [![Build Status](https://travis-ci.org/jpjones76/SeisIO.jl.svg?branch=main)](https://travis-ci.org/jpjones76/SeisIO.jl) [![Build status](https://ci.appveyor.com/api/projects/status/ocilv0u1sy41m934/branch/master?svg=true)](https://ci.appveyor.com/project/jpjones76/seisio-jl/branch/master) [![codecov](https://codecov.io/gh/jpjones76/SeisIO.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/jpjones76/SeisIO.jl)[![Coverage Status](https://coveralls.io/repos/github/jpjones76/SeisIO.jl/badge.svg?branch=master)](https://coveralls.io/github/jpjones76/SeisIO.jl?branch=master) [![Documentation Status](https://readthedocs.org/projects/seisio/badge/?version=latest)](https://seisio.readthedocs.io/en/latest/?badge=latest)
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 A minimalist, platform-agnostic package for univariate geophysical data.
+This version is a follow up from SeisIO.jl (https://github.com/jpjones76/SeisIO.jl). It is intended to be an stable community maintained package.
 
 ## Installation | [Documentation](http://seisio.readthedocs.org)
 From the Julia prompt, type: `] add SeisIO`; (Backspace); `using SeisIO`
@@ -17,21 +18,21 @@ Designed for speed, efficiency, and ease of use. Includes web clients, readers f
 Start the tutorials in your browser from the Julia prompt with
 
 ```julia
-using SeisIO
-cd(dirname(pathof(SeisIO)))
+using SeisBase
+cd(dirname(pathof(SeisBase)))
 include("../tutorial/install.jl")
 ```
 
 To run SeisIO package tests and download sample data, execute
 
 ```julia
-using Pkg, SeisIO; Pkg.test("SeisIO")
+using Pkg, SeisIO; Pkg.test("SeisBase")
 ```
 
 Sample data downloaded for the tests can be found thereafter at
 
 ```julia
-cd(dirname(pathof(SeisIO))) 
+cd(dirname(pathof(SeisBase))) 
 sfdir = realpath("../test/SampleFiles/")
 ```
 

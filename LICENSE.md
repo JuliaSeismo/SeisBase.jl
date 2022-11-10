@@ -1,6 +1,6 @@
-The SeisIO.jl package is licensed under the MIT "Expat" License:
+The SeisBase.jl package is licensed under the MIT License:
 
-> Copyright (c) 2016: Joshua Jones.
+> Copyright (c) 2022: SeismoJulia organization
 >
 > Permission is hereby granted, free of charge, to any person obtaining
 > a copy of this software and associated documentation files (the
