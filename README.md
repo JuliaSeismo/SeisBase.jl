@@ -40,7 +40,7 @@ sfdir = realpath("../test/SampleFiles/")
 ```
 
 ## Publications | [Changelog](docs/CHANGELOG.md) | [Issues](docs/ISSUES.md)
-Jones, J.P.,  Okubo, K., Clements. T., \& Denolle, M. (2020). SeisBase: a fast, efficient geophysical data architecture for the Julia language. *Seismological Research Letters* doi: https://doi.org/10.1785/0220190295
+Jones, J.P.,  Okubo, K., Clements. T., \& Denolle, M. (2020). SeisIO: a fast, efficient geophysical data architecture for the Julia language. *Seismological Research Letters* doi: https://doi.org/10.1785/0220190295
 
 This work has been partially supported by a grant from the Packard Foundation.
 
