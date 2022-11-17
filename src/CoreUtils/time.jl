@@ -18,15 +18,19 @@ u2d(k::Real) = Dates.unix2datetime(k)
 "Alias to Dates.datetime2unix"
 d2u(k::DateTime) = Dates.datetime2unix(k)
 
-@doc """
+"""
     timestamp()
+    timestamp(t::DateTime)
+    timestamp(t::Real)
+    timestamp(t::String)
 
 Return current time formatted YYYY-mm-ddTHH:MM:SS.
-""" timestamp
+"""
 timestamp() = tstr(Dates.unix2datetime(time()))
 timestamp(t::DateTime) = tstr(t)
 timestamp(t::Real) = tstr(u2d(t))
 timestamp(t::String) = tstr(Dates.DateTime(t))
+
 tnote(s::String) = string(timestamp(), " ¦ ", s)
 
 # =====================================================================

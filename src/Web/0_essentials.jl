@@ -88,8 +88,7 @@ end
 """
     u = track_off!(S::SeisData)
 
-Turn off tracking in S and return a boolean vector of which channels have
-been added or altered significantly.
+Turn off tracking in S and return a boolean vector of which channels have been added or altered significantly.
 """
 function track_off!(S::SeisData)
   k = findfirst([haskey(S.misc[i],"track") for i = 1:S.n])

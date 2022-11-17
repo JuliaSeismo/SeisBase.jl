@@ -4,35 +4,35 @@ using SeisBase, Documenter
 pages = Any[
     "Home" => "index.md",
     "Intro" => [
-        "Introduction" => "intro.md",
-        "First Steps" => "first_steps.md",
-        "Working with data" => "working_with_data.md",
-        "Getting Help" => "getting_help.md",
+        "Introduction" => "Intro/intro.md",
+        "First Steps" => "Intro/first_steps.md",
+        "Working with data" => "Intro/working_with_data.md",
+    #     "Getting Help" => "getting_help.md",
     ],
     "Reading files" => [
-        "Time-Series Files" => "time_series_files.md",
-        "Metadata Files" => "metadata_files.md",
-        "HDF5 Files" => "hdf5_files.md",
-        "XML Meta-Data" => "xml_metadata.md",
+    #     "Time-Series Files" => "time_series_files.md",
+    #     "Metadata Files" => "metadata_files.md",
+    #     "HDF5 Files" => "hdf5_files.md",
+    #     "XML Meta-Data" => "xml_metadata.md",
     ],
     "Downloading" => [
-        "Web Services" => "web_services.md",
-        "SeedLink" => "seedlink.md",
+    #     "Web Services" => "web_services.md",
+    #     "SeedLink" => "seedlink.md",
     ],
     "Writing files" => [
-        "Write Support" => "write_support.md",
+    #     "Write Support" => "write_support.md",
     ],
     "Processing" => [
-        "Data Processing" => "data_processing.md",
+    #     "Data Processing" => "data_processing.md",
     ],
     "Submodules" => [
-        "Submodules" => "submodules.md",
-        "Nodal" => "nodal.md",
-        "Quake" => "quake.md",
-        "SeisHDF" => "seishdf.md",
+    #     "Submodules" => "submodules.md",
+    #     "Nodal" => "nodal.md",
+    #     "Quake" => "quake.md",
+    #     "SeisHDF" => "seishdf.md",
     ],
     "Appendices" => [
-        "Appendices" => "appendices.md",
+    #     "Appendices" => "appendices.md",
     ],
 ]
 
