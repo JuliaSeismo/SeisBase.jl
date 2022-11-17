@@ -1,6 +1,4 @@
-************
-Introduction
-************
+# Introduction
 
 SeisBase is a framework for working with univariate geophysical data on 64-bit systems.
 SeisBase is designed around three basic principles:
@@ -13,27 +11,26 @@ The project is home to an expanding set of web clients, file format readers,
 and analysis utilities.
 
 
-Overview
-========
+## Overview
+
 SeisBase stores data in minimalist containers that track the bare necessities for
 analysis. New data are easily added with basic operators like *+*. Unwanted
 channels can be removed just as easily. Data can be written to a number of
 file formats.
 
 
-Installation
-============
+## Installation
+
 From the Julia prompt: press ``]`` to enter the Pkg environment, then type
-::
 
-  add SeisBase; build; precompile
-
+```julia
+add SeisBase; build; precompile
+```
 
 Dependencies should install automatically. To verify that everything works
 correctly, type
-::
-
-  test SeisBase
+```@example installation
+test SeisBase
 
 and allow 10-20 minutes for tests to complete. Exit the Pkg environment by pressing Backspace or Control + C.
 
