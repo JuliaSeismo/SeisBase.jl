@@ -40,7 +40,7 @@ end
 # ===========================================================================
 # ABBREVIATION CONTROL HEADERS
 
-# [30] is out of scope for SeisIO
+# [30] is out of scope for SeisBase
 function blk_030!(io::IO, nb::Int64, v::Integer)
   sio = blk_string_read(io, nb, v)
   if v > 1
@@ -330,7 +330,7 @@ function blk_048!(io::IO, nb::Int64, v::Integer)
   fast_readbytes!(sio, BUF.hdr_old, 12)
   fg = buf_to_double(BUF.hdr_old, 12)
   nv = stream_int(sio, 2)
-  # channel histories are not in the scope of SeisIO
+  # channel histories are not in the scope of SeisBase
   @inbounds for i = 1:nv
     # fastskip(sio, 24)
     skip_string!(sio) # should cover the 24-Byte channel history
@@ -664,13 +664,13 @@ function blk_058(io::IO, nb::Int64, v::Integer, C::SeisChannel)
       end
     end
 
-    # station history is not in the scope of SeisIO
+    # station history is not in the scope of SeisBase
     close(sio)
     return stage
   end
 end
 
-# Not in scope of SeisIO
+# Not in scope of SeisBase
 function blk_059!(io::IO, nb::Int64, v::Integer, C::SeisChannel, units::Bool)
   sio = blk_string_read(io, nb, v)
   v > 1 && println("")

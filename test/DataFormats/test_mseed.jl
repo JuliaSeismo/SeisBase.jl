@@ -6,7 +6,7 @@ printstyled("  mini-SEED\n", color=:light_green)
 printstyled("    sample rate\n", color=:light_green)
 
 # Tests from SEED manual v2.4 page 110
-import SeisIO.SEED.update_dt!
+import SeisBase.SEED.update_dt!
 r1 = [33, 330, 3306, -60, 1, -10, -1]
 r2 = [10, 1, -10, 1, -10, 1, -10]
 fs = [330.0, 330.0, 330.6, 1.0/60.0, 0.1, 0.1, 0.1]
@@ -39,7 +39,7 @@ printstyled("    file read with mmap\n", color=:light_green)
 Sm = read_data("mseed", test_mseed_file, v=0, memmap=true)
 @test Sm == S
 
-# Test breaks if memory-resident SeisIOBuf structure SEED is not reset
+# Test breaks if memory-resident SeisBaseBuf structure SEED is not reset
 S1 = verified_read_data("mseed", test_mseed_file, v=0, strict=false)
 if Sys.iswindows() == false
   S2 = verified_read_data("mseed", test_mseed_pat, v=0, strict=false)

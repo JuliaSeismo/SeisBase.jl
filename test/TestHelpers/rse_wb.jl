@@ -8,7 +8,7 @@ function rse_wb(n::Int64)
   Ev.source.notes = String[]
   Ev.source.misc  = Dict{String,Any}(
         "pax_desc"    => "azimuth, plunge, length",
-        "mt_id"       => "smi:SeisIO/moment_tensor;fmid="*Ev.source.id,
+        "mt_id"       => "smi:SeisBase/moment_tensor;fmid="*Ev.source.id,
         "planes_desc" => "strike, dip, rake")
   note!(Ev.source, "+origin ¦ " * Ev.source.src)
 

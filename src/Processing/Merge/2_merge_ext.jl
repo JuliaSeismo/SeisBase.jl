@@ -3,7 +3,7 @@ export purge!, purge
 # Home of all extended merge! methods
 @doc (@doc merge)
 merge(S::SeisData; v::Integer=KW.v) = (U = deepcopy(S); merge!(U, v=v); return U)
-merge!(S::SeisData, U::SeisData; v::Integer=KW.v) = ([append!(getfield(S, f), getfield(U, f)) for f in SeisIO.datafields]; S.n += U.n; merge!(S; v=v))
+merge!(S::SeisData, U::SeisData; v::Integer=KW.v) = ([append!(getfield(S, f), getfield(U, f)) for f in SeisBase.datafields]; S.n += U.n; merge!(S; v=v))
 merge!(S::SeisData, C::SeisChannel; v::Integer=KW.v) = merge!(S, SeisData(C), v=v)
 
 """
@@ -18,7 +18,7 @@ function merge(A::Array{SeisData,1}; v::Integer=KW.v)
   L::Int64 = length(A)
   n = sum([A[i].n for i = 1:L])
   T = SeisData(n)
-  [setfield!(T, f, vcat([getfield(A[i],f) for i = 1:L]...)) for f in SeisIO.datafields]
+  [setfield!(T, f, vcat([getfield(A[i],f) for i = 1:L]...)) for f in SeisBase.datafields]
   merge!(T, v=v)
   return T
 end

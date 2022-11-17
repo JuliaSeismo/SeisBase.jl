@@ -15,7 +15,7 @@ Time-Series Files
 | Read files with names matching pattern ``filepat``. Supports wildcards.
 |
 | **KWs**
-| Keyword arguments; see also :ref:`SeisIO standard KWs<dkw>` or type ``?SeisIO.KW``. See table below for the list.
+| Keyword arguments; see also :ref:`SeisBase standard KWs<dkw>` or type ``?SeisBase.KW``. See table below for the list.
 
 **********************
 Supported File Formats
@@ -35,7 +35,7 @@ Supported File Formats
   PASSCAL SEG Y             | passcal       | id, fs, gain, loc
   SAC                       | sac           | id, fs, gain
   SEG Y (rev 0 or rev 1)    | segy          | id, fs, gain, loc
-  SEISIO                    | seisio        | id, fs, gain, loc, resp, units
+  SeisBase                    | SeisBase        | id, fs, gain, loc, resp, units
   SLIST (ASCII sample list) | slist         | id, fs
   SUDS                      | suds          | id
   UW data file              | uw            | id, fs, gain, units
@@ -44,8 +44,8 @@ Supported File Formats
 Strings are case-sensitive to prevent any performance impact from using matches
 and/or lowercase().
 
-Note that read_data with file format "seisio" largely exists as a convenience
-wrapper; it reads only the first SeisIO object from each file that can be
+Note that read_data with file format "SeisBase" largely exists as a convenience
+wrapper; it reads only the first SeisBase object from each file that can be
 converted to a SeisData structure. For more complicated read operations,
 ``rseis`` should be used.
 
@@ -103,11 +103,11 @@ Performance Tips
 the data vectors that you expect to read. If the largest has `Nmax` samples,
 and the smallest has `Nmin`, we recommend `nx_new=Nmin` and `nx_add=Nmax-Nmin`.
 
-Default values can be changed in SeisIO keywords, e.g.,
+Default values can be changed in SeisBase keywords, e.g.,
 ::
 
-  SeisIO.KW.nx_new = 60000
-  SeisIO.KW.nx_add = 360000
+  SeisBase.KW.nx_new = 60000
+  SeisBase.KW.nx_add = 360000
 
 The system-wide defaults are `nx_new=86400000` and `nx_add=360000`. Using these
 values with very small jobs will greatly decrease performance.
@@ -138,7 +138,7 @@ Examples
 
 Memory Mapping
 ==============
-`memmap=true` is considered unsafe because Julia language handling of SIGBUS/SIGSEGV and associated risks is undocumented as of SeisIO v1.0.0. Thus, for example, we don't know what a connection failure during memory-mapped file I/O does. In some languages, this situation without additional signal handling was notorious for corrupting files.
+`memmap=true` is considered unsafe because Julia language handling of SIGBUS/SIGSEGV and associated risks is undocumented as of SeisBase v1.0.0. Thus, for example, we don't know what a connection failure during memory-mapped file I/O does. In some languages, this situation without additional signal handling was notorious for corrupting files.
 
 **Under no circumstances** should `mmap=true` be used to read files directly from a drive whose host device power management is independent of the destination computer's. This includes all work flows that involve reading files directly into memory from a connected data logger. It is *not* a sufficient workaround to set a data logger to "always on".
 
@@ -146,7 +146,7 @@ Memory Mapping
 Format Descriptions and Notes
 *****************************
 Additional format information can be accessed from the command line by typing
-``SeisIO.formats("FMT")`` where FMT is the format name; ``keys(SeisIO.formats)``
+``SeisBase.formats("FMT")`` where FMT is the format name; ``keys(SeisBase.formats)``
 for a list.
 
 * **AH** (Ad-Hoc) was developed as a machine-independent seismic data format based on External Data Representation (XDR).
@@ -176,7 +176,7 @@ Only SEG Y rev 0 and `rev 1\ <https://seg.org/Portals/0/SEG/News%20and%20Resourc
 
 2. Not all SEG Y files use the gain formula in the SEG Y rev 1 manual. Users are urged to consult equipment manufacturers and/or coders whose software converts proprietary data formats to SEG Y.
 
-3. SeisIO does not use the Textual File Header (file bytes 1-3600) or Extended Textual File Header records, as these were never standardized. Specify *full=true* to read the raw bytes into vectors in *:misc*. These byte vectors can be parsed manually by the user after file read.
+3. SeisBase does not use the Textual File Header (file bytes 1-3600) or Extended Textual File Header records, as these were never standardized. Specify *full=true* to read the raw bytes into vectors in *:misc*. These byte vectors can be parsed manually by the user after file read.
 
 Setting the Location Subfield
 -----------------------------
@@ -233,7 +233,7 @@ Win32
 =====
 Use older channel files with caution. They were not controlled by any central
 authority until the late 2010s. Inconsistencies between different versions of
-the same channel file were found by SeisIO developers as recently as 2015.
+the same channel file were found by SeisBase developers as recently as 2015.
 
 ************************
 Other File I/O Functions
@@ -241,7 +241,7 @@ Other File I/O Functions
 
 .. function:: rseis(fname)
 
-Read SeisIO native format data into an array of SeisIO structures.
+Read SeisBase native format data into an array of SeisBase structures.
 :raw-html:`<br /><br />`
 
 .. function:: sachdr(fname)

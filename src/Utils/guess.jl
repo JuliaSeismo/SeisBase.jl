@@ -6,13 +6,13 @@ function guess_ftype(io::IO, swap::Bool, sz::Int64, v::Integer)
   # =========================================================================
   # Robust file tests: exact "magic number", start sequence, etc....
 
-  # SeisIO Native ------------------------------------------------------------
+  # SeisBase Native ------------------------------------------------------------
   seekstart(io)
   try
     @assert fastread(io, 6) == UInt8[0x53, 0x45, 0x49, 0x53, 0x49, 0x4f]
-    return ["seisio"]
+    return ["SeisBase"]
   catch err
-    (v > 2) && @warn(string("Test for SeisIO native format threw error:", err))
+    (v > 2) && @warn(string("Test for SeisBase native format threw error:", err))
   end
 
   # AH-2 --------------------------------------------------------------------
@@ -283,7 +283,7 @@ end
     function guess(fname[, v=V])
 
 Try to guess the file type of file `fname`. Keyword `v` controls verbosity.
-Only recognizes file formats supported by SeisIO.read_data.
+Only recognizes file formats supported by SeisBase.read_data.
 
 Returns a tuple: (ftype::String, swap::Bool)
 * `ftype` is the file type string to pass to `read_data`, except in these cases:
@@ -297,7 +297,7 @@ Generally `swap=true` for big-Endian files, with two exceptions:
   + if ftype = "unknown", swap=nothing is possible.
 
 ### Warnings
-1. false positives are possible for file formats outside the scope of SeisIO.
+1. false positives are possible for file formats outside the scope of SeisBase.
 2. SEGY endianness isn't reliable. In theory, SEGY headers are bigendian; in
 practice, SEGY headers are whatever the manufacturer imagines them to be, and
 endianness can be little, or mixed (e.g., a common situation is little-endian

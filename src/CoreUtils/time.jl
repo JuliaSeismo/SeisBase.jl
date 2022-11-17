@@ -187,7 +187,7 @@ function int2tstr(t::Int64)
 end
 
 # =====================================================================
-# Functions for SeisIO time matrices (:t field)
+# Functions for SeisBase time matrices (:t field)
 
 # Check whether a time matrix has gaps
 function is_gapless(t::Array{Int64, 2})
@@ -209,7 +209,7 @@ end
 """
     tx = t_expand(t::Array{Int64,2}, fs::Float64)
 
-Expand SeisIO time matrix `t` for data sampled at `fs` Hz. If `x` is a data
+Expand SeisBase time matrix `t` for data sampled at `fs` Hz. If `x` is a data
 vector whose sample times are represented by `t`, then `tx` is a vector of
 sample times where `tx[i]` is the sample time of `x[i]`.
 """
@@ -229,7 +229,7 @@ end
 """
     t = t_collapse(tx::Array{Int64, 1}, fs::Float64)
 
-Collapse vector of sample times `tx` sampled at `fs` Hz to compact SeisIO time
+Collapse vector of sample times `tx` sampled at `fs` Hz to compact SeisBase time
 matrix representation `t`.
 """
 function t_collapse(tt::Array{Int64,1}, fs::Float64)
@@ -336,7 +336,7 @@ end
 """
     te = endtime(t::Array{Int64,2}, Δ::Int64)
 
-Compute the time of the last sample in `t`, a SeisIO time matrix sampled at
+Compute the time of the last sample in `t`, a SeisBase time matrix sampled at
 interval `Δ` [μs] or frequency `fs` [Hz]. Output is integer μs measured from
 the Unix epoch.
 """
@@ -369,7 +369,7 @@ end
 """
     ts = starttime(t::Array{Int64,2}, Δ::Int64)
 
-Compute the time of the first sample in SeisIO time matrix `t`, sampled at
+Compute the time of the first sample in SeisBase time matrix `t`, sampled at
 interval `Δ` [μs] or frequency `fs` [Hz]. Output is integer μs measured from
 the Unix epoch.
 """
@@ -405,7 +405,7 @@ This should never happen.
 """
     t_extend(T::Array{Int64,2}, t_new::Int64, n_new::Int64, Δ::Int64)
 
-Extend SeisIO time matrix *T* sampled at interval *Δ* μs or frequency *fs* Hz. For matrix *Tᵢ*:
+Extend SeisBase time matrix *T* sampled at interval *Δ* μs or frequency *fs* Hz. For matrix *Tᵢ*:
 * *t_new* is the start time of the next segment in data vector *Xᵢ*
 * *n_new* is the expected number of samples in the next segment of *Xᵢ*
 

@@ -120,7 +120,7 @@ function read_silixa_tdms(file::String, nn::String, s::TimeSpec, t::TimeSpec, ch
     si = max(round(Int64, TDMS.fs*s), 0)
     ei = min(round(Int64, TDMS.fs*t), seg1_length) - 1
   else
-    Δ = round(Int64, SeisIO.sμ / TDMS.fs)
+    Δ = round(Int64, SeisBase.sμ / TDMS.fs)
     if s == "0001-01-01T00:00:00"
       s = u2d(TDMS.ts*μs)
     elseif isa(s, Real)

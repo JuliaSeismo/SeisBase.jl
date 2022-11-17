@@ -4,7 +4,7 @@
 XML Meta-Data
 #############
 
-SeisIO can read and write the following XML metadata formats:
+SeisBase can read and write the following XML metadata formats:
 
 * QuakeML Version 1.2
 * StationXML Version 1.1

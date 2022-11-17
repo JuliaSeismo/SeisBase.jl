@@ -81,7 +81,7 @@ mutable struct BlkCalib <: SeedBlk
                   )
 end
 
-mutable struct SeisIOBuf
+mutable struct SeisBaseBuf
   fmt::UInt8    # 0x0a
   nx::UInt16    # 0x1000
   wo::UInt8     # 0x01
@@ -141,7 +141,7 @@ mutable struct SeisIOBuf
   B2000::Blk2000
   Calib::BlkCalib
 
-  function SeisIOBuf()
+  function SeisBaseBuf()
     new(0xff,                               # fmt
         0x1000,                             # nx
         0x01,                               # wo
@@ -199,5 +199,5 @@ mutable struct SeisIOBuf
   end
 end
 
-const BUF = SeisIOBuf()
+const BUF = SeisBaseBuf()
 BUF.dh_buf = IOBuffer(BUF.dh_arr)

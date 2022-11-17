@@ -1,4 +1,4 @@
-function seed_cleanup!(S::SeisData, BUF::SeisIOBuf)
+function seed_cleanup!(S::SeisData, BUF::SeisBaseBuf)
   trunc_x!(S)
   fill!(getfield(BUF, :hdr_old), zero(UInt8))
   setfield!(BUF, :r1_old, zero(Int16))

@@ -1,5 +1,5 @@
 module UW
-using Mmap, SeisIO, SeisIO.FastIO, SeisIO.Quake
+using Mmap, SeisBase, SeisBase.FastIO, SeisBase.Quake
 using Dates: DateTime
 
 include("UW/imports.jl")

@@ -57,7 +57,7 @@ Old version:
 
 ## **Include tests for new code**
 * We expect at least 95% code coverage on each file.
-* Our target code coverage is 99% on both [CodeCov](https://codecov.io/gh/jpjones76/SeisIO.jl) and [Coveralls](https://coveralls.io/github/jpjones76/SeisIO.jl?branch=main). Code coverage has exceeded 97% consistenly since at least June 2019. Please don't break that for us.
+* Our target code coverage is 99% on both [CodeCov](https://codecov.io/gh/jpjones76/SeisBase.jl) and [Coveralls](https://coveralls.io/github/jpjones76/SeisBase.jl?branch=main). Code coverage has exceeded 97% consistenly since at least June 2019. Please don't break that for us.
 * Good tests include a mix of [unit testing](https://en.wikipedia.org/wiki/Unit_testing) and [use cases](https://en.wikipedia.org/wiki/Use_case).
 
 Data formats with rare encodings can be exceptions to the 95% rule.
@@ -65,9 +65,9 @@ Data formats with rare encodings can be exceptions to the 95% rule.
 * Example 2: Int24 encoding of SEED data exists in theory, but we cannot find a single researcher who's encountered it; neither can the IRIS DMC staff that we've asked. We don't support this encoding.
 
 We understand the need to fish for digital coelocanths, but please consider
-their rarity before deciding that SeisIO needs another one.
+their rarity before deciding that SeisBase needs another one.
 
-## **Don't add dependencies to the SeisIO core module**
+## **Don't add dependencies to the SeisBase core module**
 Please keep the footprint small.
 
 ## **Write comprehensible code**

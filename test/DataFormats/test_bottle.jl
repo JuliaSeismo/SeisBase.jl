@@ -17,7 +17,7 @@ end
 
 printstyled("    source logging\n", color=:light_green)
 redirect_stdout(out) do
-  S = SeisIO.read_bottle(bstr[4], 14400, 14400, true, true, 0)
+  S = SeisBase.read_bottle(bstr[4], 14400, 14400, true, true, 0)
   show_src(S, 1)
   show_src(S[1])
   show_src(S)

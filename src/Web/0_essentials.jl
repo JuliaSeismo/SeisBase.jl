@@ -224,7 +224,7 @@ The `LOC` field can be blank in FDSN requests with get_data; for example,
 For SeedLink functions (`seedlink!`, `has_stream`, etc.), channel IDs can
 include a fifth field (i.e. NET.STA.LOC.CHA.T) to set the "type" flag (one of
 DECOTL, for Data, Event, Calibration, blOckette, Timing, or Logs). Note that
-SeedLink calibration, timing, and logs are not in the scope of SeisIO.
+SeedLink calibration, timing, and logs are not in the scope of SeisBase.
 
 See also: `get_data`, `seedlink`
 """

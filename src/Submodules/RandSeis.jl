@@ -1,5 +1,5 @@
 module RandSeis
-using Random, SeisIO, SeisIO.Quake
+using Random, SeisBase, SeisBase.Quake
 
 include("RandSeis/imports.jl")
 if VERSION <= v"1.1.0"

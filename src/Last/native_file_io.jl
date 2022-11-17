@@ -1,6 +1,6 @@
 export rseis, wseis
 
-# SeisIO file format version changes
+# SeisBase file format version changes
 # 0.54  2020-07-14    added Types: NodalChannel, NodalData, NodalLoc
 # 0.53  2019-09-11    removed :i, :o from CoeffResp
 #                     added :i, :o to MultiStageResp
@@ -91,14 +91,14 @@ function read_rec(io::IO, ver::Float32, c::UInt32, b::UInt64)
   while i < length(TCodes)
     i = i + 1
     if c == getindex(TCodes, i)
-      if (ver < vSeisIO) && (c == 0x20474431)
+      if (ver < vSeisBase) && (c == 0x20474431)
         return read_legacy(io, ver)
       else
         return read(io, getindex(TNames, i))
       end
     end
   end
-  @warn("Non-SeisIO data at byte ", fastpos(io), "; skipped.")
+  @warn("Non-SeisBase data at byte ", fastpos(io), "; skipped.")
   fastseek(io, b)
   return nothing
 end
@@ -129,7 +129,7 @@ end
 """
     rseis(fstr::String[, c::Array{Int64,1}=C, v::Integer=0, memmap::Bool=false])
 
-Read SeisIO files matching file pattern ``fstr`` into memory. If an array of
+Read SeisBase files matching file pattern ``fstr`` into memory. If an array of
 record indices is passed to keyword c, only those record indices are read from
 each file.
 
@@ -145,7 +145,7 @@ function rseis(patts::Union{String,Array{String,1}};
   files = build_file_list(patts)
   sbuf  = Array{UInt8, 1}(undef, 65535)
   chans = isa(c, Int64) ? [c] : c
-  ver   = vSeisIO
+  ver   = vSeisBase
   L     = zero(Int64)
 
   nf = 0
@@ -153,9 +153,9 @@ function rseis(patts::Union{String,Array{String,1}};
     nf  = nf + 1
     io  = memmap ? IOBuffer(Mmap.mmap(f)) : open(f, "r")
 
-    # All SeisIO files begin with "SEISIO"
+    # All SeisBase files begin with "SeisBase"
     if fastread(io, 6) != UInt8[0x53, 0x45, 0x49, 0x53, 0x49, 0x4f]
-      @warn string("Skipped ", f, ": not a SeisIO file!")
+      @warn string("Skipped ", f, ": not a SeisBase file!")
       close(io)
       continue
     end
@@ -203,7 +203,7 @@ end
 """
     wseis(fname, S)
 
-Write SeisIO objects S to file. S can be a single object, multiple comma-delineated objects, or an array of objects.
+Write SeisBase objects S to file. S can be a single object, multiple comma-delineated objects, or an array of objects.
 """
 function wseis(fname::String, S...)
     L = Int64(lastindex(S))
@@ -221,8 +221,8 @@ function wseis(fname::String, S...)
 
     # open file for writing
     io = open(fname, "w")
-    write(io, "SEISIO")
-    write(io, vSeisIO)
+    write(io, "SeisBase")
+    write(io, vSeisBase)
     write(io, L)
     p = fastpos(io)
     skip(io, sizeof(C) + sizeof(B))

@@ -1,4 +1,4 @@
-using SeisIO, SeisIO.RandSeis
+using SeisBase, SeisBase.RandSeis
 
 # equivalence:
 # FDSN wildcard         RegEx

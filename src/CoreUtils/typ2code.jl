@@ -49,7 +49,7 @@ end
 (1) copy the two lines below to the command line to generate a table like the one below
 (2) if anything in column 4 of your table is false, these functions are broken
 
-using SeisIO, SeisIO.RandSeis, BenchmarkTools, LightXML; import SeisIO:code2typ, typ2code;
+using SeisBase, SeisBase.RandSeis, BenchmarkTools, LightXML; import SeisBase:code2typ, typ2code;
 for c = 0x00:0xff; try; println(stdout, rpad(string(code2typ(c)), 36), "| ", repr(typ2code(code2typ(c)))," | ", repr(c), " | ", isequal(c, typ2code(code2typ(c)))); catch; end; end
 
 GUIDE TO THE TABLE:

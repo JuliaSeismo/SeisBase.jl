@@ -16,7 +16,7 @@ c1 = "CC.VALT..,PB.B001..BS?,PB.B001..E??,XX.YYY.00.BHZ"
 c2 = ["CC.VALT..", "PB.B001..BS?", "PB.B001..E??", "XX.YYY.00.BHZ"]
 c3 = ["CC" "VALT" "" ""; "PB" "B001" "" "BS?"; "PB" "B001" "" "E??"; "XX" "YYY" "00" "BHZ"]
 try
-  @test (minreq(SeisIO.fdsn_chp(c1, 0)))[:,1:4] == SeisIO.fdsn_chp(c2, 0)[:,1:4] == minreq(SeisIO.fdsn_chp(c3, 0))
+  @test (minreq(SeisBase.fdsn_chp(c1, 0)))[:,1:4] == SeisBase.fdsn_chp(c2, 0)[:,1:4] == minreq(SeisBase.fdsn_chp(c3, 0))
 catch err
   @warn("Inconsistent reslts from fdsn_chp!")
 end
@@ -198,7 +198,7 @@ else
     end
   end
 
-  # Check that these data can be written and read faithfully in ASDF, SAC, and SeisIO
+  # Check that these data can be written and read faithfully in ASDF, SAC, and SeisBase
   writesac(S)
   wseis(seisfile, S)
   S2 = rseis(seisfile)[1]

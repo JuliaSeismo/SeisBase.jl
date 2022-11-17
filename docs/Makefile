@@ -96,9 +96,9 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/SeisIO.qhcp"
+	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/SeisBase.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/SeisIO.qhc"
+	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/SeisBase.qhc"
 
 .PHONY: applehelp
 applehelp:
@@ -115,8 +115,8 @@ devhelp:
 	@echo
 	@echo "Build finished."
 	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/SeisIO"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/SeisIO"
+	@echo "# mkdir -p $$HOME/.local/share/devhelp/SeisBase"
+	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/SeisBase"
 	@echo "# devhelp"
 
 .PHONY: epub

@@ -1,4 +1,4 @@
-import SeisIO: fill_id!, checkbuf!, checkbuf_strict!, checkbuf_8!, fillx_i4!, fillx_i8!, fillx_i16_le!, fillx_i16_be!, fillx_i24_be!, fillx_i32_le!, fillx_i32_be!, fillx_u32_be!, fillx_u32_le!
+import SeisBase: fill_id!, checkbuf!, checkbuf_strict!, checkbuf_8!, fillx_i4!, fillx_i8!, fillx_i16_le!, fillx_i16_be!, fillx_i24_be!, fillx_i32_le!, fillx_i32_be!, fillx_u32_be!, fillx_u32_le!
 
   # fill_id!(id::Array{UInt8,1},
   # checkbuf!(buf::Array{UInt8,1},

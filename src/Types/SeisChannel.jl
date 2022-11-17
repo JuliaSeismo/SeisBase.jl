@@ -90,7 +90,7 @@ function push!(S::SeisData, C::SeisChannel)
 end
 
 # This intentionally undercounts exotic objects in :misc (e.g. a nested Dict)
-# because those objects aren't written to disk or created by SeisIO
+# because those objects aren't written to disk or created by SeisBase
 function sizeof(C::SeisChannel)
   s = 96
   for f in datafields

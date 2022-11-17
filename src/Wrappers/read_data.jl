@@ -1,6 +1,6 @@
 export read_data, read_data!
 
-function read_data_seisio!(S::SeisData, filestr::String, memmap::Bool, v::Integer)
+function read_data_SeisBase!(S::SeisData, filestr::String, memmap::Bool, v::Integer)
   S_in = rseis(filestr, memmap=memmap)
   L = length(S_in)
   for i in 1:L
@@ -43,12 +43,12 @@ Read from files matching file pattern `filestr` into SeisData object `S`.
 Calls `guess(filestr)` to identify the file type based on the first file
 matching pattern `filestr`. Much slower than manually specifying file type.
 
-* Formats: ah1, ah2, bottle, geocsv, geocsv.slist, lennartz, mseed, passcal, suds, sac, segy, seisio, slist, uw, win32
+* Formats: ah1, ah2, bottle, geocsv, geocsv.slist, lennartz, mseed, passcal, suds, sac, segy, SeisBase, slist, uw, win32
 * Keywords: cf, full, jst, memmap, nx_add, nx_new, strict, swap, v, vl
 
-This function is fully described in the official documentation at https://seisio.readthedocs.io/ in section **Time-Series Files**.
+This function is fully described in the official documentation at https://SeisBase.readthedocs.io/ in section **Time-Series Files**.
 
-See also: `SeisIO.KW`, `get_data`, `guess`, `rseis`
+See also: `SeisBase.KW`, `get_data`, `guess`, `rseis`
 """ read_data!
 function read_data!(S::GphysData, fmt::String, fpat::Union{String, Array{String,1}};
   cf      ::String  = "",                 # win32 channel info file
@@ -67,7 +67,7 @@ function read_data!(S::GphysData, fmt::String, fpat::Union{String, Array{String,
   # Variables for tracking changes
   N             = S.n
   fpat_is_array = isa(fpat, Array{String, 1})
-  fmt_is_seisio = (fmt == "seisio")
+  fmt_is_SeisBase = (fmt == "SeisBase")
   opt_strings   = ""
   last_src      = zeros(Int64, S.n)
   nx            = Array{Int64, 1}(undef, S.n)
@@ -104,12 +104,12 @@ function read_data!(S::GphysData, fmt::String, fpat::Union{String, Array{String,
       end
     end
 
-  elseif fmt_is_seisio
+  elseif fmt_is_SeisBase
     if one_file
-      read_data_seisio!(S, filestr, memmap, v)
+      read_data_SeisBase!(S, filestr, memmap, v)
     else
       for (j, fname) in enumerate(files)
-        read_data_seisio!(S, fname, memmap, v)
+        read_data_SeisBase!(S, fname, memmap, v)
         track_src!(S, j, nx, last_src)
       end
     end
@@ -129,7 +129,7 @@ function read_data!(S::GphysData, fmt::String, fpat::Union{String, Array{String,
                           ", nx_add = ", nx_add)
 
 # ============================================================================
-# Data formats that aren't SAC, SEISIO, or SEED begin here and are alphabetical
+# Data formats that aren't SAC, SeisBase, or SEED begin here and are alphabetical
 # by first KW
 
   elseif fmt == "ah1"
@@ -240,7 +240,7 @@ function read_data!(S::GphysData, fmt::String, fpat::Union{String, Array{String,
 
   # ===================================================================
   # logging
-  if !fmt_is_seisio
+  if !fmt_is_SeisBase
     if isempty(opt_strings)
       opt_strings = string("v = ", v, ", vl = ", vl)
     else

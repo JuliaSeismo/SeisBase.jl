@@ -29,7 +29,7 @@ Supported Keywords
 
 Non-Standard Behavior
 ---------------------
-Real values supplied to keywords ``s=`` and ``t=`` are treated as seconds *relative to file begin time*. Most SeisIO functions that accept TimeSpec arguments treat Real values as seconds relative to ``now()``.
+Real values supplied to keywords ``s=`` and ``t=`` are treated as seconds *relative to file begin time*. Most SeisBase functions that accept TimeSpec arguments treat Real values as seconds relative to ``now()``.
 
 Supported File Formats
 ======================

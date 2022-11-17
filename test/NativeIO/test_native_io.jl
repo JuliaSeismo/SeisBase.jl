@@ -3,7 +3,7 @@ savfile1  = "test.seis"
 savfile2  = "test.hdr"
 savfile3  = "test.evt"
 legf_050  = path * "/SampleFiles/SEIS/2011.314.7D.J34A..HH1.seis"
-legf_052  = path * "/SampleFiles/SEIS/seisio_testfile_v0.52.seis"
+legf_052  = path * "/SampleFiles/SEIS/SeisBase_testfile_v0.52.seis"
 uw_file   = path * "/SampleFiles/UW/02062915175o"
 
 # Changing this test to guarantee at least one campaign-style measurement ... and test splat notation ... and something with no notes
@@ -75,7 +75,7 @@ R = rseis(["test.seis", "test.h*"], c=[2, 3])
 @test isempty(R)
 
 # read the first record of each file
-printstyled("  read first record from each SeisIO file using a wildcard list\n", color=:light_green)
+printstyled("  read first record from each SeisBase file using a wildcard list\n", color=:light_green)
 R = rseis("test*", c=1)
 @test R[1] == EV
 @test R[2] == H
@@ -84,14 +84,14 @@ R = rseis("test*", c=1)
 printstyled("  test that every custom Type can be written and read faithfully\n", color=:light_green)
 redirect_stdout(out) do
   A = Array{Any,1}(undef, 0)
-  for T in SeisIO.TNames
+  for T in SeisBase.TNames
     println("testing ", T)
     if T == PhaseCat
       push!(A, randPhaseCat())
     elseif T == MultiStageResp
       push!(A, MultiStageResp(6))
     else
-      push!(A, getfield(SeisIO, Symbol(T))())
+      push!(A, getfield(SeisBase, Symbol(T))())
     end
   end
   wseis(savfile1, A...)
@@ -108,7 +108,7 @@ redirect_stdout(out) do
 end
 
 printstyled("  test read/write with data compression\n", color=:light_green)
-SeisIO.KW.comp = 0x02
+SeisBase.KW.comp = 0x02
 S = randSeisData()
 nx = 4
 S.t[1] = [1 0; nx 0]
@@ -117,10 +117,10 @@ wseis(savfile1, S)
 R = rseis(savfile1)[1]
 @test R == S
 
-SeisIO.KW.comp = 0x01
+SeisBase.KW.comp = 0x01
 S = randSeisEvent()
 C = SeisChannel()
-nx = SeisIO.KW.n_zip*2
+nx = SeisBase.KW.n_zip*2
 C.fs = 1.0
 C.t = [1 0; nx 0]
 C.x = randn(nx)
@@ -136,10 +136,10 @@ wseis(savfile1, S)
 R = rseis(savfile1)[1]
 @test R == S
 
-# read_data("seisio", ...)
+# read_data("SeisBase", ...)
 S1 = read_data(savfile1)
 @test convert(SeisData, S.data) == S1
-S1 = verified_read_data("seisio", savfile1)
+S1 = verified_read_data("SeisBase", savfile1)
 @test convert(SeisData, S.data) == S1
 S2 = rseis(savfile3)
 S1 = read_data(savfile3)
@@ -155,27 +155,27 @@ end
 S1 = read_data("test.se*")
 @test convert(SeisData, S.data) == S1
 
-# Type unit tests with read_data("seisio", ...)
+# Type unit tests with read_data("SeisBase", ...)
 C = randSeisChannel()
 wseis(savfile1, C)
-S1 = verified_read_data("seisio", savfile1)
+S1 = verified_read_data("SeisBase", savfile1)
 @test S1[1] == C
 C = convert(EventChannel, randSeisChannel())
 wseis(savfile1, C)
-S1 = verified_read_data("seisio", savfile1)
+S1 = verified_read_data("SeisBase", savfile1)
 @test S1[1] == convert(SeisChannel, C)
 S = randSeisData()
 wseis(savfile1, S)
-S1 = verified_read_data("seisio", savfile1)
+S1 = verified_read_data("SeisBase", savfile1)
 @test S1 == S
 S = convert(EventTraceData, S)
 wseis(savfile1, S)
-S1 = verified_read_data("seisio", savfile1)
+S1 = verified_read_data("SeisBase", savfile1)
 @test S1 == convert(SeisData, S)
 Ev = randSeisEvent()
 L = GeoLoc(lat=45.560504, lon=-122.617020, el=51.816, az=180.0, inc=0.0)
 wseis(savfile1, L, Ev)
-S1 = verified_read_data("seisio", savfile1)
+S1 = verified_read_data("SeisBase", savfile1)
 @test S1 == convert(SeisData, Ev.data)
 
 rm(savfile1)

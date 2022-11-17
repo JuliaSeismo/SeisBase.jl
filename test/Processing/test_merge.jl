@@ -869,7 +869,7 @@ S.fs = [C.fs, C.fs, C.fs]
 U = deepcopy(S)
 Ω = 3
 rest = [1,2]
-@test SeisIO.merge_ext!(S, Ω, rest) == nothing
+@test SeisBase.merge_ext!(S, Ω, rest) == nothing
 @test S==U
 
 printstyled(stdout,"  merge! with GphysChannel objects\n", color=:light_green)
@@ -1101,7 +1101,7 @@ merge!(V)
 mseis!(S,T)
 @test S == V
 
-printstyled(stdout,"    with SeisIO.Quake\n", color=:light_green)
+printstyled(stdout,"    with SeisBase.Quake\n", color=:light_green)
 S = randSeisData()
 Ev = randSeisEvent(2)
 C = ungap(deepcopy(Ev.data[1]))
@@ -1128,7 +1128,7 @@ mseis!(C, C, T)
 mseis!(C2, T)
 @test C == C2
 
-printstyled(stdout,"      with SeisIO.Quake\n", color=:light_green)
+printstyled(stdout,"      with SeisBase.Quake\n", color=:light_green)
 C = convert(EventChannel, C1)
 mseis!(C, T)
 

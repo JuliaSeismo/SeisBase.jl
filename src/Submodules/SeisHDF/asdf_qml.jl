@@ -57,7 +57,7 @@ function asdf_wqml!(hdf::HDF5File, HDR::Array{SeisHdr,1}, SRC::Array{SeisSrc,1},
       si = nq-29
       test_str = String(UInt8.(hq[si:nq]))
       if test_str == "</eventParameters>\n</quakeml>\n"
-        # behavior for SeisIO-compatible QuakeML
+        # behavior for SeisBase-compatible QuakeML
         deleteat!(hq, si:nq)
         append!(hq, ones(Int8, 4).*Int8(32))
       else

@@ -2,7 +2,7 @@ import DSP:filtfilt
 export filtfilt, filtfilt!
 
 #=  Regenerate filter; largely identical to DSP.Filters.filt_stepstate with
-    some optimization for SeisIO data handling =#
+    some optimization for SeisBase data handling =#
 function update_filt(fl::T, fh::T, fs::T, np::Int64, rp::Int, rs::Int, rt::String, dm::String) where T<:Real
 
   # response type
@@ -54,7 +54,7 @@ function update_filt(fl::T, fh::T, fs::T, np::Int64, rp::Int, rs::Int, rt::Strin
   return (b, a, Z, p)
 end
 
-#=  Adapted from Julia DSP filtfilt for how SeisIO stores data; X and its
+#=  Adapted from Julia DSP filtfilt for how SeisBase stores data; X and its
     padded, interpolated version (Y) can be reused until fs or length(x)
     changes =#
 function zero_phase_filt!(X::AbstractArray,

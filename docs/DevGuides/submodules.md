@@ -6,7 +6,7 @@ Submodule names can't contain spaces or punctuation.
 # Tree Structure
 | Path | Description |
 |---   |--- |
-| src/[Name].jl | Submodule definition file read by SeisIO.jl |
+| src/[Name].jl | Submodule definition file read by SeisBase.jl |
 | src/Submodules/[Name] | Path to submodule [Name] |
 | src/Submodules/[Name]/imports.jl | `import` statements |
 

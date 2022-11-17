@@ -168,9 +168,9 @@ What does ``merge!`` resolve?
 :raw-html:`<br />`
 :sup:`(b)` Data offset >4 sample intervals are treated as overlapping and non-identical.
 
-When SeisIO Won't Merge
+When SeisBase Won't Merge
 ------------------------
-SeisIO does **not** combine data channels if **any** of the five fields above
+SeisBase does **not** combine data channels if **any** of the five fields above
 are non-empty and different. For example, if a GphysData object S contains two
 channels, each with id "XX.FOO..BHZ", but one has fs=100 Hz and the other fs=50 Hz,
 **merge!** does nothing.
@@ -325,17 +325,17 @@ Keywords
 | :sup:`(b)`  By convention, the lower corner frequency (fl) is used in a
 | Highpass filter, and fh is used in a Lowpass filter.
 
-Default filtering KW values can be changed by adjusting the :ref:`shared keywords<dkw>`, e.g., ``SeisIO.KW.Filt.np = 2`` changes the default number of poles to 2.
+Default filtering KW values can be changed by adjusting the :ref:`shared keywords<dkw>`, e.g., ``SeisBase.KW.Filt.np = 2`` changes the default number of poles to 2.
 
 Troubleshooting NaNs in Output
 ==============================
 NaNs in the output of filtering operations (e.g., *filtfilt!*, *translate_resp!*) are nearly always the result of zeros in the denominator of the filter transfer function.
 
-This is not a bug in SeisIO.
+This is not a bug in SeisBase.
 
 In particular, the increased speed of data processing at 32-bit precision comes with an increased risk of NaN output. The reason is that 32-bit machine epsilon (``eps(Float32)`` in Julia) is ~1.0e-7; by comparison, 64-bit machine epsilon is ~1.0e-16.
 
-Please check for common signal processing issues before reporting NaNs to SeisIO maintainers. For example:
+Please check for common signal processing issues before reporting NaNs to SeisBase maintainers. For example:
 
 Filtering
 *********

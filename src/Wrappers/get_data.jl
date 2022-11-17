@@ -10,9 +10,9 @@ Wrapper to web requests for time-series data. Request data using `method` from c
 * Channels: See `?web_chanspec`
 * Keywords: autoname, demean, detrend, fmt, msr, nd, opts, rad, reg, rr, s, si, src, t, taper, to, ungap, unscale, v, w, xf, y
 
-This function is fully described in the official documentation at https://seisio.readthedocs.io/ under subheading **Web Requests**.
+This function is fully described in the official documentation at https://SeisBase.readthedocs.io/ under subheading **Web Requests**.
 
-See also: `web_chanspec`, `parsetimewin`, `seis_www`, `SeisIO.KW`
+See also: `web_chanspec`, `parsetimewin`, `seis_www`, `SeisBase.KW`
 """ get_data
 function get_data(method_in::String, C::ChanOpts="*";
    autoname::Bool              = false         , # Auto-generate file names?
@@ -85,7 +85,7 @@ function get_data(method_in::String, C::ChanOpts="*";
 
   # DND DND DND
   # Wrapper to a generic "get" function -- leave as example code
-  # getfield(SeisIO, Symbol(string(method_in, "get!")))(S, C, α, ω,
+  # getfield(SeisBase, Symbol(string(method_in, "get!")))(S, C, α, ω,
   #          f = f, opts = opts, si = si, src = src, to = to, v = v, w = w)
   # DND DND DND
 

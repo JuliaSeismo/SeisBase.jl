@@ -44,7 +44,7 @@ end
 @test guess(lennf) == ("lennartz", false)
 # @test guess(xml_stfile) == ("sxml", false)
 # @test guess(resp_file) == ("resp", false)
-@test guess(seisf) == ("seisio", false)
+@test guess(seisf) == ("SeisBase", false)
 @test guess(self) == ("unknown", false)
 
 # Restricted files

@@ -1,4 +1,4 @@
-using SeisIO, SeisIO.Quake, SeisIO.SeisHDF
+using SeisBase, SeisBase.Quake, SeisBase.SeisHDF
 import Printf
 
 # US FDSN example: 5 stations, 2 networks, all channels, last 600 seconds
@@ -68,7 +68,7 @@ show(S_sl)
 printstyled(stdout, "\n\n\nNote: ", color=:white, bold=true)
 println(stdout, "ALL data from these examples can be written to file.")
 printstyled(stdout, "wseis(\"fname.seis\", S)", color=7)
-println(stdout, "       write S to low-level SeisIO native format in file fname.seis")
+println(stdout, "       write S to low-level SeisBase native format in file fname.seis")
 printstyled(stdout, "writesac(S)", color=7)
 println(stdout, "                  write S to SAC files with auto-generated names")
 printstyled(stdout, "write_hdf5(\"fname.h5\", S)", color=7)

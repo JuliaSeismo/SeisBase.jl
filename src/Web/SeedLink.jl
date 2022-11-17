@@ -293,7 +293,7 @@ has_stream( sta::Array{String,2};
 
 Begin acquiring seedlink data to SeisData structure `S` using mode `mode`. New channels are added to `S` automatically based on `chans`. Connections are added to `S.c`. When finished, close connection manually with `close(S.c[n])` where n is connection #.
 
-This function is fully described in the official documentation at https://seisio.readthedocs.io/ in subsection **SeedLink**.
+This function is fully described in the official documentation at https://SeisBase.readthedocs.io/ in subsection **SeedLink**.
 
 Keywords: gap, kai, port, refresh, s, t, u, v, w, x_on_err
 

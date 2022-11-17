@@ -1,13 +1,13 @@
-import SeisIO
-import SeisIO: get_svn
+import SeisBase
+import SeisBase: get_svn
 
 # =====================================================================
 # Setup
 @info("Please allow 20 minutes for all tests to execute.")
-cd(dirname(pathof(SeisIO))*"/../test")
-if isdir("SampleFiles") == false
-  get_svn("https://github.com/jpjones76/SeisIO-TestData/trunk/SampleFiles", "SampleFiles")
-end
+cd(dirname(pathof(SeisBase))*"/../test")
+# if isdir("SampleFiles") == false
+  # get_svn("https://github.com/jpjones76/SeisIO-TestData/trunk/SampleFiles", "SampleFiles")
+# end
 include("local_restricted.jl")
 include("test_helpers.jl")
 

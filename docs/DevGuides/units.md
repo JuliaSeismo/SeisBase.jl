@@ -1,4 +1,4 @@
-SeisIO `:units` strings
+SeisBase `:units` strings
 
 # Units use case-sensitive UCUM
 Please see the relevant guidelines:
@@ -31,4 +31,4 @@ Indicate division of units with an oblique stroke (`/`), e.g. `m/s` for meters p
 * Express negative powers in unit strings using `/` to separate the numerator from the denominator, e.g., `"m/s2"`, not `"m s-2"`.
 
 # Converting to/from UCUM units syntax
-See the SeisIO utilities `units2ucum`; use the SeisIO utility `vucum` to validate strings for UCUM compliance.
+See the SeisBase utilities `units2ucum`; use the SeisBase utility `vucum` to validate strings for UCUM compliance.

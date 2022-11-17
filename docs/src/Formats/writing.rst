@@ -3,7 +3,7 @@
 ##############
 Write Suppport
 ##############
-The table below sumamrizes the current write options for SeisIO. Each function is described in detail in this chapter.
+The table below sumamrizes the current write options for SeisBase. Each function is described in detail in this chapter.
 
 .. csv-table::
   :header: Structure/Description, Output Format, Function, Submodule
@@ -29,10 +29,10 @@ The table below sumamrizes the current write options for SeisIO. Each function i
   SeisHdr                               | QuakeML               | write_qml
   SeisHdr, SeisSrc                      | ASDF QuakeML          | asdf_wqml
   SeisHdr, SeisSrc                      | QuakeML               | wqml
-  any SeisIO structure                  | SeisIO file           | wseis
+  any SeisBase structure                  | SeisBase file           | wseis
   primitive data type or array          | ASDF AuxiliaryData    | asdf_waux
 
-Methods for SeisEvent, SeisHdr, or SeisSrc are part of submodule SeisIO.Quake. *asdf_waux* and *asdf_wqml* are part of :ref:`SeisIO.SeisHDF.<seishdf>`.
+Methods for SeisEvent, SeisHdr, or SeisSrc are part of submodule SeisBase.Quake. *asdf_waux* and *asdf_wqml* are part of :ref:`SeisBase.SeisHDF.<seishdf>`.
 
 .....
 
@@ -98,7 +98,7 @@ Write event metadata from SeisEvent `Ev` to file `fname`.
 
 Write QML to file `fname` from `SHDR`.
 
-If `fname` exists, and is QuakeML, SeisIO appends the existing XML. If the
+If `fname` exists, and is QuakeML, SeisBase appends the existing XML. If the
 file exists, but is NOT QuakeML, an error is thrown; the file isn't overwritten.
 :raw-html:`<br /><br />`
 
@@ -123,15 +123,15 @@ Write SAC data to SAC files with auto-generated names. With any GphysChannel sub
 
 .. function:: writesacpz(pzf, S[, chans=CC])
 
-Write fields from SeisIO structure *S* to SACPZ file *pzf*. Specify which channels to write in a GphysDaya structure with *chans=CC*.
+Write fields from SeisBase structure *S* to SACPZ file *pzf*. Specify which channels to write in a GphysDaya structure with *chans=CC*.
 
-SeisIO Native
+SeisBase Native
 =============
 
 .. function:: wseis(fname, S)
 .. function:: wseis(fname, S, T, U...)
 
-Write SeisIO data to file *fname*. Multiple objects can be written at once.
+Write SeisBase data to file *fname*. Multiple objects can be written at once.
 
 Station XML
 ===========

@@ -38,7 +38,7 @@ function merge(A::Array{EventTraceData,1}; v::Integer=KW.v)
   L::Int64 = length(A)
   n = sum([A[i].n for i = 1:L])
   T = EventTraceData(n)
-  [setfield!(T, f, vcat([getfield(A[i],f) for i = 1:L]...)) for f in SeisIO.datafields]
+  [setfield!(T, f, vcat([getfield(A[i],f) for i = 1:L]...)) for f in SeisBase.datafields]
   merge!(T, v=v)
   return T
 end

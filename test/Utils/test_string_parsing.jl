@@ -1,5 +1,5 @@
 printstyled("  parsing\n", color=:light_green)
-import SeisIO: string_time, stream_float, stream_time
+import SeisBase: string_time, stream_float, stream_time
 date_buf = BUF.date_buf
 
 s = [ "2010",

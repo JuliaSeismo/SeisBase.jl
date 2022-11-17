@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# SeisIO documentation build configuration file, created by
+# SeisBase documentation build configuration file, created by
 # sphinx-quickstart on Sun May 22 18:44:14 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -52,7 +52,7 @@ source_encoding = 'utf-8-sig'
 master_doc = 'index'
 
 # General information about the project.
-project = u'SeisIO'
+project = u'SeisBase'
 copyright = u'2016-2020, Joshua P. Jones, Ph.D.'
 author = u'Joshua P. Jones, Ph.D.'
 
@@ -124,8 +124,8 @@ html_theme_options = {
     'sidebarwidth': '18em'
 }
 
-html_title = u'SeisIO v1.2.1'
-html_short_title = u'SeisIO v1.2.1'
+html_title = u'SeisBase v1.2.1'
+html_short_title = u'SeisBase v1.2.1'
 #html_logo = None
 #html_favicon = None
 html_static_path = ['_static']
@@ -143,7 +143,7 @@ html_static_path = ['_static']
 #html_search_language = 'en'
 #html_search_options = {'type': 'default'}
 #html_search_scorer = 'scorer.js'
-htmlhelp_basename = 'SeisIOdoc'
+htmlhelp_basename = 'SeisBasedoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 latex_engine = 'xelatex'
@@ -205,7 +205,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'SeisIO.tex', u'SeisIO Documentation',
+    (master_doc, 'SeisBase.tex', u'SeisBase Documentation',
      u'Joshua P. Jones', 'manual'),
 ]
 
@@ -236,7 +236,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'seisio', u'SeisIO Documentation',
+    (master_doc, 'SeisBase', u'SeisBase Documentation',
      [author], 1)
 ]
 
@@ -250,8 +250,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'SeisIO', u'SeisIO Documentation',
-     author, 'SeisIO', 'One line description of project.',
+    (master_doc, 'SeisBase', u'SeisBase Documentation',
+     author, 'SeisBase', 'One line description of project.',
      'Miscellaneous'),
 ]
 

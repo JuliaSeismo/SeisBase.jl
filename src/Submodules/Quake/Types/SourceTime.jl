@@ -5,7 +5,7 @@ export SourceTime
 
 QuakeML-compliant seismic source-time parameterization.
 
-Field     | Type    | Meaning         | SeisIO conventions/behavior
+Field     | Type    | Meaning         | SeisBase conventions/behavior
 --------: |:------- |:--------------  | :----------
  desc     | String  | description     |
  dur      | Float64 | duration        |

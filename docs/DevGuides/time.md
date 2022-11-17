@@ -1,16 +1,16 @@
-# **SeisIO Time Guide and API**
-This guide describes how to use the time field `:t` of any GphysData (multichannel) or GphysChannel (single-channel) structure in SeisIO and its submodules. This includes, but is not limited to, SeisData and SeisChannel structures in SeisIO core. Future subtypes of GphysData and GphysChannel will also conform to the standards established in this guide.
+# **SeisBase Time Guide and API**
+This guide describes how to use the time field `:t` of any GphysData (multichannel) or GphysChannel (single-channel) structure in SeisBase and its submodules. This includes, but is not limited to, SeisData and SeisChannel structures in SeisBase core. Future subtypes of GphysData and GphysChannel will also conform to the standards established in this guide.
 
 All data described herein are univariate and discretely sampled.
 
-# **SeisIO Time Matrices**
+# **SeisBase Time Matrices**
 ## **List of Variables**
-| V   | Meaning                   | Julia Type in SeisIO                      |
+| V   | Meaning                   | Julia Type in SeisBase                      |
 |:--- |:----                      | :---                                      |
-| C   | single-channel structure  | typeof(C) <: SeisIO.GphysChannel          |
-| S   | multichannel structure    | typeof(S) <: SeisIO.GphysData             |
-| T   | SeisIO time matrix, `:t`  | Array{Int64, 2}                           |
-| X   | SeisIO data vector, `:x`  | Union{Vector{Float32}, Vector{Float64}}   |
+| C   | single-channel structure  | typeof(C) <: SeisBase.GphysChannel          |
+| S   | multichannel structure    | typeof(S) <: SeisBase.GphysData             |
+| T   | SeisBase time matrix, `:t`  | Array{Int64, 2}                           |
+| X   | SeisBase data vector, `:x`  | Union{Vector{Float32}, Vector{Float64}}   |
 | end | last index of a dimension | Integer                                   |
 | fs  | sampling frequency [Hz]   | Float64                                   |
 | i   | channel index             | Integer                                   |
@@ -25,19 +25,19 @@ All data described herein are univariate and discretely sampled.
 * **single-channel structure**: a structure that can contain only discrete univariate data from a single channel of a single instrument. The guidelines below apply to single-channel structures by assuming a channel index subscript value of *i* = 1.
 * **multichannel structure**: a structure that can contain discrete univariate data from multile channels of multiple instruments.
 * **time-series**: a vector *Xᵢ* of univariate data sampled at a regular interval *Δᵢ*.
-  + SeisIO convention: data are time-series if `fsᵢ > 0.0`
+  + SeisBase convention: data are time-series if `fsᵢ > 0.0`
 * **irregular**: univariate data sampled at discrete times. Short for "irregularly-sampled".
-  + SeisIO convention: data are irregular if `fsᵢ == 0.0`
+  + SeisBase convention: data are irregular if `fsᵢ == 0.0`
 * **gap**: a significant deviation in **time-series** *Xᵢ* from the regular sampling interval *Δᵢ*.
   + Formal definition: for values *Xᵢⱼ₋₁* and *Xᵢⱼ* sampled at times *tᵢⱼ₋₁*, *tᵢⱼ*, *δt ≡ tᵢⱼ₋₁* - *tᵢⱼ* - *Δᵢ*
-  * A gap before sample *Xᵢⱼ* is considered significant in SeisIO if sample times *tᵢⱼ₋₁*, *tᵢⱼ* satisfy the inequality |*tᵢⱼ₋₁* - *tᵢⱼ* - *Δᵢ* | > 0.5 *Δᵢ*.
-  + In SeisIO, time gaps can be positive or negative.
+  * A gap before sample *Xᵢⱼ* is considered significant in SeisBase if sample times *tᵢⱼ₋₁*, *tᵢⱼ* satisfy the inequality |*tᵢⱼ₋₁* - *tᵢⱼ* - *Δᵢ* | > 0.5 *Δᵢ*.
+  + In SeisBase, time gaps can be positive or negative.
 * **segment**: a contiguous set of indices *j₀*:*j₁* in **time-series** *Xᵢ* with *j₁* ≥ *j₀* and no **gap** between *Xᵢⱼ₀* and *Xᵢⱼ₁*.
   + If *j₁* > *j₀*, every pair of adjacent samples (*Xᵢⱼ*, *Xᵢⱼ₊₁*), whose indices satisfy the inequality *j₀* ≤ *j* < *j* + 1 ≤ *j₁*, satisfies the property *tᵢⱼ₊₁* - *tᵢⱼ* = *Δᵢ* to within the absolute precision of a **gap**, i.e., ≤0.5 *Δᵢ*.
     * Sample times are generally much more precise than ±0.5 *Δᵢ* with modern digital recording equipment.
-    * Time gaps with absolute deviations ≤ 0.5 *Δᵢ* from sampling interval *Δᵢ* are discarded by SeisIO readers.
+    * Time gaps with absolute deviations ≤ 0.5 *Δᵢ* from sampling interval *Δᵢ* are discarded by SeisBase readers.
 
-## **Definition of SeisIO Time Matrix**
+## **Definition of SeisBase Time Matrix**
 A two-column Array{Int64,2}, in which:
 * `Tᵢ[:,1]` are monotonically increasing indices *j* in *Xᵢ*
 * `Tᵢ[:,2]` are time values in μs
@@ -108,12 +108,12 @@ Internal functions for working with time matrices are in `CoreUtils/time.jl`. An
 ### **Common use cases**
 The most common functions needed to manipulate time matrices are covered by:
 
-`import SeisIO: t_expand, t_collapse, t_win, w_time, tx_float`
+`import SeisBase: t_expand, t_collapse, t_win, w_time, tx_float`
 
 If the absolute time of each sample in `S.x[i]` is required, try the following commands:
 ```
-using SeisIO
-import SeisIO: t_expand
+using SeisBase
+import SeisBase: t_expand
 t = S.t[i]
 fs = S.fs[i]
 tx = t_expand(t, fs)              # Int64 vector of sample times (in μs)
@@ -122,7 +122,7 @@ stx = string.(u2d.(tx.*1.0e-6))   # String vector of sample times
 ```
 
 ## **Obsolescence**
-The SeisIO time matrix system will remain accurate at 64-bit precision until 5 June 2255. At later dates it will become increasingly unusable, as 64-bit floating-point representation of integer μs will become increasingly imprecise. Please plan to discontinue use before that date.
+The SeisBase time matrix system will remain accurate at 64-bit precision until 5 June 2255. At later dates it will become increasingly unusable, as 64-bit floating-point representation of integer μs will become increasingly imprecise. Please plan to discontinue use before that date.
 
 Check: `using Dates; unix2datetime(1.0e-6*maxintfloat())`
 
@@ -132,12 +132,12 @@ Check: `using Dates; unix2datetime(1.0e-6*maxintfloat())`
 |:--- |:----                      | :---              |
 | A   | array of Int64 time vals  | Array{Int64, 1}   |
 | B   | array of Int32 time vals  | Array{Int32, 1}   |
-| C   | single-channel structure  | typeof(C) <: SeisIO.GphysChannel  |
+| C   | single-channel structure  | typeof(C) <: SeisBase.GphysChannel  |
 | D   | Julia DateTime structure  | DateTime          |
 | H   | hex-encoded UInt8 array   | Array{UInt8, 1}   |
 | M   | month                     | Integer           |
-| S   | multichannel structure    | typeof(S) <: SeisIO.GphysData     |
-| T   | SeisIO time matrix        | Array{Int64, 2}   |
+| S   | multichannel structure    | typeof(S) <: SeisBase.GphysData     |
+| T   | SeisBase time matrix        | Array{Int64, 2}   |
 | Tf  | floating-point time vector| Array{Float64, 1} |
 | Tx  | expanded time vector      | Array{Int64, 1}   |
 | W   | time window matrix        | Array{Int64, 2}   |
@@ -202,11 +202,11 @@ Convert month *M*, day *d* of year *y* to Julian day (day of year) *j*.
 
 `mk_t!(C::GphysChannel, n::Integer, t::Int64)`
 
-Initialize SeisIO time matrix *C.t* for *n*-sample data vector *C.x* to start at *t* in integer μs from the Unix epoch.
+Initialize SeisBase time matrix *C.t* for *n*-sample data vector *C.x* to start at *t* in integer μs from the Unix epoch.
 
 `mk_t(n::Integer, t::Int64)`
 
-Create new SeisIO time matrix *T* for an *n*-sample data vector starting at *t* in integer μs from the Unix epoch.
+Create new SeisBase time matrix *T* for an *n*-sample data vector starting at *t* in integer μs from the Unix epoch.
 
 `t = mktime(y::T, j::T, h::T, M::T, s::T, μs::T) where T<:Integer`
 
@@ -224,7 +224,7 @@ Convert *ts1*, *ts2* to String, and sort s.t. *DateTime(str0)* < *DateTime(str1)
 
 `t = starttime(T::Array{Int64, 2}, fs::Float64)`
 
-Get the time of the first sample in SeisIO time matrix `t`, sampled at
+Get the time of the first sample in SeisBase time matrix `t`, sampled at
 interval `Δ` [μs] or frequency `fs` [Hz]. Output is integer μs measured from
 the Unix epoch.
 
@@ -252,7 +252,7 @@ Alias to `Dates.unix2datetime`
 
 `T = t_extend(T::Array{Int64,2}, t::Integer, n::Integer, fs::Float64)`
 
-Extend SeisIO time matrix *T* sampled at interval *Δ* μs or frequency *fs* Hz. For matrix *Tᵢ*:
+Extend SeisBase time matrix *T* sampled at interval *Δ* μs or frequency *fs* Hz. For matrix *Tᵢ*:
 * *t_new* is the start time of the next segment in data vector *Xᵢ*
 * *n_new* is the expected number of samples in the next segment of *Xᵢ*
 
@@ -290,7 +290,7 @@ Unpack a datehex-encoded UInt8 to Int64. In this encoding, the UInt8 representat
 
 `T = w_time(W::Array{Int64, 2}, Δ::Int64)`
 
-Convert time window matrix *W* of data sampled at interval *Δ* [μs] or frequency *fs* [Hz] to a SeisIO time matrix.
+Convert time window matrix *W* of data sampled at interval *Δ* [μs] or frequency *fs* [Hz] to a SeisBase time matrix.
 
 `xj = x_inds(T::Array{Int64, 2})`
 

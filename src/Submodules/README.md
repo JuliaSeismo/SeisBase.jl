@@ -18,7 +18,7 @@ with at least one "read" wrapper (`read_data`, `read_hdf5`, `read_meta`,
 `read_quake`).
   - Please don't create readers that will require additional keywords in
   `read_data` or `read_meta` without approaching us first.
-* For a new reader, remember to import SeisIO.Formats.formats and add an
+* For a new reader, remember to import SeisBase.Formats.formats and add an
 appropriate description for the file format.
 * Tests for file formats belong in `test/FileFormats/test_($format).jl`,
 whether or not the reader is in a submodule.

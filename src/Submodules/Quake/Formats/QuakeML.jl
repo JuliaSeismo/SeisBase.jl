@@ -446,7 +446,7 @@ end
 
 function new_qml!(io::IO)
   write(io, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
-  <quakeml xmlns=\"http://quakeml.org/xmlns/quakeml/1.2\">\n  <eventParameters publicID=\"smi:SeisIO.jl\">\n    <creationInfo>\n      <agencyID>SeisIO</agencyID>\n      <creationTime>")
+  <quakeml xmlns=\"http://quakeml.org/xmlns/quakeml/1.2\">\n  <eventParameters publicID=\"smi:SeisBase.jl\">\n    <creationInfo>\n      <agencyID>SeisBase</agencyID>\n      <creationTime>")
   print(io, now())
   write(io, "</creationTime>\n    </creationInfo>\n")
   return nothing
@@ -718,7 +718,7 @@ function write_qml!(io::IO, HDR::Array{SeisHdr,1}, SRC::Array{SeisSrc,1}, v::Int
         (v > 0) && println("  Skipped moment tensor (fields empty)")
       else
         write(io, "        <momentTensor publicID=\"")
-        mt_id = haskey(R.misc, "mt_id") ? R.misc["mt_id"] : "smi:SeisIO/moment_tensor;fmid=" * R.id
+        mt_id = haskey(R.misc, "mt_id") ? R.misc["mt_id"] : "smi:SeisBase/moment_tensor;fmid=" * R.id
         write(io, mt_id)
         write(io, "\">\n")
 
@@ -805,7 +805,7 @@ Write event metadata from SeisEvent `Ev` to file `fname`.
 
 Write QML to file `fname` from `SHDR`.
 
-If `fname` exists, and is QuakeML, SeisIO appends the existing XML. If the
+If `fname` exists, and is QuakeML, SeisBase appends the existing XML. If the
 file exists, but is NOT QuakeML, an error is thrown; the file isn't overwritten.
 
     write_qml(fname, SHDR::SeisHdr, SSRC::SeisSrc; v::Integer=0)
@@ -830,12 +830,12 @@ function write_qml(fname::String, HDR::Array{SeisHdr,1}, SRC::Array{SeisSrc,1}; 
     test_str = String(read(io))
     if test_str == "</eventParameters>\n</quakeml>\n"
 
-      # behavior for files that are QuakeXML as produced by SeisIO
+      # behavior for files that are QuakeXML as produced by SeisBase
       fastskip(io, -30)
     else
       try
 
-        # file exists and is readable QuakeXML but not produced by SeisIO
+        # file exists and is readable QuakeXML but not produced by SeisBase
         seekstart(io)
         fstart = String(fastread(io, 5))
         if fstart == "<?xml"

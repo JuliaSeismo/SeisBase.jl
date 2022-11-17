@@ -24,7 +24,7 @@ in R in H with corresponding source process info.
 [^3]: if `nev=0`, all matches are returned.
 [^4]: In an event query, keyword `src` can be a comma-delineated list, like `"IRIS, INGV, NCEDC"`.
 
-See also: `SeisIO.KW`, `?seis_www`
+See also: `SeisBase.KW`, `?seis_www`
 """
 function FDSNevq(ot::String;
   evw::Array{Float64,1} = [600.0, 600.0],

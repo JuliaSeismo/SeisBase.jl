@@ -1,7 +1,7 @@
 Adding new data structures
 
 # 0. When is This Guide Mandatory?
-Any pull request for SeisIO that adds Types
+Any pull request for SeisBase that adds Types
 
 # 1. Supertypes
 
@@ -35,7 +35,7 @@ All SeisData fields *except* `:c` (Connections) are assumed to exist in any subt
 | `:t`  | Time | (time API must be followed)
 | `:x`  | Univariate data | Allow floating-point data vectors |
 
-Failure to include one or more of these fields will break how your new Type interacts with SeisIO core code.
+Failure to include one or more of these fields will break how your new Type interacts with SeisBase core code.
 
 # 3. Required Method Extensions
 For general Types, the following methods must be imported and extended:
@@ -50,7 +50,7 @@ Methods needed:
 import Base: +, *, ==, append!, convert, deleteat!, getindex,
 isempty, isequal, merge!, push!, setindex!, show, size, sizeof,
 sort!, summary
-import SeisIO: merge_ext!
+import SeisBase: merge_ext!
 ```
 
 ### Required behavior
@@ -107,7 +107,7 @@ Starting with the SeisData Type as a skeleton:
 ## b. Native File IO
 If you want your new Types to be readable/writable with `rseis/wseis`, then you must do the following:
 1. Add to the relevant module:
-  + `import SeisIO: TNames, TCodes, rseis, wseis`
+  + `import SeisBase: TNames, TCodes, rseis, wseis`
   + `import Base: read, write`
 1. Create low-level `read` and `write` functions for your new Types.
 1. Add your Types to Tnames.

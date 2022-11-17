@@ -1,9 +1,9 @@
-import SeisIO.Formats: formats, FmtVer, FormatDesc, HistVec
-import SeisIO: BUF,
+import SeisBase.Formats: formats, FmtVer, FormatDesc, HistVec
+import SeisBase: BUF,
   InstrumentResponse,
   KW,
   SeedBlk,
-  SeisIOBuf,
+  SeisBaseBuf,
   TimeSpec,
   buf_to_double,
   buf_to_i16,

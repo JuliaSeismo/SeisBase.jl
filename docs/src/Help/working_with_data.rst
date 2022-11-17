@@ -3,7 +3,7 @@
 #################
 Working with Data
 #################
-This section is a tutorial for tracking and managing SeisIO data.
+This section is a tutorial for tracking and managing SeisBase data.
 
 ************************
 Creating Data Containers

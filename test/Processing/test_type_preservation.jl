@@ -7,7 +7,7 @@ for f in String["convert_seis!", "demean!", "detrend!", "filtfilt!", "merge!", "
   T = [eltype(S.x[i]) for i=1:S.n]
   id = deepcopy(S.id)
   ns = [length(findall(isnan.(S.x[i]))) for i in 1:S.n]
-  getfield(SeisIO, Symbol(f))(S)
+  getfield(SeisBase, Symbol(f))(S)
   for i = 1:S.n
     j = findid(S.id[i], id)
     if j > 0

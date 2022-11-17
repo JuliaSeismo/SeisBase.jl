@@ -1,5 +1,5 @@
 import Dates: now
-import SeisIO: InstrumentPosition,
+import SeisBase: InstrumentPosition,
   code2typ,
   fctoresp,
   getbandcode,

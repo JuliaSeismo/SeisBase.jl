@@ -1,4 +1,4 @@
-Code for data processing or analysis must conform to additional specifications for inclusion in SeisIO.
+Code for data processing or analysis must conform to additional specifications for inclusion in SeisBase.
 
 # Don't assume ideal objects
 Your code must handle (or skip, as needed) channels in `GphysData` subtypes (and/or `GphysChannel` subtypes) with undesirable features. Examples from our tests include:
@@ -22,7 +22,7 @@ Never alter or delete unprocessed data. We realize that some code requires very 
 If a function assumes or requires specific preprocessing steps, the best practice is to add code to the function that checks `:notes` for prerequisite steps and applies them as needed.
 
 ## Tips for selecting the right data
-In an object that contains data from more than one instrument type, finding the right channels to process is non-trivial. For this reason, whenever possible, SeisIO follows [SEED channel naming conventions](http://www.fdsn.org/seed_manual/SEEDManual_V2.4_Appendix-A.pdf) for the `:id` field. Thus, there are at least two ways to identify channels of interest:
+In an object that contains data from more than one instrument type, finding the right channels to process is non-trivial. For this reason, whenever possible, SeisBase follows [SEED channel naming conventions](http://www.fdsn.org/seed_manual/SEEDManual_V2.4_Appendix-A.pdf) for the `:id` field. Thus, there are at least two ways to identify channels of interest:
 1. Get the single-character "channel instrument code" for channel `i` (`inst_codes` does this efficiently). Compare to [standard SEED instrument codes](https://ds.iris.edu/ds/nodes/dmc/data/formats/seed-channel-naming/) and build a channel list, as `get_seis_channels` does.
   - This method can break on instruments whose IDs don't follow the SEED standard.
   - Channel code `Y` is opaque and therefore ambiguous; beware matching on it.
@@ -33,7 +33,7 @@ In an object that contains data from more than one instrument type, finding the 
 # Log function calls to `:notes`
 Please see the [logging API](./logging.md)
 
-# No unpublished algorithms in SeisIO core
+# No unpublished algorithms in SeisBase core
 Place research-level code in separate packages
 
 <!-- `ii = get_unique(S::GphysData, A::Array{String,1}, chans::ChanSpec)`

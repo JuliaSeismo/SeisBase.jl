@@ -1,10 +1,10 @@
-using Blosc, Dates, DSP, HDF5, Logging, Printf, SeisIO, Statistics, Test
-using SeisIO.FastIO, SeisIO.Nodal, SeisIO.Quake, SeisIO.RandSeis, SeisIO.SEED, SeisIO.SeisHDF, SeisIO.SUDS, SeisIO.UW
+using Blosc, Dates, DSP, HDF5, Logging, Printf, SeisBase, Statistics, Test
+using SeisBase.FastIO, SeisBase.Nodal, SeisBase.Quake, SeisBase.RandSeis, SeisBase.SEED, SeisBase.SeisHDF, SeisBase.SUDS, SeisBase.UW
 
 import Dates: DateTime, Hour, now
 import DelimitedFiles: readdlm
 import Random: rand, randperm, randstring
-import SeisIO: BUF,
+import SeisBase: BUF,
   KW,
   FDSN_sta_xml,
   TimeSpec,
@@ -78,7 +78,7 @@ import SeisIO: BUF,
   x_inds,
   xtmerge!,
   μs
-import SeisIO.RandSeis: iccodes_and_units, rand_misc
-import SeisIO.Quake: unsafe_convert
-import SeisIO.SeisHDF:read_asdf, read_asdf!, id_match, id_to_regex
+import SeisBase.RandSeis: iccodes_and_units, rand_misc
+import SeisBase.Quake: unsafe_convert
+import SeisBase.SeisHDF:read_asdf, read_asdf!, id_match, id_to_regex
 import Statistics: mean

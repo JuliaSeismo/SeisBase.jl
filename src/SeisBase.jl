@@ -1,5 +1,5 @@
 __precompile__()
-module SeisIO
+module SeisBase
 using Blosc, Dates, DSP, FFTW, LightXML, LinearAlgebra, Markdown, Mmap, Printf, Sockets
 using DelimitedFiles: readdlm
 using Glob: glob
@@ -14,7 +14,7 @@ include("imports.jl")
 include("constants.jl")
 
 # =========================================================
-# CoreUtils: SeisIO needs these for core functions
+# CoreUtils: SeisBase needs these for core functions
 # DO NOT CHANGE ORDER OF INCLUSIONS
 include("CoreUtils/IO/FastIO.jl")
 using .FastIO
@@ -41,7 +41,7 @@ include("Types/InstPosition.jl")
 include("Types/InstResp.jl")
 
 # IO buffer including location and instrument response buffers
-include("Types/SeisIOBuf.jl")
+include("Types/SeisBaseBuf.jl")
 
 # Abstract types
 include("Types/GphysData.jl")
@@ -66,7 +66,7 @@ for i in ls(path*"/Logging/*")
 end
 
 # =========================================================
-# Utilities that may require SeisIO types to work
+# Utilities that may require SeisBase types to work
 for i in ls(path*"/Utils/")
   if endswith(i, ".jl")
     include(i)

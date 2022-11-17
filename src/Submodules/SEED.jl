@@ -1,5 +1,5 @@
 module SEED
-using Dates, Markdown, Mmap, Printf, SeisIO, SeisIO.FastIO, SeisIO.Formats
+using Dates, Markdown, Mmap, Printf, SeisBase, SeisBase.FastIO, SeisBase.Formats
 path = Base.source_dir()
 
 const id_positions  = Int8[11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

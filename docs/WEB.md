@@ -14,8 +14,8 @@
 
 ## Column Guide
 * **Service** is the name of the service
-* **Submodule** is the submodule, if not part of SeisIO core.
-  + Access using e.g., `using SeisIO.Quake` for submodule Quake.
+* **Submodule** is the submodule, if not part of SeisBase core.
+  + Access using e.g., `using SeisBase.Quake` for submodule Quake.
 * **Command** is the command.
 * **Method** is the method positional argument.
   + This is always the first ASCII string in the command

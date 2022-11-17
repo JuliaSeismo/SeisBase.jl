@@ -91,13 +91,13 @@ if has_restricted
 
     # The only time gaps should be what are in the logs:
     # ┌ Warning: Time gap detected! (15.0 s at V.ONTA.H, beginning 2014-09-27T09:58:00)
-    # └ @ SeisIO ~/.julia/dev/SeisIO/src/Formats/Win32.jl:137
+    # └ @ SeisBase ~/.julia/dev/SeisBase/src/Formats/Win32.jl:137
     # ┌ Warning: Time gap detected! (15.0 s at V.ONTA.U, beginning 2014-09-27T09:58:00)
-    # └ @ SeisIO ~/.julia/dev/SeisIO/src/Formats/Win32.jl:137
+    # └ @ SeisBase ~/.julia/dev/SeisBase/src/Formats/Win32.jl:137
     # ┌ Warning: Time gap detected! (15.0 s at V.ONTA.N, beginning 2014-09-27T09:58:00)
-    # └ @ SeisIO ~/.julia/dev/SeisIO/src/Formats/Win32.jl:137
+    # └ @ SeisBase ~/.julia/dev/SeisBase/src/Formats/Win32.jl:137
     # ┌ Warning: Time gap detected! (15.0 s at V.ONTA.E, beginning 2014-09-27T09:58:00)
-    # └ @ SeisIO ~/.julia/dev/SeisIO/src/Formats/Win32.jl:137
+    # └ @ SeisBase ~/.julia/dev/SeisBase/src/Formats/Win32.jl:137
 
     for k = 1:S.n
       i = j[k]

@@ -54,7 +54,7 @@ Keywords
 
 .. [#] This value is a base value; a small amount is added to this number by each new SeedLink session to minimize the risk of congestion
 
-Change these with SeisIO.KW.SL.[key] = value, e.g., SeisIO.KW.SL.refresh = 30.
+Change these with SeisBase.KW.SL.[key] = value, e.g., SeisBase.KW.SL.refresh = 30.
 
 Special Behavior
 ================

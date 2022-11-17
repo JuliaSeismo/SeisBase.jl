@@ -7,7 +7,7 @@ export SeisPha
 
 IRIS-style seismic phase and pick container
 
-Field     | Type    | Meaning         | SeisIO conventions/behavior
+Field     | Type    | Meaning         | SeisBase conventions/behavior
 --------: |:------- |:--------------  | :----------
  amp      | Float64 | amplitude       | uses units of data source
  d        | Float64 | distance        | no unit conversion; can be m, km, or °

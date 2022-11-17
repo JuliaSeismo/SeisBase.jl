@@ -40,7 +40,7 @@ end
 
 QuakeML-compliant earthquake location
 
-Field     | Type    | Meaning       | SeisIO conventions/behavior
+Field     | Type    | Meaning       | SeisBase conventions/behavior
 --------: |:------- |:--------------| :----------
  lat      | Float64 | latitude      | °N = +
  lon      | Float64 | longitude     | °E = +

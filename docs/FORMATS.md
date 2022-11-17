@@ -17,7 +17,7 @@
 | SAC polezero    | read_meta     | writesacpz   | sacpz         | u           |
 | SAC timeseries  | read_data     | writesac     | sac           |             |
 | SEG Y           | read_data     |              | segy          | i           |
-| SeisIO          | rseis         | wseis        |               |             |
+| SeisBase          | rseis         | wseis        |               |             |
 | SLIST           | read_data     |              | slist         |             |
 | SUDS event      | read_quake    |              | suds          | o           |
 | SUDS timeseries | read_data     |              | suds          | o           |

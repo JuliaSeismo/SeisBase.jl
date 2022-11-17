@@ -1,10 +1,10 @@
 export get_file_ver, set_file_ver
 
-function set_file_ver(f::String, ver::Float32=vSeisIO)
+function set_file_ver(f::String, ver::Float32=vSeisBase)
   isfile(f) || error("File not found!")
   io = open(f, "a+")
   seekstart(io)
-  String(fastread(io, 6)) == "SEISIO" || error("Not a SeisIO file!")
+  String(fastread(io, 6)) == "SeisBase" || error("Not a SeisBase file!")
   write(io, ver)
   close(io)
   return nothing
@@ -15,7 +15,7 @@ function get_file_ver(f::String)
   isfile(f) || error("File not found!")
   io = open(f, "r")
   seekstart(io)
-  String(fastread(io, 6)) == "SEISIO" || error("Not a SeisIO file!")
+  String(fastread(io, 6)) == "SeisBase" || error("Not a SeisBase file!")
   ver = fastread(io, Float32)
   close(io)
   return ver

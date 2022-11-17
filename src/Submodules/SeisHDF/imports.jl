@@ -1,5 +1,5 @@
 import LightXML: free, parse_string
-import SeisIO: ChanSpec,
+import SeisBase: ChanSpec,
   KW,
   TimeSpec,
   check_for_gap!,
@@ -18,7 +18,7 @@ import SeisIO: ChanSpec,
   trunc_x!,
   x_inds,
   μs
-import SeisIO.Quake: event_xml!,
+import SeisBase.Quake: event_xml!,
   fwrite_note_quake!,
   new_qml!,
   write_qml!
