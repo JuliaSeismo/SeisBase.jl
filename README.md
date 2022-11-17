@@ -9,7 +9,7 @@ A minimalist, platform-agnostic package for univariate geophysical data.
 This version is a follow up from SeisIO.jl (https://github.com/jpjones76/SeisIO.jl). It is intended to be an stable community maintained package.
 
 ## Installation | [Documentation](http://SeisBase.readthedocs.org)
-From the Julia prompt, type: `] add SeisBase`; (Backspace); `using SeisBase`
+From the Julia prompt, type: `] add https://github.com/SeismoJulia/SeisBase.jl`; (Backspace); `using SeisBase`
 
 ## Summary | [Collaboration](docs/CONTRIBUTE.md)
 Designed for speed, efficiency, and ease of use. Includes web clients, readers for common seismic data formats, and fast file writers. Utility functions allow time synchronization, data merging, padding time gaps, and other basic data processing.
