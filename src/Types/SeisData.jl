@@ -127,7 +127,7 @@ mutable struct SeisData <: GphysData
 end
 
 # This intentionally undercounts exotic objects in :misc (e.g. a nested Dict)
-# because those objects aren't written to disk or created by SeisIO
+# because those objects aren't written to disk or created by SeisBase
 function sizeof(S::SeisData)
   s = sizeof(S.c) + 120
   for f in datafields

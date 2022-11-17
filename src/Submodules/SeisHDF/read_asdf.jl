@@ -36,7 +36,7 @@ v         verbosity
 Δ         sampling interval [ns]
 
 because I managed to confuse even myself with the bookkeeping, and that's not
-happened since coding SeisIO began
+happened since coding SeisBase began
 =#
 
 function read_asdf!(  S::GphysData,

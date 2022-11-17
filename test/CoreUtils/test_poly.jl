@@ -1,5 +1,5 @@
 printstyled("  poly\n", color=:light_green)
-import SeisIO:polyfit, polyval
+import SeisBase:polyfit, polyval
 N = 1000
 C = 2.0
 P = 3

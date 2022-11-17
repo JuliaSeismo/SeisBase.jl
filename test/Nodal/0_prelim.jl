@@ -1,4 +1,4 @@
-printstyled("SeisIO.Nodal submodule\n", color=:light_green)
+printstyled("SeisBase.Nodal submodule\n", color=:light_green)
 
 function pop_nodal_dict!(info:: Dict{String, Any}; n::Int64=12, kmax::Int64=32)
   for i in 1:n
@@ -14,7 +14,7 @@ function pop_nodal_dict!(info:: Dict{String, Any}; n::Int64=12, kmax::Int64=32)
               0x00000009,
               0x0000000a,
               0x00000020])
-    T = get(SeisIO.Nodal.tdms_codes, t, UInt8)
+    T = get(SeisBase.Nodal.tdms_codes, t, UInt8)
     v = T == Char ? randstring(rand(1:256)) : rand(T)
     info[k] = v
   end

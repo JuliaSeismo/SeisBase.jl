@@ -1,12 +1,12 @@
-SeisIO v1.2.0
+SeisBase v1.2.0
 2021-02-02
 
-SeisIO v1.2.0 introduces `scan_seed` for rapid scans of mini-SEED files.
+SeisBase v1.2.0 introduces `scan_seed` for rapid scans of mini-SEED files.
 
 # 1. **Public API Changes**
 
 ## scan_seed
-`scan_seed` is a new function in `SeisIO.SEED` intended to quickly scan large mini-SEED files. (Feature request, issue #62)
+`scan_seed` is a new function in `SeisBase.SEED` intended to quickly scan large mini-SEED files. (Feature request, issue #62)
   + `scan_seed` reports changes within a mini-SEED file, including:
     - Samples per channel (KW `npts`)
     - Gaps (KW `ngaps`), or exact gap times (`seg_times=true`)
@@ -21,7 +21,7 @@ New processing function `rescale!` quickly scales data in a structure and adjust
 
 ## SAC updates
 * Read/write support for SAC file version 7 (SAC v102.0).
-* New function `fill_sac_evh!` in SeisIO.Quake fills some SeisEvent header data from a SAC file.
+* New function `fill_sac_evh!` in SeisBase.Quake fills some SeisEvent header data from a SAC file.
 
 # 2. **Bug Fixes**
 * `ungap!` should now work correctly on a channel whose only time gap occurs before the last sample. (Fixes issue #74)
@@ -34,7 +34,7 @@ New processing function `rescale!` quickly scales data in a structure and adjust
 # 3. **Consistency, Performance**
 * Performance will be slightly better when reading large files whose data contain many negative time gaps. (Partly fixes issue #72)
   + This change decreases memory consumption in this "end member" case by ~75% and read time by ~40%.
-  + The memory overhead for extremely large files containing very many negative time gaps is still untenable; this very rare end-member case cannot be fixed without fundamentally rewriting all SeisIO timekeeping.
+  + The memory overhead for extremely large files containing very many negative time gaps is still untenable; this very rare end-member case cannot be fixed without fundamentally rewriting all SeisBase timekeeping.
 * NodalData now uses AbstractArray{Float32, 2} for the :data field, rather than Array{Float32, 2}. (Merged PR #66 from tclements/Nodal)
 * NodalLoc (:loc field of NodalData) now has x, y, z subfields. (Merged PR #64 from tclements/NodalLoc)
 * `convert` has been expanded:

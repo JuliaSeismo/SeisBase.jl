@@ -1,7 +1,7 @@
-SeisIO v1.0.0: Publication release
+SeisBase v1.0.0: Publication release
 2020-03-02
 
-This release coincides with the first SeisIO publication: Jones, J.P., Okubo, K., Clements. T., & Denolle, M. (2020). SeisIO: a fast, efficient geophysical data architecture for the Julia language. The paper was accepted by Seismological Research Letters in January 2020.
+This release coincides with the first SeisBase publication: Jones, J.P., Okubo, K., Clements. T., & Denolle, M. (2020). SeisBase: a fast, efficient geophysical data architecture for the Julia language. The paper was accepted by Seismological Research Letters in January 2020.
 
 Major feature expansions and code changes include:
 * Standardization of automated logging
@@ -10,7 +10,7 @@ Major feature expansions and code changes include:
 * Full support for ASDF (Advanced Seismic Data Format)
 * Write support for StationXML and QuakeML
 
-This release is designated SeisIO v1.0.0 because it's the first release that I feel meets all basic goals established when I created SeisIO.
+This release is designated SeisBase v1.0.0 because it's the first release that I feel meets all basic goals established when I created SeisBase.
 
 # **File I/O and Thread Locking**
 File I/O now avoids the thread-locking disease introduced in Julia v1.3.0. Most low-level I/O commands have been changed in the following ways:
@@ -28,11 +28,11 @@ In some cases these changes yield significant speed increases. Popular data form
 # **Logging Improvements**
 Logging to *:notes* and *:src* has been broadened and standardized.
 
-## *:src* field in SeisIO structures
+## *:src* field in SeisBase structures
 * Reading metadata no longer overwrites *:src*.
 * *:src* should now be set consistently with design goals by all functions.
 
-## *:notes* field in SeisIO structures
+## *:notes* field in SeisBase structures
 * The field separator for a single note has changed to ` ¦ ` (including spaces); the old separator (`,`) was problematic.
 * New data sources should always be logged accurately, allowing user to easily reproduce the acquisition commands.
 * Automated notes now have at least three fields, including the timestamp.
@@ -40,7 +40,7 @@ Logging to *:notes* and *:src* has been broadened and standardized.
 * Time stamps now have a precision of seconds. Millisecond timestamps were unnecessary.
 * Notes that log data sources now set the second field of the note to *+source*
 * `tnote` output changed slightly.
-* `note!` now extends to SeisHdr and SeisSrc objects in SeisIO.Quake
+* `note!` now extends to SeisHdr and SeisSrc objects in SeisBase.Quake
 
 ## *get_data* logging
 Bad requests and unparseable formats are now logged to special output channels; see below.
@@ -59,7 +59,7 @@ Bad requests and unparseable formats are now logged to special output channels; 
 
 # **Improvements to** *read_data*
 * A String array can now be passed as the file string pattern argument with method `read_data(fmt, filestr [, keywords])`. This functionality will eventually be expanded to `read_data(filestr [, keywords])`.
-* All file formats can now be memory-mapped before reading by passing KW *memmap=true*. SeisIO benchmarks suggest that this affects some read speeds:
+* All file formats can now be memory-mapped before reading by passing KW *memmap=true*. SeisBase benchmarks suggest that this affects some read speeds:
   + *Significant speedup*: ASCII formats, including metadata formats
   + *Slight speedup*: mini-SEED
   + *Significant slowdown*: SAC
@@ -71,7 +71,7 @@ Bad requests and unparseable formats are now logged to special output channels; 
 * The format string to read Lennartz SLIST (ASCII) with *read_data* has changed from "lennasc" to "lennartz".
 
 ## Channel Extension
-Existing data channels should now be extended on a successful channel ID match in all file formats. This is the intended behavior of SeisIO.
+Existing data channels should now be extended on a successful channel ID match in all file formats. This is the intended behavior of SeisBase.
 
 Previously, all formats except mini-SEED and ASDF created a new channel for every new file read, which required flattening with *merge!*. That was a clumsy work flow.
 
@@ -84,7 +84,7 @@ The new behavior standardizes the output because multiple files read with many *
 * See official documentation for fields matched in each file format.
 
 # **ASDF/HDF5**
-ASDF (Adaptable Seismic Data Format) is now fully supported. Specific changes from SeisIO v0.4.1 are below.
+ASDF (Adaptable Seismic Data Format) is now fully supported. Specific changes from SeisBase v0.4.1 are below.
 
 ## *write_hdf5* Changes
 + KW *chans* supports writing only some channels from a structure.
@@ -114,14 +114,14 @@ See documentation for details.
 
 ## `examples.jl`
 * Everything in *examples.jl* is now also part of the Data Acquisition tutorial.
-* `using Pkg; Pkg.test("SeisIO")` now tells users where to find *examples.jl* at the end of a successful test set.
+* `using Pkg; Pkg.test("SeisBase")` now tells users where to find *examples.jl* at the end of a successful test set.
 * no longer errors on the second SeedLink example when invoked outside the "tests" directory.
 
 ## Consistency, Performance, Bug Fixes
 * `seedlink`, `seedlink!`
   + now requires MODE ("TIME", "FETCH", or "DATA") as the first string argument, for consistency with other web clients; it's no longer a keyword.
-  + SeedLink keyword *u=* (base URL) now has a default value in SeisIO.KW.SL and
-  can be changed with `SeisIO.KW.SL.u=URL` for string *URL*.
+  + SeedLink keyword *u=* (base URL) now has a default value in SeisBase.KW.SL and
+  can be changed with `SeisBase.KW.SL.u=URL` for string *URL*.
 * `Quake.get_pha!` docstring corrected.
 * `read_meta` now accepts an *Array{String, 1}* for the file pattern argument.
 * `read_sxml` is no longer exported; use *read_meta("sxml", ... )* instead.
@@ -196,7 +196,7 @@ Please note that these changes do not affect the PASSCAL SEG Y variant.
 + File streams should now always close before an unsupported data encoding throws an error.
 
 ### SUDS
-* Comment structures are now only displayed to stdout at high verbosity. There is no good way to read them into SeisIO and no evidence anyone used them.
+* Comment structures are now only displayed to stdout at high verbosity. There is no good way to read them into SeisBase and no evidence anyone used them.
 * Fixed a bug where reading a Struct 7 could sometimes set *:fs* incorrectly.
 
 ### StationXML

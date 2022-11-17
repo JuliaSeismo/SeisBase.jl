@@ -12,7 +12,7 @@ Read nodal data from file `filestr` into new NodalData object `S`.
 | t     | TimeSpec  |           | silixa    | end time                        |
 | v     | Integer   | 0         | silixa    | verbosity                       |
 
-[^1] Special behavior: Real values supplied to `s=` and `t=` are treated as seconds *from file begin*; most SeisIO functions treat Real as seconds relative to current time.
+[^1] Special behavior: Real values supplied to `s=` and `t=` are treated as seconds *from file begin*; most SeisBase functions treat Real as seconds relative to current time.
 
 See also: `TimeSpec`, `parsetimewin`, `read_data`
 """ read_nodal

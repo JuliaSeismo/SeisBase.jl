@@ -1,5 +1,5 @@
-right_url = "https://github.com/jpjones76/SeisIO-TestData/trunk/SVN_test"
-wrong_url = "https://github.com/jpjones76/SeisIO-TestData/trunk/DOESNT_EXIST"
+right_url = "https://github.com/jpjones76/SeisBase-TestData/trunk/SVN_test"
+wrong_url = "https://github.com/jpjones76/SeisBase-TestData/trunk/DOESNT_EXIST"
 svn_dir = "SVN_test"
 svn_file = joinpath(svn_dir, "test")
 

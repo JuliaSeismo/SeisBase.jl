@@ -181,7 +181,7 @@ println("")
 S1 = read_meta("sacpz", sacpz_file)
 S2 = read_meta("sacpz", sacpz_wc)
 S3 = read_meta("dataless", dataless_wc, s="2016-01-01T00:00:00")
-for f in SeisIO.datafields
+for f in SeisBase.datafields
   if (f in (:src, :notes)) == false
     @test isequal(getfield(S1,f), getfield(S2,f))
   end

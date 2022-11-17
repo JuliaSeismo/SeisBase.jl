@@ -494,7 +494,7 @@ end
 @doc """
     read_sacpz!(S::GphysData, pzfile::String)
 
-Read sacpz file `pzfile` into SeisIO struct `S`.
+Read sacpz file `pzfile` into SeisBase struct `S`.
 
 If an ID in the pz file matches channel `i` at times in `S.t[i]`:
 * Fields :fs, :gain, :loc, :name, :resp, :units are overwritten if empty/unset
@@ -574,7 +574,7 @@ end
 @doc """
     writesacpz(pzfile::String, S::GphysData[, chans::ChanSpec=CC])
 
-Write fields from SeisIO struct `S` into sacpz file `pzfile`. Uses information
+Write fields from SeisBase struct `S` into sacpz file `pzfile`. Uses information
 from fields :fs, :gain, :loc, :misc, :name, :resp, :units. Specify `chans=CC` to only write channels `CC`.
 """ writesacpz
 function writesacpz(file::String, S::GphysData; chans::ChanSpec=Int64[])

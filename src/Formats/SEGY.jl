@@ -393,7 +393,7 @@ end
 
 Print formatted, sorted SEG-Y headers of file `f` to stdout. Use keyword
 `passcal=true` for PASSCAL/NMT modified SEG Y; use `swap=true` for big-endian
-PASSCAL. See SeisIO `read_data` documentation for `ll` codes.
+PASSCAL. See SeisBase `read_data` documentation for `ll` codes.
 """
 function segyhdr(fname::String; ll::UInt8=0x00, passcal::Bool=false, swap::Bool=false)
   if passcal

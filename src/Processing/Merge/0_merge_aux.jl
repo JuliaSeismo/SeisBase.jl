@@ -2,7 +2,7 @@ merge_ext!(S::SeisData, Ω::Int64, rest::Array{Int64, 1}) = nothing
 
 function merge_ext!(C::T1, D::T2) where {T1<:GphysChannel, T2<:GphysChannel}
   if T1 == T2
-    ff = setdiff(fieldnames(T1), SeisIO.datafields)
+    ff = setdiff(fieldnames(T1), SeisBase.datafields)
     for f in ff
       setfield!(C, f, deepcopy(getfield(D, f)))
     end

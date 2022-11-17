@@ -52,7 +52,7 @@ writesac(S) # change 2019-07-15 to cover writesac on GphysData
 
 printstyled("      reproducibility\n", color=:light_green)
 SAC4 = verified_read_data("sac", f_out, full=true)[1]
-for f in SeisIO.datafields
+for f in SeisBase.datafields
   (f in [:src, :notes, :misc]) && continue
   @test isequal(getfield(SAC2, f), getfield(SAC4, f))
 end
@@ -60,7 +60,7 @@ fn = f_out[3:end]
 writesac(SAC4, fname=fn)
 @test safe_isfile(fn)
 SAC5 = verified_read_data("sac", fn, full=true)[1]
-for f in SeisIO.datafields
+for f in SeisBase.datafields
   (f in [:src, :notes, :misc]) && continue
   @test isequal(getfield(SAC2, f), getfield(SAC4, f))
   @test isequal(getfield(SAC4, f), getfield(SAC5, f))

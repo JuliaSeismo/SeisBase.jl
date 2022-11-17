@@ -1,4 +1,4 @@
-# SeisIO v0.3: **Typeageddon!**
+# SeisBase v0.3: **Typeageddon!**
 2019-06-04
 
 The main purpose of this release is to finalize custom Types; major changes to Types are *extremely* unlikely after this release; minor changes will only happen in response to significant demands. The Type restructuring below serves two main purposes:
@@ -7,10 +7,10 @@ The main purpose of this release is to finalize custom Types; major changes to T
 
 Descriptions of Type fields and meanings can be found in the help text of each Type.
 
-Low-level descriptions of how each Type is stored on file can be found in the SeisIO documentation.
+Low-level descriptions of how each Type is stored on file can be found in the SeisBase documentation.
 
 ## Full switch to read_data
-Readers for individual file formats (e.g. `readsac`) have been deprecated (as warned about in the notes to SeisIO-0.2.0). Please use `read_data` instead.
+Readers for individual file formats (e.g. `readsac`) have been deprecated (as warned about in the notes to SeisBase-0.2.0). Please use `read_data` instead.
 
 ## Changes to SeisData, SeisChannel
 * An abstract Type, `GphysData`, is now the supertype of `SeisData`. This will allow variants of `SeisData` objects to be added easily.
@@ -27,13 +27,13 @@ Readers for individual file formats (e.g. `readsac`) have been deprecated (as wa
   + `GenResp`: generic instrument response object comprising a descriptive string, `:desc`, and a complex Float64 matrix, `:resp`.
 
 ## Quake submodule
-All Types and functions related to handling of discrete earthquake events have been moved to a new submodule, SeisIO.Quake. This includes several (former) SeisIO core functions:
+All Types and functions related to handling of discrete earthquake events have been moved to a new submodule, SeisBase.Quake. This includes several (former) SeisBase core functions:
 * UW data format: `readuwevt`, `uwpf`, `uwpf!`
 * Event web functions: `FDSNevq`, `FDSNevt`, `distaz`, `get_pha!`
 * Miscellaneous: `gcdist`, `show_phases`
 * Types: `SeisHdr`, `SeisEvent`
 
-### SeisIO.Quake Types
+### SeisBase.Quake Types
 * `SeisSrc` is a new Type that characterizes an earthquake source process, with fields:
   - `:id` (String): seismic source id
   - `:eid` (String): event id
@@ -83,7 +83,7 @@ All Types and functions related to handling of discrete earthquake events have b
 **Note**: Seismic data centers typically use different IDs for event location and event source model; hence, for a SeisHdr object `H` and the corresponding SeisSrc object `R`, `H.id == R.eid`, but generally, `H.id != H.eid`. **Please don't open an issue about this, I swear it's not a bug.**
 
 ### QuakeML Support
-SeisIO.Quake introduces QuakeML support.
+SeisBase.Quake introduces QuakeML support.
 + A new function, `read_qml`, reads QuakeML files and parses QuakeML downloads.
 + If multiple focal mechanisms, locations, or magnitudes are present in a single `Event` element, the following rules are used to select one of each:
   - `FocalMechanism`
@@ -102,12 +102,12 @@ SeisIO.Quake introduces QuakeML support.
     3. First `Origin` element
 + Non-essential QuakeML data are saved to each event `W` in `W.source.misc` (for earthquake source data) or `W.hdr.misc` (other data), using the corresponding QuakeML element names as keys.
 
-### Changes to former SeisIO core functions
+### Changes to former SeisBase core functions
 * `FDSNevq` now returns both an Array{SeisHdr,1} and a corresponding Array{SeisSrc,1}.
-* SeisIO processing functions must now be called on the `:data` field of a `SeisEvent` object. They won't work if called on the `SeisEvent` object itself.
+* SeisBase processing functions must now be called on the `:data` field of a `SeisEvent` object. They won't work if called on the `SeisEvent` object itself.
 
-## read/write and SeisIO Types
-* `read` and `write` methods now extend to all exported SeisIO Types, including those in SeisIO.Quake. The primary use of `rseis` and `wseis` will be creating indexed, searchable files of many SeisIO objects.
+## read/write and SeisBase Types
+* `read` and `write` methods now extend to all exported SeisBase Types, including those in SeisBase.Quake. The primary use of `rseis` and `wseis` will be creating indexed, searchable files of many SeisBase objects.
 * `SeisChannel` objects are no longer converted to `SeisData` on write.
 * The native file format has been rewritten. Please open an issue if you need to access data in the old file format; we don't think anyone was using it yet.
 * Write speed has improved 20-30%. Read speed improved two orders of magnitude by removing automatic compression; it's now comparable to SAC or SEG Y with fewer allocations and less overhead.
@@ -150,8 +150,8 @@ SeisIO.Quake introduces QuakeML support.
 * fixed incremental subrequests in long `get_data` requests.
 * eliminated the possibility of a (never-seen, but theoretically possible) duplicate sample error in multiday `get_data` requests.
 * `get_data` no longer treats regional searches and instrument selectors as mutually exclusive.
-* SeisIO keyword `nd` (number of days per subrequest) is now type `Real` (was: `Int`).
-* shortened SeisIO keyword `xml_file` to `xf` because I'm *that* lazy about typing. y do u ax
+* SeisBase keyword `nd` (number of days per subrequest) is now type `Real` (was: `Int`).
+* shortened SeisBase keyword `xml_file` to `xf` because I'm *that* lazy about typing. y do u ax
 * `writesac`:
   - once again stores channel IDs correctly
   - now sets begin time (SAC `b`) from SeisChannel/SeisData `:t`, rather than to 0.0. Channel start and end times using `writesac` should now be identical to `wseis` and `write`.

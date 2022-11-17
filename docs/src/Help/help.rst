@@ -22,7 +22,7 @@ Invoke the command-prompt examples with the following command sequence:
 
 ::
 
-  p = pathof(SeisIO)
+  p = pathof(SeisBase)
   d = dirname(realpath(p))
   cd(d)
   include("../test/examples.jl")
@@ -38,9 +38,9 @@ The commands in *tests/* can be used as templates; to install test data and run 
 ::
 
   using Pkg
-  Pkg.test("SeisIO")      # lunch break recommended. Tests can take 20 minutes.
+  Pkg.test("SeisBase")      # lunch break recommended. Tests can take 20 minutes.
                           # 99.5% code coverage wasn't an accident...
-  p = pathof(SeisIO)
+  p = pathof(SeisBase)
   cd(realpath(dirname(p) * "/../test/"))
 
 .. _cli_help:
@@ -49,7 +49,7 @@ The commands in *tests/* can be used as templates; to install test data and run 
 Command-Line Help
 *****************
 
-A great deal of additional help functions are available at the Julia command prompt. All SeisIO functions and structures have their own docstrings. For example, typing *?SeisData* at the Julia prompt produces the following:
+A great deal of additional help functions are available at the Julia command prompt. All SeisBase functions and structures have their own docstrings. For example, typing *?SeisData* at the Julia prompt produces the following:
 
 ::
 
@@ -140,4 +140,4 @@ Answers: which servers are available for FDSN queries? Outputs :ref:`the FDSN se
 
 All About Keywords
 ==================
-Invoke keywords help with **?SeisIO.KW** for complete information on SeisIO shared keywords and meanings.
+Invoke keywords help with **?SeisBase.KW** for complete information on SeisBase shared keywords and meanings.

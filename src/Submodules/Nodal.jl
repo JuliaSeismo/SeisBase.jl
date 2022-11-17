@@ -1,5 +1,5 @@
 module Nodal
-using Dates, LinearAlgebra, Mmap, SeisIO, SeisIO.FastIO
+using Dates, LinearAlgebra, Mmap, SeisBase, SeisBase.FastIO
 path = Base.source_dir()
 
 # Imports

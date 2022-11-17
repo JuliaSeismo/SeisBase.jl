@@ -1,4 +1,4 @@
-SEED_Char(io::IO, BUF::SeisIOBuf, nb::UInt16) = replace(String(fastread(io, nb)),
+SEED_Char(io::IO, BUF::SeisBaseBuf, nb::UInt16) = replace(String(fastread(io, nb)),
                                             ['\r', '\0'] =>"")
 
 function SEED_Unenc!(io::IO, S::GphysData, c::Int64, xi::Int64, nb::UInt16, nx::UInt16)
@@ -25,7 +25,7 @@ function SEED_Unenc!(io::IO, S::GphysData, c::Int64, xi::Int64, nb::UInt16, nx::
   return nothing
 end
 
-function SEED_Geoscope!(io::IO, BUF::SeisIOBuf)
+function SEED_Geoscope!(io::IO, BUF::SeisBaseBuf)
   mm = 0x0fff
   gm = BUF.fmt == 0x0d ? 0x7000 : 0xf000
   for i = 0x0001:BUF.n
@@ -39,7 +39,7 @@ function SEED_Geoscope!(io::IO, BUF::SeisIOBuf)
   return nothing
 end
 
-function SEED_CDSN!(io::IO, BUF::SeisIOBuf)
+function SEED_CDSN!(io::IO, BUF::SeisBaseBuf)
   for i = 0x0001:BUF.n
     x = BUF.swap ? bswap(fastread(io, UInt16)) : fastread(io, UInt16)
     m = Int32(x & 0x3fff)
@@ -52,7 +52,7 @@ function SEED_CDSN!(io::IO, BUF::SeisIOBuf)
   return nothing
 end
 
-function SEED_SRO!(io::IO, BUF::SeisIOBuf)
+function SEED_SRO!(io::IO, BUF::SeisBaseBuf)
   for i = 0x0001:BUF.n
     x = BUF.swap ? bswap(fastread(io, UInt16)) : fastread(io, UInt16)
     m = Int32(x & 0x0fff)
@@ -67,7 +67,7 @@ function SEED_SRO!(io::IO, BUF::SeisIOBuf)
   return nothing
 end
 
-function SEED_DWWSSN!(io::IO, BUF::SeisIOBuf)
+function SEED_DWWSSN!(io::IO, BUF::SeisBaseBuf)
   for i = 0x0001:BUF.n
     x = signed(UInt32(BUF.swap ? bswap(fastread(io, UInt16)) : fastread(io, UInt16)))
     BUF.x[i] = x > 32767 ? x - 65536 : x
@@ -77,7 +77,7 @@ function SEED_DWWSSN!(io::IO, BUF::SeisIOBuf)
 end
 
 # Steim1 or Steim2
-function SEED_Steim!(io::IO, BUF::SeisIOBuf, nb::UInt16)
+function SEED_Steim!(io::IO, BUF::SeisBaseBuf, nb::UInt16)
   x = getfield(BUF, :x)
   buf = getfield(BUF, :buf)
   ff = getfield(BUF, :uint32_buf)

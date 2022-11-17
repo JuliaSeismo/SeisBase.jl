@@ -3,8 +3,8 @@
 ###########
 First Steps
 ###########
-SeisIO is designed around easy, fluid, and fast data access.
-At the most basic level, SeisIO uses an array-like structure called a
+SeisBase is designed around easy, fluid, and fast data access.
+At the most basic level, SeisBase uses an array-like structure called a
 **SeisChannel** for single-channel data, and a multichannel structure
 named **SeisData**.
 

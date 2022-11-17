@@ -1,5 +1,5 @@
 module SUDS
-using Mmap, SeisIO, SeisIO.FastIO, SeisIO.Quake
+using Mmap, SeisBase, SeisBase.FastIO, SeisBase.Quake
 
 #=
   Submodule for SUDS data format accessories.

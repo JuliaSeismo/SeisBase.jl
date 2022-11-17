@@ -216,7 +216,7 @@ ts_1 = Date(iv[1], m, d).instant.periods.value * 86400000000 +
        div(Time(iv[3], iv[4], iv[5]).instant.value, 1000) +
        iv[6]*1000 +
        round(Int64,fv*1000.0) -
-       SeisIO.dtconst
+       SeisBase.dtconst
 ts_2 = mktime(iv[1], iv[2], iv[3], iv[4], iv[5], iv[6]*Int32(1000)) +
        round(Int64, fv*1000.0)
 iv[6] *= Int32(1000)

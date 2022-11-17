@@ -1,4 +1,4 @@
-SeisIO v0.4.1
+SeisBase v0.4.1
 2019-10-13
 
 Primarily a bug fix release for v0.4.0, with the addition of write support for FDSN station XML files and the ASDF file format.
@@ -13,11 +13,11 @@ Primarily a bug fix release for v0.4.0, with the addition of write support for F
 * `resample` will no longer throw an error if the desired sampling frequency equals `:fs` for the largest group of segments. Fixed `resample` docstrings.
 * `SEED.mseed_support()` and `SEED.seed_support()` now output some text; users don't need to check their respective help files.
 * Added kw `autoname` to `get_data`; see documentation for functionality and behavior. Implements request in issue #24.
-* Discovered/fixed a rare mini-SEED bug wherein the last packet of a request containing unencoded data could throw a BoundsError if padded with empty bytes. * The memory footprint of SeisIO has been reduced by moving most large files to https://github.com/jpjones76/SeisIO-TestData. SeisIO now requires ~3 MB rather than ~300 MB.
+* Discovered/fixed a rare mini-SEED bug wherein the last packet of a request containing unencoded data could throw a BoundsError if padded with empty bytes. * The memory footprint of SeisBase has been reduced by moving most large files to https://github.com/jpjones76/SeisBase-TestData. SeisBase now requires ~3 MB rather than ~300 MB.
   + The development version is somewhat unwieldy due to the commit history; without test files, it's around 500 MB. This can be safely pruned with BFG Repo-Cleaner with a file size threshold of 50k.
   + Test data now have their own repository. They're downloaded automatically by `tests/runtests.jl` when the script is first invoked, but `runtests.jl` now requires a Subversion command-line client to run.
-* `read_data("seisio", ...)` now works as a wrapper to `rseis`
-  + Note: this is a convenience wrapper and lacks the full functionality of `rseis`. When reading a SeisIO file that contains multiple objects, `read_data("seisio", ...)` reads only the first object in each file that can be converted to a SeisData structure.
+* `read_data("SeisBase", ...)` now works as a wrapper to `rseis`
+  + Note: this is a convenience wrapper and lacks the full functionality of `rseis`. When reading a SeisBase file that contains multiple objects, `read_data("SeisBase", ...)` reads only the first object in each file that can be converted to a SeisData structure.
 * User agent settings are now standardized and should no longer cause error 500 on FDSN servers in California.
 * `get_data` now warns when requesting a (non-miniseed) format from FDSN dataselect servers that don't implement the `format` keyword.
 

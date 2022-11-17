@@ -62,7 +62,7 @@ Channel ID Syntax
 *****************
 ``NN.SSSSS.LL.CC`` (net.sta.loc.cha, separated by periods) is the expected syntax for all web functions. The maximum field width in characters corresponds to the length of each field (e.g. 2 for network). Fields can't contain whitespace.
 
-``NN.SSSSS.LL.CC.T`` (net.sta.loc.cha.tflag) is allowed in SeedLink. ``T`` is a single-character data type flag and must be one of ``DECOTL``: Data, Event, Calibration, blOckette, Timing, or Logs. Calibration, timing, and logs are not in the scope of SeisIO and may crash SeedLink sessions.
+``NN.SSSSS.LL.CC.T`` (net.sta.loc.cha.tflag) is allowed in SeedLink. ``T`` is a single-character data type flag and must be one of ``DECOTL``: Data, Event, Calibration, blOckette, Timing, or Logs. Calibration, timing, and logs are not in the scope of SeisBase and may crash SeedLink sessions.
 
 The table below specifies valid types and expected syntax for channel lists.
 
@@ -183,12 +183,12 @@ Server List
 .. _dkw:
 
 ########################
-SeisIO Standard Keywords
+SeisBase Standard Keywords
 ########################
 
-SeisIO.KW is a memory-resident structure of default values for common keywords
+SeisBase.KW is a memory-resident structure of default values for common keywords
 used by package functions. KW has one substructure, SL, with keywords specific
-to SeedLink. These defaults can be modified, e.g., SeisIO.KW.nev=2 changes the
+to SeedLink. These defaults can be modified, e.g., SeisBase.KW.nev=2 changes the
 default for nev to 2.
 
 +--------+----------------+--------+------------------------------------------+
@@ -266,7 +266,7 @@ Get SEED-compliant one-character band code corresponding to instrument sample ra
 
 .. function:: get_file_ver(fname::String)
 
-Get the version of a SeisIO native format file.
+Get the version of a SeisBase native format file.
 
 .. function:: get_seis_channels(S::GphysData)
 
@@ -321,7 +321,7 @@ Attempt to guess critical frequency from poles and zeros of a PZResp/PZResp64.
 
 .. function:: set_file_ver(fname::String)
 
-Sets the SeisIO file version of file fname.
+Sets the SeisBase file version of file fname.
 
 .. function:: u2d(x)
 
@@ -334,12 +334,12 @@ Validate strings in :units field to ensure UCUM compliance.
 .. function:: vucum(str::String)
 
 Check whether ``str`` contains valid UCUM units.
-.. _seisio_file_format:
+.. _SeisBase_file_format:
 
 ####################
-SeisIO Native Format
+SeisBase Native Format
 ####################
-Invoking the command *wseis* writes SeisIO structures to a native data format
+Invoking the command *wseis* writes SeisBase structures to a native data format
 in little-endian byte order. This page documents the low-level file format.
 Abbreviations used:
 
@@ -365,23 +365,23 @@ Abbreviations used:
 | "{ (condition)" denotes the start of a loop; (condition) is the control flow.
 | "}" denotes the end of a loop.
 
-Note that String in Julia has no exact C equivalence. SeisIO writes each String
+Note that String in Julia has no exact C equivalence. SeisBase writes each String
 in two parts: an Int64 (String length in bytes) followed by the String contents
 (as bytes, equivalent to UInt8). Unlike C/Fortran, there are no issues with
 strings that contain the null character (0x00 or ``'\x0'``).
 
 ***********
-SeisIO File
+SeisBase File
 ***********
 
 .. csv-table::
   :header: Var, Meaning, T, N
   :widths: 4, 32, 8, 8
 
-  ,\"SEISIO\",UInt8,6
-  ``V``,SeisIO file format version,Float32,1
-  ``J``,\# of SeisIO objects in file,UInt32,1
-  ``C``,:ref:`SeisIO object codes<object_codes>` for each object,UInt32,J
+  ,\"SeisBase\",UInt8,6
+  ``V``,SeisBase file format version,Float32,1
+  ``J``,\# of SeisBase objects in file,UInt32,1
+  ``C``,:ref:`SeisBase object codes<object_codes>` for each object,UInt32,J
   ``B``,Byte indices for each object,UInt64,J
   { , , , for i = 1:J
   ,(Objects),variable,J
@@ -873,7 +873,7 @@ SeisEvent
 Data Type Codes
 ***************
 Each Type code is written to disk as a UInt8, with the important exception of
-SeisIO custom object Type codes (which use UInt32).
+SeisBase custom object Type codes (which use UInt32).
 
 .. _loc_codes:
 
@@ -946,7 +946,7 @@ throw errors.
 
 .. _object_codes:
 
-SeisIO Object Type codes
+SeisBase Object Type codes
 ************************
 
 .. csv-table::

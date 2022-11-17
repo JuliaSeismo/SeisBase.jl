@@ -2,7 +2,7 @@ export TimeSpec
 
 # Most constants are defined here, except:
 #
-# BUF           src/Types/SeisIOBuf.jl
+# BUF           src/Types/SeisBaseBuf.jl
 # KW            src/Types/KWDefs.jl
 # PhaseCat      src/Types/Quake/PhaseCat.jl
 # flat_resp     src/Types/InstResp.jl
@@ -111,9 +111,9 @@ const sac_nul_Int8 = UInt8[0x31, 0x32, 0x33, 0x34, 0x35]
 const segy_ftypes  = Array{DataType, 1}([UInt32, Int32, Int16, Any, Float32, Any, Any, Int8]) # Note: type 1 is IBM Float32
 const segy_units = Dict{Int16, String}(0 => "unknown", 1 => "Pa", 2 => "V", 3 => "mV", 4 => "A", 5 => "m", 6 => "m/s", 7 => "m/s2", 8 => "N", 9 => "W")
 const seis_inst_codes = ('H', 'J', 'L', 'M', 'N', 'P', 'Z')
-const seisio_file_begin = UInt8[0x53, 0x45, 0x49, 0x53, 0x49, 0x4f]
+const SeisBase_file_begin = UInt8[0x53, 0x45, 0x49, 0x53, 0x49, 0x4f]
 const sμ = 1000000.0
-const vSeisIO = Float32(0.54)
+const vSeisBase = Float32(0.54)
 const unindexed_fields = (:c, :n)
 const webhdr = Dict("User-Agent" => "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36") # lol
 const xml_endtime = 19880899199000000

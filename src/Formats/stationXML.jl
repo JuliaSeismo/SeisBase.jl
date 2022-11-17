@@ -573,7 +573,7 @@ end
 function mk_xml!(io::IO, S::GphysData, chans::Array{Int64,1})
   blank_t0 = round(Int64, d2u(now())*μs)
 
-  write(io, "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n\n<FDSNStationXML xmlns=\"http://www.fdsn.org/xml/station/1\" schemaVersion=\"1.0\" xsi:schemaLocation=\"http://www.fdsn.org/xml/station/1 http://www.fdsn.org/xml/station/fdsn-station-1.0.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n  <Source>SeisIO</Source>\n\n  <Created>")
+  write(io, "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n\n<FDSNStationXML xmlns=\"http://www.fdsn.org/xml/station/1\" schemaVersion=\"1.0\" xsi:schemaLocation=\"http://www.fdsn.org/xml/station/1 http://www.fdsn.org/xml/station/fdsn-station-1.0.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n  <Source>SeisBase</Source>\n\n  <Created>")
   print(io, now())
   write(io, "</Created>\n")
 

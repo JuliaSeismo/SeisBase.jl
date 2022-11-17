@@ -11,7 +11,7 @@ Convert all seismic data channels in `S` to velocity seismograms, differentiatin
 ### Keywords
 * `units_out=UU` specifies output units.
   + Default: "m/s".
-  + Allowed: "m", "m/s", or "m/s2". (SeisIO uses Unicode (UTF-8) UCUM units.)
+  + Allowed: "m", "m/s", or "m/s2". (SeisBase uses Unicode (UTF-8) UCUM units.)
 * `v=V` sets verbosity.
 * `chans=CC` restricts seismogram conversion to seismic data channels within `CC`.
   + `chans` can be an Integer, UnitRange, or Array{Int64,1}.

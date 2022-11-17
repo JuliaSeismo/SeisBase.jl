@@ -243,7 +243,7 @@ WIN_fmt = FormatDesc(
   "  stored as variable-precision delta-encoded integers",
   "channel information must be retrieved from an external file",
   "channel files are not strictly controlled by a central authority and",
-  "  inconsistencies in channel parameters have been found by SeisIO developers."
+  "  inconsistencies in channel parameters have been found by SeisBase developers."
   ],
   [ "used throughout Japan",
     "Earthquake Research Institute, University of Tokyo, Japan",

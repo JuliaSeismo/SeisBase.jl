@@ -30,7 +30,7 @@ end
 
 function polyfit(x::Array{T1,1}, y::Array{T2,1}, n::Integer=1) where {T1 <: Real, T2 <: Real}
   nx = length(x)
-  nx == length(y) || error("SeisIO.polyfit requires length(t) == length(x)")
+  nx == length(y) || error("SeisBase.polyfit requires length(t) == length(x)")
   -1 < n < nx || throw(DomainError)
   A = Array{T2, 2}(undef, length(x), n+1)
   A[:,n+1] .= one(T2)

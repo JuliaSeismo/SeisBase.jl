@@ -1,4 +1,4 @@
-using SeisIO, SeisIO.RandSeis, Test
+using SeisBase, SeisBase.RandSeis, Test
 
 """
     check_tutorial_data(S::GphysData; prune::Bool=true)

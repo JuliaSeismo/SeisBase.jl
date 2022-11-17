@@ -1,5 +1,5 @@
 const mseed_support_data = "# Mini-SEED Support
-SeisIO supports mini-SEED, the \"data-only\" extension of the SEED (Standard for
+SeisBase supports mini-SEED, the \"data-only\" extension of the SEED (Standard for
 the Exchange of Earthquake Data) file format.
 
 ## Supported Blockette Types
@@ -40,7 +40,7 @@ vectors of all data in each packet.
 | 32      | DWWSSN gain ranged                                          |
 
 ### Unsupported Data Encodings
-These have never been encountered by SeisIO. If support is needed, please send example files.
+These have never been encountered by SeisBase. If support is needed, please send example files.
 
 | Format  | Data Encoding                                               |
 |---------|:------------------------------------------------------------|
@@ -55,7 +55,7 @@ These have never been encountered by SeisIO. If support is needed, please send e
 "
 
 const dataless_support_data = "# Dataless SEED Support
-SeisIO supports reading of dataless SEED meta-data files, a popular extension of the SEED (Standard for the Exchange of Earthquake Data) file format.
+SeisBase supports reading of dataless SEED meta-data files, a popular extension of the SEED (Standard for the Exchange of Earthquake Data) file format.
 
 ## Supported Blockette Types
 
@@ -85,7 +85,7 @@ SeisIO supports reading of dataless SEED meta-data files, a popular extension of
 
 ## Unsupportable Blockette Types
 These blockettes will probably never be supported as
-their information lies outside the scope of SeisIO. At
+their information lies outside the scope of SeisBase. At
 high verbosity (v > 2), their information is dumped to
 stdout.
 
@@ -97,7 +97,7 @@ stdout.
 
 "
 
-const broken_resp_data = "The following is a list of breaking SEED RESP issues that we've encountered in real data. Files with these issues don't read correctly into any known program (e.g., ObsPy, SeisIO, SEED C libraries).
+const broken_resp_data = "The following is a list of breaking SEED RESP issues that we've encountered in real data. Files with these issues don't read correctly into any known program (e.g., ObsPy, SeisBase, SEED C libraries).
 
 | Network | Station(s)    | Problem(s)
 | :----   | :----         | :----

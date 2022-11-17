@@ -2,7 +2,7 @@
 # It has a more complicated structure than the test.mseed file in more recent
 # versions of libmseed, which reads with no issues
 printstyled("SEED submodule\n", color=:light_green)
-using SeisIO.SEED
+using SeisBase.SEED
 
 printstyled("  info dump\n", color=:light_green)
 redirect_stdout(out) do

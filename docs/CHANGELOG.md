@@ -2,12 +2,12 @@
 * `writesac` now allows the user to specify SAC file header version (SAC variable NVHDR) using keyword `nvhdr=`. The default is 6. Versions 6 and 7 are supported.
   + Reason for change: SAC won't read a file if NVHDR is greater than expected.
     - Example: SAC v101.x (NVHDR = 6) *will not* read a SAC file created in/for SAC v102.x (NVHDR = 7), even though the two file header versions are effectively interchangeable.
-* `filtfilt!`: breaking combinations of data and filter parameters should now be identical in `DSP.filtfilt` and `SeisIO.filtfilt!`, even on Float32 data.
+* `filtfilt!`: breaking combinations of data and filter parameters should now be identical in `DSP.filtfilt` and `SeisBase.filtfilt!`, even on Float32 data.
   + Implicit feature request from issue #82.
   + This should never force data conversion to Float64. (We already test this.)
   + It's always possible to choose a filter that outputs NaNs, but the two filtering functions should now behave identically in this regard.
 
-# SeisIO v1.2.0 Release: 2021-02-02
+# SeisBase v1.2.0 Release: 2021-02-02
 
 # 2021-01-31
 * Calling `writesac` on a SeisEvent object now always writes event header values to the correct byte indices for SAC v101 and above.
@@ -47,7 +47,7 @@
 * Fixed a performance issue when reading a large file whose data contain many negative time gaps. (#72)
 
 # 2020-10-29
-* Added utility `scan_seed` to submodule `SeisIO.SEED` for SEED volumes. (#62)
+* Added utility `scan_seed` to submodule `SeisBase.SEED` for SEED volumes. (#62)
   + `scan_seed` can report changes within a SEED file, including:
     - Samples per channel (KW `npts`)
     - Gaps (KW `ngaps`), or exact gap times (`seg_times=true`)
@@ -64,7 +64,7 @@
 * NodalLoc (:loc field of NodalData) now has x, y, z subfields. (Merged PR #64 from tclements/NodalLoc)
 * NodalData now uses AbstractArray{Float32, 2} for the :data field, rather than Array{Float32, 2}. (Merged PR #66 from tclements/Nodal)
 
-# SeisIO v1.1.0 Release: 2020-08-26
+# SeisBase v1.1.0 Release: 2020-08-26
 # 2020-08-26
 * HDF5 compatibility has changed to "0.12, 0.13" as HDF5.jl v0.13.5 fixes the read slowdown issue. Versions of HDF5 in range 0.12.3 < VERSION < 0.13.5 might still have slow HDF5 read times. Resolves issue #49.
 
@@ -79,7 +79,7 @@ and `ch_e` have been removed.
 # 2020-08-18
 * `read_nodal` now requires a format string as the first argument
   + This change makes syntax identical to `read_data(fmt, file, ...)`
-* Implemented `read_nodal` SEG Y format in SeisIO.Nodal; requested in Issue #55
+* Implemented `read_nodal` SEG Y format in SeisBase.Nodal; requested in Issue #55
   + Note that `read_nodal("segy", ... )` produces different `:id` values
 * Fixed a bug where `read_data("segy", ..., full=true)` could copy some SEGY file header values to `:misc` keys in the wrong byte order.
 
@@ -105,12 +105,12 @@ SEG Y trace header:
 
 # 2020-08-11
 * Automated testing for Julia v.1.4 has ended. Tested versions of the language include v1.0 (LTS) and v1.5 (stable).
-* Changed internal function `SeisIO.dtr!` to accept `::AbstractArray{T,1}` in first positional argument; fixes Issue #54
+* Changed internal function `SeisBase.dtr!` to accept `::AbstractArray{T,1}` in first positional argument; fixes Issue #54
 * Added tests for processing functions on a NodalData object; tests Issue #54
 * Added explicit warning that `translate_resp!` can be acausal; from discussion of Issue #47
 
 # 2020-07-15
-Added SeisIO.Nodal for reading data files from nodal arrays
+Added SeisBase.Nodal for reading data files from nodal arrays
 * New types:
   + NodalData <: GphysData
   + NodalChannel <: GphysChannel
@@ -152,7 +152,7 @@ are unchanged.
 
 #### IRISWS changes
 A server-side issue with IRISWS timeseries, affecting `get_data("IRIS", ... )`, has caused minor behavior changes:
-* While `:gain` still appear to be 1.0 in SeisIO, the channel gain is now set (and hence, unscaled, but logged to `:notes`) in SAC and GeoCSV requests. Other data formats still don't do this.
+* While `:gain` still appear to be 1.0 in SeisBase, the channel gain is now set (and hence, unscaled, but logged to `:notes`) in SAC and GeoCSV requests. Other data formats still don't do this.
 * SAC and GeoCSV currently set lat, lon, and el in requests, but mini-SEED doesn't. Until requests return format-agnostic locations, `get_data("IRIS", ... )` will return an empty GeoLoc() object for the `:loc` field.
 
 ##### Potential Inconsistencies
@@ -178,17 +178,17 @@ However, as a result of the above changes:
   * Much less memory use
   * Much faster; ~6x speedup on tests with 3 channels of length ~10^7 samples
   * More robust handling of unusual time matrices (e.g., segments out of order)
-* The [tutorial page](https://seisio.readthedocs.io/en/latest/src/Help/tutorial.html) has been updated. Fixes issue #39.
+* The [tutorial page](https://SeisBase.readthedocs.io/en/latest/src/Help/tutorial.html) has been updated. Fixes issue #39.
 
 ### 2020-03-10
 * Automated testing for Julia v.1.1-1.2 has ended. Tested versions of the language include v1.0 (LTS), v1.3 (stable), and v1.4 (upcoming release).
-* The docstring `?chanspec` was renamed `?web_chanspec` to avoid confusion with SeisIO internals.
+* The docstring `?chanspec` was renamed `?web_chanspec` to avoid confusion with SeisBase internals.
 * The docstring `?timespec` was renamed to `?TimeSpec`.
 * Quake Type *SeisEvent* now has a real docstring.
 * Quake Type *EventChannel* has a docstring again.
 
 ### 2020-03-09
-* Rewrote SeisIO.RandSeis for faster structure generation
+* Rewrote SeisBase.RandSeis for faster structure generation
   + randSeisChannel has two new keywords: fs_min and fc
   + randSeisData has two new keywords: fs_min and a0
 * More documentation and docstring updates
@@ -234,6 +234,6 @@ Data files no longer track the LOC field of `:id` on read or write.
 * *Manifest.toml* is no longer tracked on GitHub, hopefully preventing dependency conflicts.
 * using *get_data(..., w=true)* now logs the raw download write to *:notes*
 * The FDSN tests now delete bad request channels before checking if data are written identically in SEED and SAC.
-* The *writesac* extension in SeisIO.Quake no longer allows keyword *ts=*; it was not actually used in the function body.
+* The *writesac* extension in SeisBase.Quake no longer allows keyword *ts=*; it was not actually used in the function body.
 
-# SeisIO v1.0.0 Release: 2020-03-02
+# SeisBase v1.0.0 Release: 2020-03-02

@@ -14,7 +14,7 @@ function read_legacy(io::IO, ver::Float32)
   nx    = getindex(L, N+1:2*N)
   cmp && checkbuf_8!(Z, maximum(nx))
 
-  ver < 0.5f0 && error("No legacy support for SeisIO file format version < 0.5")
+  ver < 0.5f0 && error("No legacy support for SeisBase file format version < 0.5")
 
   # Get file creation time
   fname = split(io.name)[2][1:end-1]

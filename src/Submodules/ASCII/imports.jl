@@ -1,5 +1,5 @@
 import Base.Libc: TmStruct
-import SeisIO: buf_to_uint,
+import SeisBase: buf_to_uint,
   check_for_gap!,
   dtconst,
   endtime,

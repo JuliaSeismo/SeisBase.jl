@@ -2,7 +2,7 @@ import Base: ==, -, *, +, append!, convert, copy, delete!, deleteat!,
   firstindex, getindex, hash, in, isempty, isequal, lastindex, length, merge, merge!,
   push!, read, setindex!, show, size, sizeof, sort!, sort, summary, write
 import DSP: filtfilt
-import ..SeisIO: BUF,
+import ..SeisBase: BUF,
   ChanOpts,
   FDSNget!,
   FiltDefs,

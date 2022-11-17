@@ -1,5 +1,5 @@
 module ASCII
-using Dates, Mmap, Printf, SeisIO, SeisIO.FastIO, SeisIO.Formats
+using Dates, Mmap, Printf, SeisBase, SeisBase.FastIO, SeisBase.Formats
 
 # imports
 include("ASCII/imports.jl")

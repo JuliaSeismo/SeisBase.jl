@@ -30,7 +30,7 @@ function merge!(S::Y; v::Integer=KW.v, purge_only::Bool=false) where Y<:GphysDat
 
   UID = unique(getfield(S, :id))
   cnt = 0
-  note_head = string(SeisIO.timestamp(), " ¦ ")
+  note_head = string(SeisBase.timestamp(), " ¦ ")
   to_delete = Array{Int64,1}(undef, 0)
   while cnt < length(UID)
     cnt = cnt + 1
@@ -115,7 +115,7 @@ function merge!(C::T1, D::T2) where {T1<:GphysChannel, T2<:GphysChannel}
 
   # empty C
   if (isempty(C.x) || isempty(C.t))
-    ff = (T1 == T2) ? fieldnames(T1) : SeisIO.datafields
+    ff = (T1 == T2) ? fieldnames(T1) : SeisBase.datafields
     for f in ff
       setfield!(C, f, deepcopy(getfield(D, f)))
     end
@@ -131,7 +131,7 @@ function merge!(C::T1, D::T2) where {T1<:GphysChannel, T2<:GphysChannel}
     D = convert(T1, D)
   end
 
-  note_head = string(SeisIO.timestamp(), " ¦ ")
+  note_head = string(SeisBase.timestamp(), " ¦ ")
   ttest = (endtime(C.t, C.fs) > endtime(D.t, D.fs))
   ω = ttest ? C : D
   α = ttest ? D : C

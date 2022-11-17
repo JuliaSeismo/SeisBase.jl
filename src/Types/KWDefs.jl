@@ -59,10 +59,10 @@ mutable struct KWDefs
 end
 
 """
-    SeisIO.KW
+    SeisBase.KW
 
-A mutable structure containing default keyword argument values in SeisIO.
-Arguments that accept keywords in SeisIO.KW use the default values when a
+A mutable structure containing default keyword argument values in SeisBase.
+Arguments that accept keywords in SeisBase.KW use the default values when a
 keyword isn't specified.
 
 ### Keywords
@@ -99,7 +99,7 @@ keyword isn't specified.
 [^1]: If `comp == 0x00`, never compress data; if `comp == 0x01`, only compress channel `i` if `length(S.x[i]) > KW.n_zip`; if `comp == 0x02`, always compress data.
 [^2]: Format like an http request string, e.g. "szsrecs=true&repo=realtime" for FDSN. String shouldn't begin with an ampersand.
 
-### SeisIO.KW.SL
+### SeisBase.KW.SL
 Seedlink-specific keyword default values. SeedLink also uses some general keywords.
 
 | Name    | Default | Type    | Description                                 |
@@ -114,7 +114,7 @@ Seedlink-specific keyword default values. SeedLink also uses some general keywor
 
 [^1]: A channel is considered non-transmitting (hence, excluded from the SeedLink session) if the time since last packet exceeds `gap` seconds.
 
-### SeisIO.KW.Filt
+### SeisBase.KW.Filt
 Default keyword values for time-series filtering.
 
 | Name  | Default       | Type    | Description                         |
@@ -127,7 +127,7 @@ Default keyword values for time-series filtering.
 | rt    | "Bandpass"    | String  | response type (type of filter)      |
 | dm    | "Butterworth" | String  | design mode (name of filter)        |
 
-[^1]: Remember the (counter-intuitive) convention that the lower corner frequency (fl) is used in a Highpass filter, and fh is used in a Lowpass filter. This convention is preserved in SeisIO.
+[^1]: Remember the (counter-intuitive) convention that the lower corner frequency (fl) is used in a Highpass filter, and fh is used in a Lowpass filter. This convention is preserved in SeisBase.
 
 """
 const KW = KWDefs(

@@ -1,4 +1,4 @@
-import SeisIO.UW: readuwevt, uwdf, uwdf!, uwpf, uwpf!
+import SeisBase.UW: readuwevt, uwdf, uwdf!, uwpf, uwpf!
 
 printstyled("  UW\n", color=:light_green)
 uwf0 = joinpath(path, "SampleFiles/UW/00*W")
@@ -47,7 +47,7 @@ n = S.n
 append!(S, convert(SeisData, W.data))
 @test S.n == n + W.data.n
 
-δt = μs*(rem(W.hdr.ot.instant.periods.value*1000 - SeisIO.dtconst, 60000000))
+δt = μs*(rem(W.hdr.ot.instant.periods.value*1000 - SeisBase.dtconst, 60000000))
 
 i = findfirst(W.data.id.=="UW.TDH..EHZ")
 pha = W.data[i].pha["P"].tt

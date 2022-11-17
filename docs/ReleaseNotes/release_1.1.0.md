@@ -1,13 +1,13 @@
-SeisIO v1.1.0
+SeisBase v1.1.0
 2020-08-27
 
-SeisIO v1.1.0 adds submodule `SeisIO.Nodal` for nodal data, plus initial support for IRISPH5 requests. Other changes include fixes to several rare and/or minor bugs, code consistency improvements, a much-needed *sync!* rewrite, and documentation updates.
+SeisBase v1.1.0 adds submodule `SeisBase.Nodal` for nodal data, plus initial support for IRISPH5 requests. Other changes include fixes to several rare and/or minor bugs, code consistency improvements, a much-needed *sync!* rewrite, and documentation updates.
 
 # 1. **Public API Changes**
 ## **SAC**
 * SAC data files no longer track the LOC field of `:id`; thus, IDs `NN.SSSSS.LL.CCC` and `NN.SSSSS..CCC` will be written and read identically to/from SAC.
-  + This change realigns SeisIO SAC handling with the [official format spec](http://ds.iris.edu/files/sac-manual/manual/file_format.html).
-  + *Explanation*: Some data sources store the LOC field of `:id` in KHOLE (byte offset 464). We followed this convention through SeisIO v1.0.0. However, KHOLE is usually an event property.
+  + This change realigns SeisBase SAC handling with the [official format spec](http://ds.iris.edu/files/sac-manual/manual/file_format.html).
+  + *Explanation*: Some data sources store the LOC field of `:id` in KHOLE (byte offset 464). We followed this convention through SeisBase v1.0.0. However, KHOLE is usually an event property.
 
 ## **SeedLink**
 Functions *seedlink* and *seedlink!* now accept keyword *seq=* for starting sequence number, consistent with [SeisComp3 protocols](https://www.seiscomp3.org/doc/seattle/2012.279/apps/seedlink.html).
@@ -21,7 +21,7 @@ A minor change to SEGY file support could break user work flows that depend on `
 `read_data("segy", ...)` has a new keyword: `ll=` sets the two-character location field in `:id` (NNN.SSS.**LL**.CC), using values in the SEG Y trace header. Specify using UInt8 codes; see official documentation for codes and meanings.
 
 ## **IRISWS timeseries**
-SeisIO has made some minor changes to `get_data("IRIS", ... )` behavior, due to server-side changes to IRISWS timeseries:
+SeisBase has made some minor changes to `get_data("IRIS", ... )` behavior, due to server-side changes to IRISWS timeseries:
 * The Stage 0 (scalar) gain of each channel is logged to `:notes` for fmt="sacbl" ("sac") and fmt="geocsv".
 * The output of `get_data("IRIS", ... , w=true)` differs slightly from calling `read_data` on the files created by the same command:
   + This affects the fields `:misc` and `:notes`.
@@ -29,7 +29,7 @@ SeisIO has made some minor changes to `get_data("IRIS", ... )` behavior, due to 
   + Data in objects read from SAC or GeoCSV files will be scaled by the Stage 0 gain; fix this with `unscale!`.
 
 ## **New: .Nodal submodule**
-Added SeisIO.Nodal for reading data files from nodal arrays
+Added SeisBase.Nodal for reading data files from nodal arrays
 * New types:
   + NodalData <: GphysData
   + NodalChannel <: GphysChannel
@@ -56,7 +56,7 @@ Added SeisIO.Nodal for reading data files from nodal arrays
 * ASDF groups and datasets are now always closed after reading with *read_hdf5*.
 * In Julia v1.5+, calling `sizeof(R)` on an empty `MultiStageResp` object should no longer error.
 
-## **SeisIO Test Scripts**
+## **SeisBase Test Scripts**
 Fixed some rare bugs that could break automated tests.
 * *test/TestHelpers/check_get_data.jl*: now uses a *try-catch* loop for *FDSNWS station* requests
 * *tests/Processing/test_merge.jl*: testing *xtmerge!* no longer allows total timespan *δt >  typemax(Int64)*
@@ -80,30 +80,30 @@ Fixed some rare bugs that could break automated tests.
   * Much less memory use
   * Much faster; ~6x speedup on tests with 3 channels of length ~10^7 samples
   * More robust handling of unusual time matrices (e.g., segments out of order)
-* *SeisIO.RandSeis* functions have been optimized.
+* *SeisBase.RandSeis* functions have been optimized.
     + *randSeisChannel* has two new keywords: *fs_min*, *fc*
     + *randSeisData* has two new keywords: *fs_min*, *a0*
 
 # 4. **Developer API Changes**
-* Internal function `SeisIO.dtr!` now accepts `::AbstractArray{T,1}` in first positional argument.
+* Internal function `SeisBase.dtr!` now accepts `::AbstractArray{T,1}` in first positional argument.
 * Most internal functions have switched from keywords to positional arguments. This includes:
-  * SeisIO: `FDSN_sta_xml` , `FDSNget!` , `IRISget!` , `fdsn_chp` , `irisws` , `parse_charr` , `parse_chstr` , `read_station_xml!` , `read_sxml` , `sxml_mergehdr!` , `trid`
-  * SeisIO.RandSeis: `populate_arr!`, `populate_chan!`
-  * SeisIO.SeisHDF: `write_asdf` (note: doesn't affect `write_hdf5`)
+  * SeisBase: `FDSN_sta_xml` , `FDSNget!` , `IRISget!` , `fdsn_chp` , `irisws` , `parse_charr` , `parse_chstr` , `read_station_xml!` , `read_sxml` , `sxml_mergehdr!` , `trid`
+  * SeisBase.RandSeis: `populate_arr!`, `populate_chan!`
+  * SeisBase.SeisHDF: `write_asdf` (note: doesn't affect `write_hdf5`)
 * *t_extend* is now more robust and no longer needs a mini-API
   + previously, some rare cases of time matrix extension could break. They were likely never present in real data -- e.g., a time matrix with a gap before the last sample would break when extended by another sample -- but these "end-member" cases were theoretically possible.
   + the rewrite covers and tests all possible cases of time matrix extension.
 * *check_for_gap!* is now a thin wrapper to *t_extend*, ensuring uniform behavior.
-* Internal functions in *SeisIO.RandSeis* have changed significantly.
+* Internal functions in *SeisBase.RandSeis* have changed significantly.
 
 # 5. **Documentation**
-* [Official documentation](https://seisio.readthedocs.io/) updated
+* [Official documentation](https://SeisBase.readthedocs.io/) updated
 * Many docstrings have been updated and standardized. Notable examples:
   + *?timespec* is now *?TimeSpec*
   + *?chanspec* is now *?web_chanspec*
   + *?taper* once again exists
   + *?seedlink* keywords table is once again current
-  + *SeisIO.Quake*:
+  + *SeisBase.Quake*:
     - *?EventChannel* now produces a docstring, rather than an error
     - *?get_pha!* once again describes the correct function
 * Updated and expanded the Jupyter tutorial
@@ -117,13 +117,13 @@ Fixed some rare bugs that could break automated tests.
 * #44 : documentation updated.
 * #45 : documentation updated.
 * #48 : mini-SEED Blockette 100 handling should now match the IRIS mini-SEED C library.
-* #49 : the read speed slowdown in HDF5.jl was fixed; SeisIO no longer requires HDF5 v0.12.3.
+* #49 : the read speed slowdown in HDF5.jl was fixed; SeisBase no longer requires HDF5 v0.12.3.
 * #50 : `resample!` now consistently allows upsampling.
 * #51 : `resample!` now correctly updates `:t` of a gapless SeisChannel.
 * #52 :  merged PR #53, adding initial support for IRISPH5 requests
-* #54 : `SeisIO.dtr!` now accepts `::AbstractArray{T,1}` in first positional argument
+* #54 : `SeisBase.dtr!` now accepts `::AbstractArray{T,1}` in first positional argument
 * #55 : added `read_nodal("segy")`
-* #56 : implemented as part of initial SeisIO.Nodal release
+* #56 : implemented as part of initial SeisBase.Nodal release
 * #57 : fixed by addition of KW `ll=` to `read_data`
 
 **Note**: v1.1.0 was originally released 2020-07-07. Re-releasing, rather than incrementing to v1.2.0, fixes an issue that prevented Julia from automatically registering v1.1.0.

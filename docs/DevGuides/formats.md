@@ -17,9 +17,9 @@ Any data reader must...
   + Expected code coverage: >95% on both Coveralls and CodeCov
 
 ## **Suggestions**
-* Import *SeisIO.Formats.formats* and add an appropriate description
-* Once your reader works, change low-level file I/O to use *SeisIO.FastRead*
-* Use *SeisIO.BUF* for data I/O; see API below
+* Import *SeisBase.Formats.formats* and add an appropriate description
+* Once your reader works, change low-level file I/O to use *SeisBase.FastRead*
+* Use *SeisBase.BUF* for data I/O; see API below
 
 ### Adding more formats
 Seismology alone has ~10^2 extant file formats; I cannot guess how many more are used by geodesy, volcanology, etc. Before adding support for another one, ask yourself if it's in widespread use. If not, ask yourself if this is a judicious use of your research time.
@@ -30,12 +30,12 @@ Seismology alone has ~10^2 extant file formats; I cannot guess how many more are
 |:--- |:----                      | :---                                    |
 | A   | string array              | Array{String, 1}                        |
 | B   | byte vector for reading   | Array{UInt8, 1}                         |
-| C   | single-channel structure  | typeof(C) <: SeisIO.GphysChannel        |
+| C   | single-channel structure  | typeof(C) <: SeisBase.GphysChannel        |
 | D   | data read array           | AbstractArray                           |
-| L   | channel :loc field        | typeof(L) <: SeisIO.InstrumentPosition  |
+| L   | channel :loc field        | typeof(L) <: SeisBase.InstrumentPosition  |
 | Q   | integer array             | Array{Y,1} where Y<:Integer             |
-| R   | channel :resp field       | typeof(R) <: SeisIO.InstrumentResponse  |
-| S   | multichannel structure    | typeof(S) <: SeisIO.GphysData           |
+| R   | channel :resp field       | typeof(R) <: SeisBase.InstrumentResponse  |
+| S   | multichannel structure    | typeof(S) <: SeisBase.GphysData           |
 | V   | output byte array         | Array{UInt8, 1}                         |
 | Y   | a primitive Type          | Type                                    |
 | c   | ASCII character           | Char                                    |
@@ -57,7 +57,7 @@ Seismology alone has ~10^2 extant file formats; I cannot guess how many more are
 
 `BUF`
 
-SeisIO static structure containing arrays for buffered file reads. See **SeisIO.BUF API** below.
+SeisBase static structure containing arrays for buffered file reads. See **SeisBase.BUF API** below.
 
 `ChanSpec`
 

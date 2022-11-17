@@ -10,7 +10,7 @@ is supported at present. Support for other (sub)formats is planned.
 | Read data in seismic HDF5 file format from file **fname** into S.
 |
 | **KWs**
-| Keyword arguments; see also :ref:`SeisIO standard KWs<dkw>` or type ``?SeisIO.KW``.
+| Keyword arguments; see also :ref:`SeisBase standard KWs<dkw>` or type ``?SeisBase.KW``.
 
 This has one fundamental design difference from :ref:`read_data<readdata>`:
 HDF5 archives are assumed to be large files with data from multiple channels;

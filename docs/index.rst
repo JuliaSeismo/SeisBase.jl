@@ -1,4 +1,4 @@
-.. SeisIO documentation main file, created by
+.. SeisBase documentation main file, created by
    sphinx-quickstart on Sun May 22 18:44:14 2016.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -8,9 +8,9 @@
     :format: html
 
 ######
-SeisIO
+SeisBase
 ######
-SeisIO is a collection of utilities for reading and downloading geophysical timeseries data.
+SeisBase is a collection of utilities for reading and downloading geophysical timeseries data.
 
 .. toctree::
    :caption: Intro

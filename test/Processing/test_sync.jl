@@ -9,7 +9,7 @@ end
 sync_times(t::AbstractArray{Int64, 2}, fs::Float64, t_min::Int64) = get_sync_inds(t, fs, t_min, endtime(t, fs))
 
 # Based on code in sync!
-function prune_x!(x::SeisIO.FloatArray, x_del::Array{UnitRange, 1})
+function prune_x!(x::SeisBase.FloatArray, x_del::Array{UnitRange, 1})
   nr = size(x_del, 1)
   for i in nr:-1:1
     if !isempty(x_del[i])

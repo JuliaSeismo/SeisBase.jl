@@ -19,7 +19,7 @@ S2 = S[j1:j2]
 n = S.n
 append!(S, S2)
 @test S.n == n + S2.n
-for f in SeisIO.Nodal.nodalfields
+for f in SeisBase.Nodal.nodalfields
   F1 = getfield(S, f)
   F2 = getfield(S2, f)
   for (i,j) in enumerate(n+1:n+S2.n)
@@ -51,7 +51,7 @@ for i in 1:S.n
   S.t[i] = copy(t)
 end
 D = convert(NodalData, S)
-for f in SeisIO.Nodal.nodalfields
+for f in SeisBase.Nodal.nodalfields
   @test length(getfield(D, f)) == nc
 end
 @test size(D.data) == (nx, nc)
@@ -67,7 +67,7 @@ printstyled("        NodalData ⟺ EventTraceData\n", color=:light_green)
 Ev = convert(EventTraceData, S)
 D = convert(NodalData, Ev)
 @test typeof(Ev) == EventTraceData
-for f in SeisIO.Nodal.nodalfields
+for f in SeisBase.Nodal.nodalfields
   @test length(getfield(D, f)) == S.n
 end
 @test size(D.data) == size(U.data)
@@ -90,13 +90,13 @@ S = deepcopy(U)
 
 C = S[j]
 @test S.data[:,j] == C.x
-for f in SeisIO.Nodal.nodalfields
+for f in SeisBase.Nodal.nodalfields
   F = getfield(S, f)
   @test getindex(F, j) == getfield(C, f)
 end
 
 S2 = S[j1:j2]
-for f in SeisIO.Nodal.nodalfields
+for f in SeisBase.Nodal.nodalfields
   F1 = getfield(S, f)
   F2 = getfield(S2, f)
   for (i,j) in enumerate(j1:j2)
@@ -135,7 +135,7 @@ n = S.n
 C = S[S.n]
 push!(S, C)
 @test S.n == n + 1
-for f in SeisIO.Nodal.nodalfields
+for f in SeisBase.Nodal.nodalfields
   F1 = getindex(getfield(S, f), n)
   F2 = getfield(C, f)
   @test F1 == F2

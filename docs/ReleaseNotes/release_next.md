@@ -1,4 +1,4 @@
-SeisIO vx.x.x
+SeisBase vx.x.x
 xxxx-xx-xx
 
 [one-line summary]

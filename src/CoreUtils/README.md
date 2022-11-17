@@ -1,5 +1,5 @@
 # CoreUtils
-Core utility functions that do NOT depend on custom Types. Anything in SeisIO
+Core utility functions that do NOT depend on custom Types. Anything in SeisBase
 could depend on a function in CoreUtils, including custom Types.
 
 ## Expected Code Coverage

@@ -1,7 +1,7 @@
 #=
 Purpose: time utilities that depend on custom Types go here
 
-Difference from CoreUtils/time.jl functions here require SeisIO Types to work
+Difference from CoreUtils/time.jl functions here require SeisBase Types to work
 =#
 function mk_t!(C::GphysChannel, nx::Integer, ts_new::Int64)
   T = Array{Int64, 2}(undef, 2, 2)

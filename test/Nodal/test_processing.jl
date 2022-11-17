@@ -6,7 +6,7 @@ S1 = read_nodal("silixa", fstr)
 # these should all work
 for f in (:convert_seis!, :demean!, :detrend!, :sync!, :taper!, :ungap!, :unscale!)
   printstyled(string("    ", f, "\n"), color=:light_green)
-  getfield(SeisIO, f)(S1)
+  getfield(SeisBase, f)(S1)
 end
 
 @test_throws ErrorException merge!(S1)

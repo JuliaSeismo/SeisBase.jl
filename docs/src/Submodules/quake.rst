@@ -2,12 +2,12 @@
 Quake
 #####
 
-The Quake submodule was introduced in SeisIO v0.3.0 to isolate handling of discrete earthquake events from handling of continuous geophysical data. While the channel data are similar, fully describing an earthquake event requires many additional Types (objects) and more information (fields) in channel descriptors.
+The Quake submodule was introduced in SeisBase v0.3.0 to isolate handling of discrete earthquake events from handling of continuous geophysical data. While the channel data are similar, fully describing an earthquake event requires many additional Types (objects) and more information (fields) in channel descriptors.
 
 *****
 Types
 *****
-See Type help text for field descriptions and SeisIO behavior.
+See Type help text for field descriptions and SeisBase behavior.
 
 .. function:: EQMag
 
@@ -204,7 +204,7 @@ Reading Earthquake Data Files
 | Case-sensitive string describing the file format. See below.
 |
 | **KWs**
-| Keyword arguments; see also :ref:`SeisIO standard KWs<dkw>` or type ``?SeisIO.KW``.
+| Keyword arguments; see also :ref:`SeisBase standard KWs<dkw>` or type ``?SeisBase.KW``.
 | Standard keywords: full, nx_add, nx_new, v
 | Other keywords: See below.
 

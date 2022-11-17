@@ -2,7 +2,7 @@ rebuffer!(io::IO) = readbytes!(io, BUF.dh_arr, 48)
 rebuffer!(io::IOStream) = ccall(:ios_readall, Csize_t,
   (Ptr{Cvoid}, Ptr{Cvoid}, Csize_t), io.ios, pointer(BUF.dh_arr, 1), 48)
 
-function hdrswap!(BUF::SeisIOBuf)
+function hdrswap!(BUF::SeisBaseBuf)
   u16 = getfield(BUF, :uint16_buf)
   @inbounds for i = 1:5
     u16[i] = bswap(u16[i])
@@ -14,7 +14,7 @@ function hdrswap!(BUF::SeisIOBuf)
   return nothing
 end
 
-function update_dt!(BUF::SeisIOBuf)
+function update_dt!(BUF::SeisBaseBuf)
   r1 = getfield(BUF, :r1)
   r2 = getfield(BUF, :r2)
   dt = 0.0
@@ -34,7 +34,7 @@ function update_dt!(BUF::SeisIOBuf)
   return nothing
 end
 
-function update_hdr!(BUF::SeisIOBuf)
+function update_hdr!(BUF::SeisBaseBuf)
   id_j = 0
   id = getfield(BUF, :id)
   hdr = getfield(BUF, :hdr)
@@ -54,7 +54,7 @@ function update_hdr!(BUF::SeisIOBuf)
 end
 
 ###############################################################################
-function parserec!(S::SeisData, BUF::SeisIOBuf, sid::IO, nx_new::Int64, nx_add::Int64, strict::Bool, v::Integer)
+function parserec!(S::SeisData, BUF::SeisBaseBuf, sid::IO, nx_new::Int64, nx_add::Int64, strict::Bool, v::Integer)
   # =========================================================================
   u16 = getfield(BUF, :uint16_buf)
   flags = getfield(BUF, :flags)

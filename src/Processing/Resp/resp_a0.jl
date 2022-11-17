@@ -13,10 +13,10 @@ See also: `PZResp`, `PZResp64`
 """ resp_a0!
 function resp_a0!(resp::Union{PZResp, PZResp64})
   T = typeof(resp.a0)
-  Z = SeisIO.poly(resp.z)
-  P = SeisIO.poly(resp.p)
+  Z = SeisBase.poly(resp.z)
+  P = SeisBase.poly(resp.p)
   s = Complex{T}(2*pi*im*resp.f0)
-  setfield!(resp, :a0, one(T)/T(abs(SeisIO.polyval(Z, s)/SeisIO.polyval(P, s))))
+  setfield!(resp, :a0, one(T)/T(abs(SeisBase.polyval(Z, s)/SeisBase.polyval(P, s))))
   return nothing
 end
 

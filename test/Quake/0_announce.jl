@@ -1,1 +1,1 @@
-printstyled("SeisIO.Quake submodule\n", color=:light_green)
+printstyled("SeisBase.Quake submodule\n", color=:light_green)

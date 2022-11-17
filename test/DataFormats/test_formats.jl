@@ -1,4 +1,4 @@
-import SeisIO.Formats: formats, FmtVer, FormatDesc, HistVec
+import SeisBase.Formats: formats, FmtVer, FormatDesc, HistVec
 printstyled("  formats()\n", color=:light_green)
 
 Fake_fmt = FormatDesc(

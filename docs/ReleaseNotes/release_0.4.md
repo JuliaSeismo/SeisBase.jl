@@ -1,8 +1,8 @@
-SeisIO v0.4.0: Respocalypse Now
+SeisBase v0.4.0: Respocalypse Now
 2019-09-22
 
 # Instrument Response Improvements
-SeisIO can now use full (multi-stage) instrument responses or simplified
+SeisBase can now use full (multi-stage) instrument responses or simplified
 (pole-zero) instrument responses.
 * Added two new Instrument Response (`:resp`) types: `CoeffResp` and
 `MultiStageResp`. These allow full descriptions of multi-stage instrument
@@ -33,10 +33,10 @@ in GphysData object S to response R.
 ### Removed
 * `equalize_resp!` (replaced by `translate_resp!`)
 * `fctopz` (replaced by `fctoresp`)
-* `SeisIO.resp_f` (deprecated)
+* `SeisBase.resp_f` (deprecated)
 
 # Expanded Read Support
-With the addition of the readers below, SeisIO read support now covers many
+With the addition of the readers below, SeisBase read support now covers many
 data formats with a handful of simple wrapper functions:
 
 ## `read_data, read_data!`
@@ -99,7 +99,7 @@ wildcard file strings and has no "in-place" version.
 # Other Changes
 ## Documentation Improvements
 * Public documentation of low-level file formats has been copied into docs/desc.
-* CLI information on supported file formats can now be found in `SeisIO.formats`,
+* CLI information on supported file formats can now be found in `SeisBase.formats`,
 a dictionary accessed by format name (as given above).
 
 ## Processing on Download
@@ -112,7 +112,7 @@ demean, detrend, rr (remove instrument response), taper, ungap, unscale.
 * `?RESP_wont_read` shows some common SEED RESP issues for problem files.
 * `convert_seis!` converts seismograms in `S` to other units (m, m/s, m/s²) by differentiation or integration.
 * `env!` efficiently computes the signal envelope by segment within each (regularly-sampled) channel.
-* `get_file_ver` gets the version of a SeisIO native format file.
+* `get_file_ver` gets the version of a SeisBase native format file.
 * `get_seis_channels(S)` returns numeric indices of channels in `S` whose instrument codes indicate seismic data.
 * `guess` guesses data file format and endianness.
 * `inst_code(C)` returns the instrument code of GphysChannel object `C`.
@@ -120,8 +120,8 @@ demean, detrend, rr (remove instrument response), taper, ungap, unscale.
 * `inst_codes(S)` returns the instrument code of every channel in `S`.
 * `resp_a0!(S)` updates the sensitivity `:a0` of PZResp/PZResp64 responses in GphysData object `S`, including PZResp/PZResp64 stages of type MultiStageResp responses. It can also be called on individual InstrumentResponse objects.
 * `scan_hdf5` scans supported Seismic HDF5 formats and returns a list of strings describing the waveform contents.
-* `set_file_ver` sets the version of a SeisIO native format file.
-* `using SeisIO.SUDS; suds_support()` lists current SUDS support.
+* `set_file_ver` sets the version of a SeisBase native format file.
+* `using SeisBase.SUDS; suds_support()` lists current SUDS support.
 * `validate_units(S)` validates strings in `:units` to ensure UCUM compliance.
 * `vucum(str)` validates UCUM units for `str`.
 * `writesacpz(S)` writes instrument responses to SACPZ files.

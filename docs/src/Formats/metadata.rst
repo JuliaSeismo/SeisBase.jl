@@ -13,7 +13,7 @@ Metadata Files
 | Read files with names matching pattern ``filepat``. Supports wildcards.
 |
 | **KWs**
-| Keyword arguments; see also :ref:`SeisIO standard KWs<dkw>` or type ``?SeisIO.KW``.
+| Keyword arguments; see also :ref:`SeisBase standard KWs<dkw>` or type ``?SeisBase.KW``.
 
 **********************
 Supported File Formats

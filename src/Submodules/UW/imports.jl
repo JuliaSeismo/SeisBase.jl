@@ -1,4 +1,4 @@
-import SeisIO: BUF,
+import SeisBase: BUF,
   KW,
   add_chan!,
   checkbuf!,
@@ -11,8 +11,8 @@ import SeisIO: BUF,
   mk_t!,
   sμ,
   μs
-import SeisIO.Quake: unsafe_convert
-import SeisIO.Formats: formats,
+import SeisBase.Quake: unsafe_convert
+import SeisBase.Formats: formats,
   FmtVer,
   FormatDesc,
   HistVec

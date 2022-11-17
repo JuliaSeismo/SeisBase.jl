@@ -1,5 +1,5 @@
 # Utils
-Utility functions for SeisIO that depend on custom Types.
+Utility functions for SeisBase that depend on custom Types.
 
 ## Expected Code Coverage
 100% of new/changed lines
