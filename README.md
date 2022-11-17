@@ -6,7 +6,7 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 A minimalist, platform-agnostic package for univariate geophysical data.
-This version is a follow up from SeisBase.jl (https://github.com/jpjones76/SeisBase.jl). It is intended to be an stable community maintained package.
+This version is a follow up from SeisIO.jl (https://github.com/jpjones76/SeisIO.jl). It is intended to be an stable community maintained package.
 
 ## Installation | [Documentation](http://SeisBase.readthedocs.org)
 From the Julia prompt, type: `] add SeisBase`; (Backspace); `using SeisBase`
