@@ -97,7 +97,7 @@ function sync_t(t::Array{Int64, 2}, Δ::Int64, t_min::Int64, t_max::Int64)
 end
 # ==========
 
-@doc """
+"""
 sync!(S::GphysData)
 
 Synchronize the start times of all data in S to begin at or after the last
@@ -123,7 +123,7 @@ are filled with the mean; this isn't possible with irregularly-sampled data.
 * A DateTime is treated as a DateTime. (see Dates.DateTime for details.)
 * Any string other than "last" or "first" is parsed as a DateTime.
 
-#### Specifying end time (`t=``)
+#### Specifying end time (`t=`)
 * t="none": (Default) end times are not synchronized.
 * t="last": synchronize all channels to end at the last end time in `S`.
 * t="first" synchronize to the first end time in `S`.
@@ -134,7 +134,7 @@ See also: `TimeSpec`, `Dates.DateTime`, `parsetimewin`
 !!! warning
 
     `sync!` calls `prune!`; empty channels will be deleted.
-""" sync!
+"""
 function sync!(S::GphysData;
                 s::Union{String,DateTime}="last",
                 t::Union{String,DateTime}="none",

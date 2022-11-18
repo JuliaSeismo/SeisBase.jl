@@ -1,6 +1,6 @@
 export ungap, ungap!
 
-@doc """
+"""
     ungap!(S[, chans=CC, m=true, tap=false])
     ungap(S[, chans=CC, m=true, tap=false])
 
@@ -19,7 +19,7 @@ As above for GphysChannel object C.
 !!! warning
 
     If channel segments aren't in chronological order, call `merge` before using `ungap`.
-""" ungap!
+"""
 function ungap!(C::GphysChannel; m::Bool=true, tap::Bool=false)
   if tap
     taper!(C)

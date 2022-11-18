@@ -1,7 +1,7 @@
 gc_ctr(lat::Array{Float64,1}, lon::Array{Float64,1}) =  (atan.(tan.(deg2rad.(lat)).*0.9933056), deg2rad.(lon))
 gc_unwrap!(t::Array{Float64,1}) = (t[t .< 0] .+= (2.0*Float64(π)); return t)
 
-@doc """
+"""
     G = gcdist(src, rec)
 
   Compute great circle distance, azimuth, and backazimuth from single source `s`
@@ -26,7 +26,7 @@ each two-dimensional slice takes the form
        Δᵢn   θᵢn   βᵢn]
 
 for source `i` at receivers `1:n`.
-""" gcdist
+"""
 function gcdist(src::Array{Float64,1}, rec::Array{Float64,2})
   N = size(rec, 1)
   lat_src = repeat([src[1]], N)

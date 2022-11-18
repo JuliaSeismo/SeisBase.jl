@@ -450,6 +450,8 @@ end
 
 Write all data in SeisData structure `S` to auto-generated SAC files.
 
+With any GphysChannel subtype, specifying `fname = FF` sets the filename to FF.
+
 Keywords:
 * `chans="CC"` writes data from ChanSpec CC (GphysData only)
 * `fname="FF"` uses filename FF (GphysChannel only)
@@ -571,12 +573,12 @@ function read_sacpz(file::String; memmap::Bool=false)
   return S
 end
 
-@doc """
+"""
     writesacpz(pzfile::String, S::GphysData[, chans::ChanSpec=CC])
 
 Write fields from SeisBase struct `S` into sacpz file `pzfile`. Uses information
 from fields :fs, :gain, :loc, :misc, :name, :resp, :units. Specify `chans=CC` to only write channels `CC`.
-""" writesacpz
+"""
 function writesacpz(file::String, S::GphysData; chans::ChanSpec=Int64[])
   cc = mkchans(chans, S, keepempty=true)
   io = open(file, "w")

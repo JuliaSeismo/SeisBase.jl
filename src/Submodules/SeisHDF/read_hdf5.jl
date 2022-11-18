@@ -1,4 +1,4 @@
-@doc """
+"""
     S = read_hdf5(filestr, s::TimeSpec, t::TimeSpec, [, keywords])
     read_hdf5!(S, filestr, s::TimeSpec, t::TimeSpec, [, keywords])
 

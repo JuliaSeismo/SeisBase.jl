@@ -21,7 +21,7 @@ function get_evt_range!(filestr::String, idr::Regex, t::Array{Int64,1})
   return nothing
 end
 
-@doc """
+"""
     EventCat = read_asdf_evt(filestr, event_id::Union{String, Regex}[, KWs])
 
 Read data in seismic HDF5 format with ids matching `event_id` from files
@@ -38,7 +38,7 @@ SeisEvent structures. Matches any event ID in any matching file.
 | v         | Integer | 0       | verbosity                                   |
 
 See also: `TimeSpec`, `parsetimewin`, `read_data`, `read_hdf5`
-""" read_asdf_evt
+"""
 function read_asdf_evt(filestr::String, event_id::Union{String, Regex};
   msr       ::Bool                  = true,                   # read multistage response?
   v         ::Integer               = KW.v                    # verbosity

@@ -19,8 +19,6 @@ export namestrip, namestrip!
 
 Remove bad characters from the :name fields of **S**. Specify convention as a string (default is "File"):
 
-
-
 * "File" => ['<', '>', ':', '\"', '/', '\\', '|', '?', '*', '^', '\$', '@', '~', '\x7f']
 * "HTML" => ['"', '', '&', ';', '<', '>' , '©', '\x7f']
 * "Julia" => ['\$', '\\', '\x7f']

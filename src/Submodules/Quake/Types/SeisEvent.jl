@@ -1,7 +1,7 @@
 export SeisEvent
 
 
-@doc """
+"""
     SeisEvent
 
 A structure for discrete seismic events, comprising three structures:

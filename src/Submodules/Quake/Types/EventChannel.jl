@@ -1,6 +1,12 @@
 export EventChannel
 
-@doc (@doc EventTraceData)
+"""
+    EventChannel
+
+A single channel of trace data (digital seismograms) associated with a discrete event (earthquake).
+
+See [`EventTraceData`](@ref)
+"""
 mutable struct EventChannel <: GphysChannel
   id    ::String                # id
   name  ::String                # name

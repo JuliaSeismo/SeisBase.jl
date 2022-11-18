@@ -129,12 +129,12 @@ end
 """
     rseis(fstr::String[, c::Array{Int64,1}=C, v::Integer=0, memmap::Bool=false])
 
-Read SeisBase files matching file pattern ``fstr`` into memory. If an array of
+Read SeisBase files matching file pattern `fstr` into memory. If an array of
 record indices is passed to keyword c, only those record indices are read from
 each file.
 
-* Set v>0 to control verbosity.
-* Set memmap=true to use memory mapping. Faster but potentially unsafe.
+* Set `v>0`` to control verbosity.
+* Set `memmap=true`` to use memory mapping. Faster but potentially unsafe.
 """
 function rseis(patts::Union{String,Array{String,1}};
   c::Union{Int64,Array{Int64,1}}  = Int64[],

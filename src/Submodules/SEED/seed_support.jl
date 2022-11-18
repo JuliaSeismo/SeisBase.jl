@@ -104,21 +104,32 @@ const broken_resp_data = "The following is a list of breaking SEED RESP issues t
 | CN      | (broadbands)  | B058F05-06 contain units; should be B053F05-06
 "
 
-"mseed_support() shall info. dump mini-SEED blockette support to stdout."
-mseed_support
+"""
+    mseed_support() 
+  
+Output lists of supported blockettes in mini-SEED to stdout.
+"""
 function mseed_support()
   show(stdout, MIME("text/plain"), Markdown.parse(mseed_support_data))
   return nothing
 end
 
 
-"dataless_support() shall info. dump dataless SEED blockette support to stdout."
+"""
+    dataless_support() 
+    
+Output lists of supported blockettes in dataless SEED to stdout.
+"""
 function dataless_support()
   show(stdout, MIME("text/plain"), Markdown.parse(dataless_support_data))
   return nothing
 end
 
-"seed_support() shall info. dump ALL SEED support info to stdout."
+"""
+    seed_support()
+    
+Output full information on SEED support to stdout.
+"""
 function seed_support()
   show(stdout, MIME("text/plain"), Markdown.parse(mseed_support_data))
   show(stdout, MIME("text/plain"), Markdown.parse(dataless_support_data))
@@ -126,7 +137,11 @@ function seed_support()
   return nothing
 end
 
-"resp_wont_read() shall info. dump to stdout about broken resp files."
+"""
+    resp_wont_read()
+
+Output "hall of shame" of known examples of broken RESP to stdout.
+"""
 function resp_wont_read()
   show(stdout, MIME("text/plain"), Markdown.parse(broken_resp_data))
   return nothing

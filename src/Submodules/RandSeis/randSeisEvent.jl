@@ -92,8 +92,7 @@ end
 """
     randPhaseCat()
 
-Generate a random seismic phase catalog suitable for testing EventChannel,
-EventTraceData, and SeisEvent objects.
+Generate a random seismic phase catalog suitable for testing EventChannel, EventTraceData, and SeisEvent objects.
 """
 function randPhaseCat(n::Int64)
   npha = (n <= 0) ? rand(3:18) : n

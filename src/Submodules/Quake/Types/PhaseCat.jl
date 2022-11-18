@@ -1,7 +1,14 @@
 export PhaseCat, show_phases
 
 # PhaseCat
-"Type alias of Dict{String, SeisPha}; see ?SeisPha() for field definitions."
+"""
+    PhaseCat
+
+Type alias of Dict{String, SeisPha}; see ?SeisPha() for field definitions.
+
+A seismic phase catalog is a dictionary with phase names for keys (e.g. "pP", "PKP") and SeisPha objects for values.
+
+"""
 const PhaseCat = Dict{String, SeisPha}
 
 function write(io::IO, PC::PhaseCat)
@@ -31,6 +38,11 @@ function read(io::IO, ::Type{PhaseCat})
   return PC
 end
 
+"""
+    show_phases(io::IO, PC::PhaseCat)
+
+Formatted display of seismic phases in dictionary P.
+"""
 function show_phases(io::IO, PC::PhaseCat)
   phase_names = sort(collect(keys(PC)))
   npha = length(phase_names)

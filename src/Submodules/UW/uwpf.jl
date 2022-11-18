@@ -8,7 +8,7 @@ function nextline(pf::IO, c::Char)
     return s
 end
 
-@doc """
+"""
     H, R = uwpf(pf[, v])
 
 Read UW-format seismic pick file `pf` into SeisHdr object `H`, with seismic
@@ -24,7 +24,7 @@ verbosity.
 
     Reader has no safety check to guarantee that `pf` is from the same event.
 
-""" uwpf
+"""
 function uwpf(pickfile::String; v::Integer=KW.v)
   # Initialize variables that will fill SeisHdr structure
   D   = Dict{String, Any}()

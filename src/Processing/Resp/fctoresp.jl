@@ -4,7 +4,8 @@ export fctoresp
     fctoresp(f)
     fctoresp(f, c)
 
-Create PZResp or PZResp64 instrument response from lower corner frequency `f` and damping constant `c`. If no damping constant is supplies, assumes `c = 1/sqrt(2)`.
+Create PZResp or PZResp64 instrument response from lower corner frequency `f` and damping constant `c`. 
+If no damping constant is supplies, assumes `c = 1/sqrt(2)`.
 
 See also: `PZResp`, `PZResp64`
 """

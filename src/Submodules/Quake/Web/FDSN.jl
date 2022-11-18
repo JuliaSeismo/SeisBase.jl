@@ -24,6 +24,15 @@ in R in H with corresponding source process info.
 [^3]: if `nev=0`, all matches are returned.
 [^4]: In an event query, keyword `src` can be a comma-delineated list, like `"IRIS, INGV, NCEDC"`.
 
+### Notes
+
+* Specify `ot` as a string formatted YYYY-MM-DDThh:mm:ss in UTC (e.g. "2001-02-08T18:54:32").
+* Incomplete string queries are read to the nearest fully-specified time constraint; thus, `FDSNevq("2001-02-08")` 
+    returns the nearest event to 2001-02-08T00:00:00.
+* If no event is found in the specified search window, FDSNevq exits with an error.
+* For FDSNevq, keyword `src` can be a comma-delineated list of sources, provided each has a value in `?seis_www`; 
+    for example, `src="IRIS, INGV, NCEDC"` is valid.
+
 See also: `SeisBase.KW`, `?seis_www`
 """
 function FDSNevq(ot::String;
@@ -145,6 +154,14 @@ Get header and trace data for the event closest to origin time `ot` on channels
 [^2]: Search range is always `ot-|evw[1]| ≤ t ≤ ot+|evw[2]|`
 [^3]: Format like an http request string, e.g. "szsrecs=true&repo=realtime" for FDSN. String shouldn't begin with an ampersand.
 [^4]: Comma-separated String, like `"P, pP"`; use `"ttall"` for all phases
+
+### Notes
+
+* Specify `ot` as a string formatted YYYY-MM-DDThh:mm:ss in UTC (e.g. "2001-02-08T18:54:32").
+* Incomplete string queries are read to the nearest fully-specified time constraint; thus, `FDSNevq("2001-02-08")` 
+    returns the nearest event to 2001-02-08T00:00:00.
+* If no event is found in the specified search window, FDSNevt exits with an error.
+* Unlike `FDSNevq`, number of events cannot be specified and `src` must be a single source String in `?seis_www`.
 
 See also: `distaz!`, `FDSNevq`, `FDSNsta`
 """

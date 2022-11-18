@@ -7,32 +7,32 @@ pages = Any[
         "Introduction" => "Intro/intro.md",
         "First Steps" => "Intro/first_steps.md",
         "Working with data" => "Intro/working_with_data.md",
-    #     "Getting Help" => "getting_help.md",
+        "Getting Help" => "Intro/getting_help.md",
     ],
     "Reading files" => [
-    #     "Time-Series Files" => "time_series_files.md",
-    #     "Metadata Files" => "metadata_files.md",
-    #     "HDF5 Files" => "hdf5_files.md",
-    #     "XML Meta-Data" => "xml_metadata.md",
+        "Time-Series Files" => "ReadingFiles/timeseries.md",
+        "Metadata Files" => "ReadingFiles/metadata.md",
+        "HDF5 Files" => "ReadingFiles/hdf5.md",
+        "XML Meta-Data" => "ReadingFiles/xml.md",
     ],
     "Downloading" => [
-    #     "Web Services" => "web_services.md",
-    #     "SeedLink" => "seedlink.md",
+        "Web Services" => "Downloading/web_services.md",
+        "SeedLink" => "Downloading/seedlink.md",
     ],
     "Writing files" => [
-    #     "Write Support" => "write_support.md",
+        "Write Support" => "WritingFiles/writing.md",
     ],
     "Processing" => [
-    #     "Data Processing" => "data_processing.md",
+        "Data Processing" => "Processing/data_processing.md",
     ],
     "Submodules" => [
-    #     "Submodules" => "submodules.md",
-    #     "Nodal" => "nodal.md",
-    #     "Quake" => "quake.md",
-    #     "SeisHDF" => "seishdf.md",
+        "Submodules" => "Submodules/submodules.md",
+        "Nodal" => "Submodules/nodal.md",
+        "Quake" => "Submodules/quake.md",
+        "SeisHDF" => "Submodules/seishdf.md",
     ],
     "Appendices" => [
-    #     "Appendices" => "appendices.md",
+        "Appendices" => "Appendices/appendix.md",
     ],
 ]
 

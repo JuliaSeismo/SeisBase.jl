@@ -31,7 +31,7 @@ Dependencies should install automatically. To verify that everything works
 correctly, type
 
 ```julia
-test SeisBase
+pkg> test SeisBase
 ```
 
 and allow 10-20 minutes for tests to complete. Exit the Pkg environment by pressing Backspace or Control + C.

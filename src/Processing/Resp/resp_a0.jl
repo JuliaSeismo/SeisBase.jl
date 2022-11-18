@@ -1,6 +1,6 @@
 export resp_a0!
 
-@doc """
+"""
     resp_a0!(R::Union{PZResp, PZResp64})
 
 Update normalization factor `R.a0` from `R.z`, `R.p`, and `R.f0`.
@@ -10,7 +10,7 @@ Update normalization factor `R.a0` from `R.z`, `R.p`, and `R.f0`.
 Call `resp_a0!` on each response in S with typeof(S.resp[i]) ∈ [PZResp, PZResp64].
 
 See also: `PZResp`, `PZResp64`
-""" resp_a0!
+""" 
 function resp_a0!(resp::Union{PZResp, PZResp64})
   T = typeof(resp.a0)
   Z = SeisBase.poly(resp.z)

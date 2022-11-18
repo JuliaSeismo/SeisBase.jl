@@ -162,28 +162,30 @@ end
 |USGS   | http://earthquake.usgs.gov |
 |USP    | http://sismo.iag.usp.br |
 """
-seis_www = Dict("BGR" => "http://eida.bgr.de",
-                "EMSC" => "http://www.seismicportal.eu",
-                "ETH" => "http://eida.ethz.ch",
-                "GEONET" => "http://service.geonet.org.nz",
-                "GFZ" => "http://geofon.gfz-potsdam.de",
-                "ICGC" => "http://ws.icgc.cat",
-                "INGV" => "http://webservices.ingv.it",
-                "IPGP" => "http://eida.ipgp.fr",
-                "IRIS" => "http://service.iris.edu",
-                "ISC" => "http://isc-mirror.iris.washington.edu",
-                "KOERI" => "http://eida.koeri.boun.edu.tr",
-                "LMU" => "http://erde.geophysik.uni-muenchen.de",
-                "NCEDC" => "http://service.ncedc.org",
-                "NIEP" => "http://eida-sc3.infp.ro",
-                "NOA" => "http://eida.gein.noa.gr",
-                "ODC" => "http://www.orfeus-eu.org",
-                "ORFEUS" => "http://www.orfeus-eu.org",
-                "RESIF" => "http://ws.resif.fr",
-                "SCEDC" => "http://service.scedc.caltech.edu",
-                "TEXNET" => "http://rtserve.beg.utexas.edu",
-                "USGS" => "http://earthquake.usgs.gov",
-                "USP" => "http://sismo.iag.usp.br")
+seis_www = Dict(
+    "BGR" => "http://eida.bgr.de",
+    "EMSC" => "http://www.seismicportal.eu",
+    "ETH" => "http://eida.ethz.ch",
+    "GEONET" => "http://service.geonet.org.nz",
+    "GFZ" => "http://geofon.gfz-potsdam.de",
+    "ICGC" => "http://ws.icgc.cat",
+    "INGV" => "http://webservices.ingv.it",
+    "IPGP" => "http://eida.ipgp.fr",
+    "IRIS" => "http://service.iris.edu",
+    "ISC" => "http://isc-mirror.iris.washington.edu",
+    "KOERI" => "http://eida.koeri.boun.edu.tr",
+    "LMU" => "http://erde.geophysik.uni-muenchen.de",
+    "NCEDC" => "http://service.ncedc.org",
+    "NIEP" => "http://eida-sc3.infp.ro",
+    "NOA" => "http://eida.gein.noa.gr",
+    "ODC" => "http://www.orfeus-eu.org",
+    "ORFEUS" => "http://www.orfeus-eu.org",
+    "RESIF" => "http://ws.resif.fr",
+    "SCEDC" => "http://service.scedc.caltech.edu",
+    "TEXNET" => "http://rtserve.beg.utexas.edu",
+    "USGS" => "http://earthquake.usgs.gov",
+    "USP" => "http://sismo.iag.usp.br",
+)
 ph5_www = Dict("IRISPH5" => "http://service.iris.edu")
 
 function fdsn_uhead(src::String)
@@ -194,7 +196,7 @@ function fdsn_uhead(src::String)
   end
 end
 
-@doc """
+"""
     web_chanspec
 
 ## Specifying Channel IDs in Web Requests

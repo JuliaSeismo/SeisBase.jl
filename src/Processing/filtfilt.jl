@@ -139,7 +139,7 @@ function do_filtfilt!(X::AbstractArray,
   return nothing
 end
 
-@doc """
+"""
   filtfilt!(S::GphysData[; KWs])
 
 Apply zero-phase filter to S.x.
@@ -167,8 +167,11 @@ Keywords control filtering behavior; specify as e.g. filtfilt!(S, fl=0.1, np=2, 
 [^2]: By convention, the lower corner frequency (fl) is used in a Highpass
 filter, and fh is used in a Lowpass filter.
 
+Default filtering KW values can be changed by adjusting the :ref:`shared keywords<dkw>`, 
+e.g., `SeisBase.KW.Filt.np = 2` changes the default number of poles to 2.
+
 See also: DSP.jl documentation
-""" filtfilt!
+"""
 function filtfilt!(S::GphysData;
     chans::ChanSpec=Int64[],
     fl::Float64=KW.Filt.fl,

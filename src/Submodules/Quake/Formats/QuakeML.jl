@@ -408,6 +408,27 @@ objects as `EvCat` and an array of `SeisSrc` objects as `EvSrc`, such that
 `EvCat[i]` and `EvSrc[i]` describe the preferred location (origin) and
 preferred event source (focal mechanism or moment tensor) of event `i`.
 
+If multiple focal mechanisms, locations, or magnitudes are present in a single Event element of the XML file(s), 
+the following rules are used to select one of each per event:
+
+**FocalMechanism**
+    1. **preferredFocalMechanismID** if present
+    2. Solution with best-fitting moment tensor
+    3. First **FocalMechanism** element
+
+**Magnitude**
+    1. **preferredMagnitudeID** if present
+    2. Magnitude whose ID matches **MomentTensor/derivedOriginID**
+    3. Last moment magnitude (lowercase scale name begins with "mw")
+    4. First **Magnitude** element
+
+**Origin**
+    1. **preferredOriginID** if present
+    2. **derivedOriginID** from the chosen **MomentTensor** element
+    3. First **Origin** element
+
+Non-essential QuakeML data are saved to `misc` in each SeisHdr or SeisSrc object as appropriate.
+
 """
 function read_qml(fpat::String)
   files = safe_isfile(fpat) ? [fpat] : ls(fpat)
@@ -795,7 +816,7 @@ function write_qml!(io::IO, HDR::Array{SeisHdr,1}, SRC::Array{SeisSrc,1}, v::Int
   return nothing
 end
 
-@doc """
+"""
     write_qml(fname, Ev::SeisEvent; v::Integer=0)
 
 Write event metadata from SeisEvent `Ev` to file `fname`.
@@ -816,7 +837,8 @@ Write QML to file `fname` from `SHDR` and `SSRC`.
 !!! warning
 
     To write data from `R ∈ SSRC`, it must be true that `R.eid == H.id` for some `H ∈ SHDR`.
-""" write_qml
+
+"""
 function write_qml(fname::String, HDR::Array{SeisHdr,1}, SRC::Array{SeisSrc,1}; v::Integer=0)
   H0 = SeisHdr[]
   R0 = SeisSrc[]

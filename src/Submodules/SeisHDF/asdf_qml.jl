@@ -3,14 +3,14 @@
 # attributes event_id, magnitude_id, focal_mechanism_id, I can trivially
 # output SeisEvents. No one has done that yet.
 
-@doc """
+"""
     (H,R) = asdf_rqml(fpat::String)
 
 Read QuakeXML (qml) from ASDF file(s) matching file string pattern `fpat`. Returns:
 * `H`, Array{SeisHdr,1}
 * `R`, Array{SeisSrc,1}
 
-""" asdf_rqml
+"""
 function asdf_rqml(io::HDF5File)
   EvCat = Array{SeisHdr,1}()
   EvSrc = Array{SeisSrc,1}()
@@ -90,7 +90,7 @@ function asdf_wqml!(hdf::HDF5File, HDR::Array{SeisHdr,1}, SRC::Array{SeisSrc,1},
   return nothing
 end
 
-@doc """
+"""
     asdf_wqml(fname, SHDR::Array{SeisHdr,1}, SSRC::Array{SeisSrc,1}[, KWs])
     asdf_wqml(fname, H::SeisHdr, R::SeisSrc[, KWs])
 
@@ -114,7 +114,7 @@ As above, for the `:hdr` and `:source` fields of `evt`.
     To write data from `R ∈ SSRC`, it must be true that `R.eid == H.id` for some `H ∈ SHDR`.
 
 See also: `write_qml`
-""" asdf_wqml
+""" 
 function asdf_wqml(hdf_out::String, HDR::Array{SeisHdr,1}, SRC::Array{SeisSrc,1};
   ovr::Bool=false,
   v::Integer=0)

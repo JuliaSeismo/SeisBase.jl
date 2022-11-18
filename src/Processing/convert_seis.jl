@@ -1,6 +1,6 @@
 export convert_seis, convert_seis!
 
-@doc """
+"""
     convert_seis!(S[, chans=CC, units_out=UU, v=V])
     convert_seis(S, chans=CC, units_out=UU, v=V])
     convert_seis!(C[, units_out=UU, v=V])
@@ -18,14 +18,22 @@ Convert all seismic data channels in `S` to velocity seismograms, differentiatin
   + By default, all seismic data channels in `S` are converted (if needed).
   + This does not allow `convert_seis!` to work on non-seismic data.
 
-!!! warning
+!!! warning "Seismogram length at `Float32` precision"
+    `convert_seis!` becomes less reversible as seismograms lengthen, particularly at `Float32` precision, 
+    due to [loss of significance](https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems).
+    At single (`Float32`) precision, seismograms with `N ~ 10^6` samples are reconstructable after one conversion 
+    (e.g. `"m" ==> "m/s"` can be reversed, with output approximately equal to the original data). After multiple 
+    conversions (i.e., `"m" ==> "m/s²"` or `"m/s²" ==> "m"`), `Float32` data cannot be perfectly reconstructed in this way, 
+    though reconstruction errors are typically small.
 
-    `convert_seis!` becomes less reversible as seismograms lengthen, particularly at Float32 precision.
+!!! warning "Rectangular Integration"
+    Integration is always rectangular; irregularly-spaced seismic data are not processed by convert_seis. Summation 
+    uses an in-place variant of [Kahan-Babuška-Neumaier summation](https://github.com/JuliaMath/KahanSummation.jl)
 
 ### References
 [^1] Neumaier, A. (1974). "Rundungsfehleranalyse einiger Verfahren zur Summation endlicher Summen" [Rounding Error Analysis of Some Methods for Summing Finite Sums]. Zeitschrift für Angewandte Mathematik und Mechanik (in German). 54 (1): 39–51. doi:10.1002/zamm.19740540106.
 
-""" convert_seis!
+"""
 function convert_seis!(S::GphysData;
   chans::ChanSpec=Int64[],
   units_out::String="m/s",
@@ -194,7 +202,7 @@ function convert_seis!(C::GphysChannel;
   return nothing
 end
 
-@doc (@doc convert_seis!)
+# @doc (@doc convert_seis!)
 function convert_seis(S::GphysData;
   chans::ChanSpec=Int64[],
   units_out::String="m/s",

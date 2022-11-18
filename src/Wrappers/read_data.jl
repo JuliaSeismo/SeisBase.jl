@@ -30,13 +30,11 @@ function read_data_SeisBase!(S::SeisData, filestr::String, memmap::Bool, v::Inte
   return nothing
 end
 
-@doc """
-    S = read_data(fmt, filestr [, keywords])
+"""
     read_data!(S, fmt, filestr [, keywords])
-
+    
 Read data in file format `fmt` matching file pattern `filestr` into SeisData object `S`.
-
-    S = read_data(filestr [, keywords])
+    
     read_data!(S, filestr [, keywords])
 
 Read from files matching file pattern `filestr` into SeisData object `S`.
@@ -46,10 +44,10 @@ matching pattern `filestr`. Much slower than manually specifying file type.
 * Formats: ah1, ah2, bottle, geocsv, geocsv.slist, lennartz, mseed, passcal, suds, sac, segy, SeisBase, slist, uw, win32
 * Keywords: cf, full, jst, memmap, nx_add, nx_new, strict, swap, v, vl
 
-This function is fully described in the official documentation at https://SeisBase.readthedocs.io/ in section **Time-Series Files**.
+This function is fully described in the official documentation at https://SeisBase.readthedocs.io/ (TODO: Change site) in section **Time-Series Files**.
 
-See also: `SeisBase.KW`, `get_data`, `guess`, `rseis`
-""" read_data!
+See also: [`SeisBase.KW`](@ref), [`get_data`](@ref), [`guess`](@ref), [`rseis`](@ref)
+"""
 function read_data!(S::GphysData, fmt::String, fpat::Union{String, Array{String,1}};
   cf      ::String  = "",                 # win32 channel info file
   full    ::Bool    = false,              # full SAC/SEGY hdr
@@ -295,7 +293,24 @@ function read_data!(S::GphysData, fmt::String, fpat::Union{String, Array{String,
   return nothing
 end
 
-@doc (@doc read_data!)
+"""
+    S = read_data(fmt, filestr [, keywords])
+
+Read data in file format `fmt` matching file pattern `filestr` into SeisData object `S`.
+
+    S = read_data(filestr [, keywords])
+
+Read from files matching file pattern `filestr` into SeisData object `S`.
+Calls `guess(filestr)` to identify the file type based on the first file
+matching pattern `filestr`. Much slower than manually specifying file type.
+
+* Formats: ah1, ah2, bottle, geocsv, geocsv.slist, lennartz, mseed, passcal, suds, sac, segy, SeisBase, slist, uw, win32
+* Keywords: cf, full, jst, memmap, nx_add, nx_new, strict, swap, v, vl
+
+This function is fully described in the official documentation at https://SeisBase.readthedocs.io/ (TODO: Change site) in section **Time-Series Files**.
+
+See also: [`SeisBase.KW`](@ref), [`get_data`](@ref), [`guess`](@ref), [`rseis`](@ref)
+"""
 function read_data(fmt::String, filestr::Union{String, Array{String, 1}};
   full    ::Bool    = false,              # full SAC/SEGY hdr
   cf      ::String  = "",                 # win32 channel info file
