@@ -689,11 +689,6 @@ Only the Types below are faithfully preserved in write/read of a :misc field
 dictionary; other Types are not written to file and can cause ``wseis`` to
 throw errors.
 
-.. csv-table::
-  :header: Type, UInt8, Type, UInt8
-  :widths: 3, 1, 4, 1
-  :delim: |
-
 | Type | UInt8 | Type | UInt8 |
 | :---- | :---- | :---- | :---- |
 |Char             | 0x00 | Array{Char,N}             | 0x80 |
@@ -727,10 +722,6 @@ throw errors.
 
 #### SeisBase Object Type codes
 
-.. csv-table::
-  :header: UInt32 Code, Object Type
-  :widths: 2, 3
-
 | UInt32 Code | Object Type |
 | :-------- | :------------ |
 | 0x20474330 | EventChannel |
@@ -755,11 +746,6 @@ throw errors.
 
 ### File Format Version History
 File format versions <0.50 are no longer supported; please email us if you need to read in very old data.
-
-.. csv-table::
-  :header: 
-  :delim: ;
-  :widths: 5, 12, 55
 
 | Version | Date | Change |
 | :----- | :----- | :------ |
