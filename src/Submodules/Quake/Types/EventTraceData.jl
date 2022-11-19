@@ -1,6 +1,6 @@
 export EventTraceData
 
-@doc """
+"""
     EventTraceData
 
 A custom structure designed to describe trace data (digital seismograms)
@@ -36,7 +36,7 @@ discrete event (earthquake).
 [^1]: Not present in EventChannel objects.
 
 See also: `PhaseCat`, `SeisPha`, `SeisData`
-""" EventTraceData
+"""
 mutable struct EventTraceData <: GphysData
   n     ::Int64                         # number of channels
   id    ::Array{String,1}               # id

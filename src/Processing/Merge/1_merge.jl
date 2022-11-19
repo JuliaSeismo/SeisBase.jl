@@ -1,7 +1,11 @@
-@doc """
+"""
     merge!(S::SeisData, U::SeisData[, prune_only=true])
 
 Merge channels of two SeisData structures.
+
+Merge two GphysData structures. For timeseries data, a single-pass merge-and-prune
+operation is applied to value pairs whose sample times are separated by less than
+half the sampling interval.
 
     merge!(S::SeisData[, prune_only=true])
 
@@ -9,7 +13,7 @@ Merge channels of two SeisData structures.
 
 If `prune_only=true`, the only action taken is deletion of empty and duplicate
 channels; `merge!(S, U, prune_only=true)` is identical to an in-place `S+U`.
-""" merge!
+"""
 function merge!(S::Y; v::Integer=KW.v, purge_only::Bool=false) where Y<:GphysData
   # Required preprocessing
   prune!(S)

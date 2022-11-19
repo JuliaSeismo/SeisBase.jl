@@ -19,9 +19,12 @@ function safe_isdir(path::String)
 end
 
 """
-    find_regex(path::String, r::Regex)
+    regex_find(path::String, r::Regex)
 
-OS-agnostic equivalent to Linux `find`. First argument is a path string, second is a Regex. File strings are postprocessed using Julia's native PCRE Regex engine.
+OS-agnostic equivalent to Linux `find`. First argument is a path string, second is a Regex. 
+
+File strings are postprocessed using Julia's native PCRE Regex engine.
+By design, `find_regex` only returns file names.
 
 """
 function regex_find(path::String, r::Regex)
@@ -56,16 +59,19 @@ function regex_find(path::String, r::Regex)
   return sort(s2)
 end
 
-@doc """
+"""
     ls(str::String)
 
-Similar functionality to Bash ls -1 with OS-agnostic output. Accepts wildcards.
-Always returns full path and file name.
+Similar functionality to Bash ls with OS-agnostic output. Accepts wildcards in paths and file names.
+* Always returns the full path and file name.
+* Partial file name wildcards (e.g. "`ls(data/2006*.sac)`) invoke `glob`.
+* Path wildcards (e.g. `ls(/data/*/*.sac)`) invoke `find_regex` to circumvent glob limitations.
+* Passing ony "*" as a filename (e.g. "`ls(/home/*)`) invokes `find_regex` to recursively search subdirectories, as in the Bash shell.
 
     ls()
 
 Return full path and file name of files in current working directory.
-""" ls
+"""
 function ls(s::String)
   safe_isfile(s) && return [realpath(s)]
   safe_isdir(s) && return [joinpath(realpath(s), i) for i in readdir(s)]

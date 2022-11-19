@@ -1,8 +1,10 @@
 export env!, env
 
-@doc """
+"""
     env!(S::GphysData[, chans=CC, v=V])
     env(S::GphysData)
+
+Compute the envelope of channel data in S. Only affects regularly-sampled channels.
 
 In-place conversion of S.x[i] ==> Env(S.x[i]) (≡ |H(S.x[i])|, where H denotes
 the Hilbert transform).
@@ -10,7 +12,7 @@ the Hilbert transform).
 ### Keywords
 * chans=CC: only process channels in CC (with fs > 0.0).
 * v=V: verbosity.
-""" env!
+"""
 function env!(S::GphysData;
   chans::ChanSpec=Int64[],
   v::Integer=KW.v)

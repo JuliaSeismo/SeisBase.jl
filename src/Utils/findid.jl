@@ -2,13 +2,11 @@
     findid(id::String, S::GphysData)
     findid(S::GphysData, id::String)
 
-Get the index of the first channel in S where `id.==S.id` is true. Returns 0
-for failure.
+Get the index of the first channel in S where `id .== S.id` is true. Returns 0 for failure.
 
     findid(S::GphysData, T::GphysData)
 
-Get index corresponding to the first channel in T that matches each ID in S;
-equivalent to [findid(id,T) for id in S.id].
+Get index corresponding to the first channel in T that matches each ID in S; equivalent to [findid(id,T) for id in S.id].
 
     findid(C::SeisChannel, S::SeisData)
     findid(S::SeisData, C::SeisChannel)

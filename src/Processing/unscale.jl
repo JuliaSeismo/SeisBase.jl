@@ -1,13 +1,13 @@
 export unscale, unscale!
 
-@doc """
+"""
     unscale!(S::GphysData[, chans=CC, irr=false])
 
 Divide out the gains of all channels `i` where `S.fs[i] > 0.0`. Specify
 `irr=true` to also remove the gains of irregularly-sampled channels. Use keyword
 `chans=CC` to only resample channel numbers `CC`.
 
-""" unscale!
+"""
 function unscale!(S::GphysData;
   chans::ChanSpec=Int64[],
   irr::Bool=false)

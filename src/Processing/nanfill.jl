@@ -14,10 +14,10 @@ function nanfill!(x::Array{T,1}) where T<: Real
 end
 
 """
-  nanfill!(S::SeisData)
-  nanfill!(C::SeisChannel)
+    nanfill!(S::SeisData)
+    nanfill!(C::SeisChannel)
 
-Replace NaNs in `:x` with mean of non-NaN values.
+For each channel `i` in `S`, replace all NaNs in `S.x[i]` with the mean of non-NaN values.
 """
 function nanfill!(S::GphysData)
   for i = 1:S.n

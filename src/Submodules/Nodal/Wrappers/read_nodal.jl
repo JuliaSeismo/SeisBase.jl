@@ -1,4 +1,4 @@
-@doc """
+"""
     S = read_nodal(fmt, filestr [, keywords])
 
 Read nodal data from file `filestr` into new NodalData object `S`.
@@ -12,10 +12,38 @@ Read nodal data from file `filestr` into new NodalData object `S`.
 | t     | TimeSpec  |           | silixa    | end time                        |
 | v     | Integer   | 0         | silixa    | verbosity                       |
 
-[^1] Special behavior: Real values supplied to `s=` and `t=` are treated as seconds *from file begin*; most SeisBase functions treat Real as seconds relative to current time.
+[^1] Special behavior: Real values supplied to `s=` and `t=` are treated as seconds *from file begin*; 
+    most SeisBase functions treat Real as seconds relative to current time.
+
+## Non-Standard Behavior
+Real values supplied to keywords ``s=`` and ``t=`` are treated as seconds *relative to file begin time*. 
+Most SeisBase functions that accept TimeSpec arguments treat Real values as seconds relative to ``now()``.
+
+## Supported File Formats
+
+| File Format | String    | Notes                                               |
+| :---        | :---      | :---                                                |
+| Silixa TDMS | silixa    | Limited support; see below                          |
+| SEG Y       | segy      | Field values are different from *read_data* output  | 
+
+## Silixa TDMS Support Status
+
+* Currently only reads file header and samples from first block
+* Not yet supported (test files needed):
+    * first block additional samples
+    * second block
+    * second block additional samples
+* Awaiting manufacturer clarification:
+    * parameters in *:info*
+    * position along cable; currently loc.(x,y,z) = 0.0 for all channels
+    * frequency response; currently ``:resp`` is an all-pass placeholder
+
+## Nodal SEG Y Support Status
+See :ref:`SEG Y Support<segy-support>`.
+
 
 See also: `TimeSpec`, `parsetimewin`, `read_data`
-""" read_nodal
+"""
 function read_nodal(fmt::String, fstr::String;
   chans   ::ChanSpec  = Int64[]                   , # channels to proess
   memmap  ::Bool      = false                     , # use mmap? (DANGEROUS)

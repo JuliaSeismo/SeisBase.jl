@@ -21,8 +21,7 @@ end
 """
     S = FDSNsta(chans, KW)
 
-Retrieve station/channel info for formatted parameter file (or string) `chans`
-into an empty SeisData structure.
+Retrieve station/channel info for formatted parameter file (or string) `chans` into an empty SeisData structure.
 
 Standard keywords: rad, reg, src, to, v
 

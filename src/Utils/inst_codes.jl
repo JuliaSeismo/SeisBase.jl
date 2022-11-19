@@ -1,6 +1,6 @@
 export inst_codes, inst_code
 
-@doc """
+"""
     inst_codes(S::GphysData)
 
 Get the instrument code of each channel in `S`.
@@ -24,7 +24,7 @@ like `detrend!` and `taper!` are sane) include D, G, H, J, L, M, N, P, Z.
 
 SEED channel codes of seismometers (for which `translate_resp!` and
 `remove_resp!` are sane) are H, J, L, M, N, P, Z.
-""" inst_codes
+"""
 function inst_codes(S::GphysData)
   N = S.n
   codes = Array{Char, 1}(undef, N)
@@ -43,7 +43,14 @@ function inst_codes(S::GphysData)
   return codes
 end
 
-@doc (@doc inst_codes)
+"""
+    inst_code(S::GphysData, i::Integer)
+    inst_code(C::GphysChannel)
+
+Get instrument codes.
+
+See [`inst_codes`](@ref).
+"""
 function inst_code(S::GphysData, i::Integer)
   N = S.n
   id = S.id[i]

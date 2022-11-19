@@ -469,6 +469,9 @@ sizeof(Loc::XYLoc) = 136 + sizeof(getfield(Loc, :datum))
     NodalLoc
 
 Instrument position along a nodal array
+
+Nodal location. Currently only stores position along optical cable.
+
 * x::Float64 (meters)
 * y::Float64 (meters)
 * z::Float64 (meters)

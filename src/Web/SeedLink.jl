@@ -120,8 +120,8 @@ end
 """
     info_xml = sl_info(level=LEVEL::String; u=URL::String, port=PORT::Integer)
 
-Retrieve XML output of SeedLink command "INFO `LEVEL`" from server `URL:PORT`.
-Returns formatted XML. `LEVEL` must be one of "ID", "CAPABILITIES",
+Retrieve XML output of SeedLink command "INFO `level`" from server `URL:PORT`.
+Returns formatted XML. `level` must be one of "ID", "CAPABILITIES",
 "STATIONS", "STREAMS", "GAPS", "CONNECTIONS", "ALL".
 
 """
@@ -521,7 +521,11 @@ function seedlink!(S::SeisData, mode::String, C::ChanOpts;
   return S
 end
 
-@doc (@doc seedlink!)
+"""
+    seedlink(mode, chans)
+
+See [`seedlink!`](@ref) for details.
+"""
 function seedlink(mode::String, sta::Array{String,1}, pat::Array{String,1};
                    gap::Real      = KW.SL.gap,        # max gap of live channels
                    kai::Real      = KW.SL.kai,        # keepalive interval [s]

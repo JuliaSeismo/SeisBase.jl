@@ -1,15 +1,20 @@
 export read_meta, read_meta!
 
-@doc """
-    S = read_meta(fmt, filestr [, keywords])
+"""
     read_meta!(S, fmt, filestr [, keywords])
 
 Generic wrapper for reading channel metadata (i.e., instrument parameters, responses). Reads metadata in file format `fmt` matching file pattern `filestr` into `S`.
 
 This function is fully described in the official documentation at https://SeisBase.readthedocs.io/ under subheading **Metadata Files**.
 
+# Arguments
+- `fmt::String`: Lowercase string describing the file format.
+- `fpat::Union{String, Vector{String}}`: Read files with names matching pattern ``filepat``. Supports wildcards.
+
+For information on keyword arguments, see [SeisBase.KW](@ref)
+
 See also: `SeisBase.KW`, `get_data`, `read_data`
-""" read_meta!
+"""
 function read_meta!(S::GphysData, fmt::String, fpat::Union{String, Array{String,1}};
   memmap  ::Bool      = false                     ,  # use Mmap.mmap? (unsafe)
   msr     ::Bool      = false                     ,  # read as MultiStageResp?
@@ -69,7 +74,13 @@ function read_meta!(S::GphysData, fmt::String, fpat::Union{String, Array{String,
   return nothing
 end
 
-@doc (@doc read_meta!)
+"""
+    S = read_meta(fmt, filestr [, keywords])
+
+Creates a new [`SeisData`](@ref) object then calls [`read_meta!`](@ref) to read metadata in file format `fmt` matching file pattern `filestr` into `S`.
+
+See also: [`read_meta!`](@ref)
+"""
 function read_meta(fmt::String, fpat::Union{String, Array{String,1}};
   memmap  ::Bool      = true                      ,  # use Mmap.mmap? (unsafe)
   msr     ::Bool      = false                     ,  # read as MultiStageResp?

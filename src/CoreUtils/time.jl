@@ -18,15 +18,19 @@ u2d(k::Real) = Dates.unix2datetime(k)
 "Alias to Dates.datetime2unix"
 d2u(k::DateTime) = Dates.datetime2unix(k)
 
-@doc """
+"""
     timestamp()
+    timestamp(t::DateTime)
+    timestamp(t::Real)
+    timestamp(t::String)
 
 Return current time formatted YYYY-mm-ddTHH:MM:SS.
-""" timestamp
+"""
 timestamp() = tstr(Dates.unix2datetime(time()))
 timestamp(t::DateTime) = tstr(t)
 timestamp(t::Real) = tstr(u2d(t))
 timestamp(t::String) = tstr(Dates.DateTime(t))
+
 tnote(s::String) = string(timestamp(), " ¦ ", s)
 
 # =====================================================================
@@ -148,6 +152,9 @@ mktime(t::Array{T,1}) where T<:Integer =(y2μs(t[1]) +
     (str0, str1) = parsetimewin(ts1::TimeSpec, ts2::TimeSpec)
 
 Convert times `s` and `t` to strings and sorts s.t. d0 < d1.
+
+`s` and `t` can be real numbers, DateTime objects, or ASCII strings. 
+Expected string format is "yyyy-mm-ddTHH:MM:SS.nnn", e.g. 2016-03-23T11:17:00.333.
 
 See also: `TimeSpec`
 """

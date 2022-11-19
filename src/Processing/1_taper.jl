@@ -27,7 +27,7 @@ function taper_seg!(X::AbstractVector, W::Array{T,1}, L::Int64, μ::T; rev::Bool
 end
 
 # Taper a GphysChannel
-@doc """
+"""
     taper!(C[; t_max::Real=10.0, α::Real=0.05, N_min::Int64=10])
 
 Cosine taper all time-series data in C. Tapers each segment of each channel
@@ -48,7 +48,7 @@ Keywords:
 samples in each window are tapered, up to `t_max` seconds of data.
 
 See also: `DSP.Windows.tukey`
-""" taper!
+"""
 function taper!(C::GphysChannel; t_max::Real=10.0, α::Real=0.05, N_min::Int64=10)
   if !(C.fs > 0.0)
     return nothing

@@ -1,7 +1,8 @@
 """
     distaz!(Ev::SeisEvent)
 
-Compute Δ, Θ by the Haversine formula. Compute Δ, Θ by the Haversine formula.
+Compute Δ, Θ by the Haversine formula. 
+
 Updates `Ev.data` with distance, azimuth, and backazimuth for each channel,
 written to Ev.data.dist, Ev.data.az, and Ev.data.baz, respectively.
 """

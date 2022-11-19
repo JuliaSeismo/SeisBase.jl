@@ -2,7 +2,7 @@ export translate_resp!, translate_resp, remove_resp!, remove_resp
 
 # =====================================================================
 
-@doc """
+"""
     translate_resp!(S, resp_new[, chans=CC, wl=γ])
     translate_resp(S, resp_new[, chans=CC, wl=γ])
 
@@ -31,6 +31,10 @@ Replaces field `:resp` with the appropriate (all-pass) response.
 * **chans=CC** restricts response translation to channel(s) `CC`. By default, all seismic data channels have responses translated to `resp_new`.
 * **wl=γ** sets the waterlevel to γ (default: `γ` = eps(Float32) ≈ ~1f-7)
 
+The waterlevel is the minimum magnitude (absolute value) of the normalized old frequency response; in other words, 
+if the old frequency response has a maximum magnitude of 1.0, then no response coefficient can be lower than g. 
+This is useful to prevent "divide by zero" errors, but setting it too high will cause errors.
+
 ### Interaction with the :resp field
 `translate_resp` and `remove_resp` only work on a channel `i` that satisfies `S.resp[i] <: PZResp, PZResp64, MultiStageResp`. In the last case, `S.resp[i].stage[1]` must be a PZResp or PZResp64, only the first stage of the response is changed, and the stage gain is ignored; instead, the sensitivity `S.resp[i].stage[1].a0` is used.
 
@@ -38,9 +42,9 @@ Replaces field `:resp` with the appropriate (all-pass) response.
 Always check when loading from an unsupported data format. Responses read from station XML are corrected to rad/s automatically (most use rad/s); responses read from a SACPZ or SEED RESP file already use rad/s.
 
 !!! warning
-
     Response translation doesn't guarantee causality; if this is a problem, detrend and taper first!
-""" translate_resp!
+
+"""
 function translate_resp!(S::GphysData,
                          resp_new::Union{PZResp, PZResp64};
                          chans::ChanSpec=Int64[],

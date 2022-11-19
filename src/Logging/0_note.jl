@@ -6,22 +6,23 @@ export note!, clear_notes!
 # Adding a string to SeisData writes a note; if the string mentions a channel
 # name or ID, the note is restricted to the given channels(s), else it's
 # added to all channels
-@doc """
+"""
     note!(S::SeisData, i::Int64, s::String)
 
-Append `s` to channel `i` of `S` and time stamp.
+
+Append `s` with a timestamp to the :notes field of channel number `i` of `S`.
 
     note!(S::SeisData, id::String, s::String)
 
 As above for the first channel in `S` whose id is an exact match to `id`.
 
-  note!(S::SeisData, s::String)
+	note!(S::SeisData, s::String)
 
 Append `s` to `S.notes` and time stamp. If `txt` contains a channel name or ID, only the channel mentioned is annotated; otherwise, all channels are annotated.
 
 See also: `clear_notes!`, `show_processing`, `show_src`, `show_writes`
-""" note!
-note!(S::T, i::Int64, s::String) where {T<:GphysData} = push!(S.notes[i], tnote(s))
+"""
+note!(S::GphysData, i::Integer, s::String) = push!(S.notes[i], tnote(s))
 
 function note!(S::GphysData, s::String)
     J = [occursin(i, s) for i in S.name]
@@ -57,9 +58,9 @@ note!(S::GphysChannel, s::String) = push!(S.notes, tnote(s))
 
 # DND, these methods prevent memory reuse
 """
-    clear_notes!(U::Union{SeisData,SeisChannel,SeisHdr})
+    clear_notes!(S::GphysData)
 
-Clear all notes from `U` and leaves a note about this.
+Clear all notes from `S` and leaves a note about this.
 
     clear_notes!(S::SeisData, i::Int64, s::String)
 

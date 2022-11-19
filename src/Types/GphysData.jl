@@ -6,6 +6,8 @@ abstract type GphysData end
     findchan(id::String, S::GphysData)
 
 Get all channel indices `i` in S with id ∈ S.id[i]
+
+Can do partial id matches, e.g. findchan(S, "UW.") returns indices to all channels whose IDs begin with "UW.".
 """
 findchan(r::Union{Regex,String}, S::GphysData) = findall([occursin(r, i) for i in getfield(S, :id)])
 
@@ -13,32 +15,22 @@ findchan(r::Union{Regex,String}, S::GphysData) = findall([occursin(r, i) for i i
 """
     T = pull(S::SeisData, id::String)
 
-Extract the first channel with id=`id` from `S` and return it as a new SeisChannel structure. The corresponding channel in `S` is deleted.
+Extract the first channel with id = `id` from `S` and return it as a new SeisChannel structure. The corresponding channel in `S` is deleted.
 
     T = pull(S::SeisData, i::Union{Integer, UnitRange, Array{In64,1}}
 
 Extract channel `i` from `S` as a new SeisChannel struct, deleting it from `S`.
 """
-function pull(S::T, s::String) where {T<:GphysData}
+function pull(S::GphysData, s::String)
   i = findid(S, s)
   U = deepcopy(getindex(S, i))
   deleteat!(S, i)
   return U
 end
-function pull(S::T, J::UnitRange) where {T<:GphysData}
+function pull(S::GphysData, J::Union{UnitRange, Vector{<:Int}, Integer})
   U = deepcopy(getindex(S, J))
   deleteat!(S, J)
   return U
-end
-function pull(S::T, J::Array{Int64,1}) where {T<:GphysData}
-  U = deepcopy(getindex(S, J))
-  deleteat!(S, J)
-  return U
-end
-function pull(S::T, i::Integer) where {T<:GphysData}
-  C = deepcopy(getindex(S, i))
-  deleteat!(S, i)
-  return C
 end
 
 # ============================================================================
@@ -161,11 +153,11 @@ end
 
 deleteat!(S::T, K::UnitRange) where {T<:GphysData} = deleteat!(S, collect(K))
 
-@doc """
+"""
     prune!(S::SeisData)
 
 Delete all channels from S that have no data (i.e. S.x is empty or non-existent).
-""" prune!
+"""
 function prune!(S::GphysData)
   n = getfield(S, :n)
   klist = Array{Int64,1}(undef, 0)
@@ -188,10 +180,11 @@ function prune!(S::GphysData)
   deleteat!(S, klist)
   return nothing
 end
-@doc (@doc prune!)
-prune(S::T) where {T<:GphysData} = (U = deepcopy(S); prune!(U); return U)
+prune(S::GphysData) = (U = deepcopy(S); prune!(U); return U)
+
 # ============================================================================
 # delete!
+
 function delete!(S::T, s::Union{Regex,String}; exact=true::Bool) where {T<:GphysData}
   if exact
     i = findid(S, s)

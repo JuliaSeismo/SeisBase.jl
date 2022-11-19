@@ -41,7 +41,7 @@ function cheap_resample!(t::Array{Int64, 2}, x::FloatArray, fs_new::Float64, fs_
   return nothing
 end
 
-@doc """
+"""
     resample!(S::SeisData [, chans=CC, fs=FS])
     resample(S::SeisData [, chans=CC, fs=FS])
 
@@ -56,7 +56,7 @@ channels `i` with `S.fs[i] > 0.0` are resampled.
     resample(C::SeisChannel, fs::Float64)
 
 Resample `C.x` to `fs`.
-""" resample!
+"""
 function resample!(S::GphysData;
   chans::ChanSpec=Int64[],
   fs::Float64=0.0)

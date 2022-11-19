@@ -279,7 +279,7 @@ function guess_ftype(io::IO, swap::Bool, sz::Int64, v::Integer)
   return str
 end
 
-@doc """
+"""
     function guess(fname[, v=V])
 
 Try to guess the file type of file `fname`. Keyword `v` controls verbosity.
@@ -303,7 +303,7 @@ practice, SEGY headers are whatever the manufacturer imagines them to be, and
 endianness can be little, or mixed (e.g., a common situation is little-endian
 file header and big-endian trace header).
 
-""" guess
+"""
 function guess(file::String; v::Integer=KW.v)
   safe_isfile(file) || error("File not found!")
 

@@ -15,7 +15,7 @@ export TimeSpec
 const ChanSpec    = Union{Integer, UnitRange, Array{Int64, 1}}
 const FloatArray  = Union{AbstractArray{Float64, 1}, AbstractArray{Float32, 1}}
 
-@doc """
+"""
     TimeSpec = Union{Real, DateTime, String}
 
 # Time Specification
@@ -46,7 +46,7 @@ the start of the current minute. Thus, for `s=0` (the default), the data request
 begins (or ends) at the start of the minute in which the request is submitted.
 
 See also: `Dates.DateTime`
-""" TimeSpec
+"""
 const TimeSpec    = Union{Real, DateTime, String}
 const ChanOpts    = Union{String, Array{String, 1}, Array{String, 2}}
 const bad_chars = Dict{String, Any}(

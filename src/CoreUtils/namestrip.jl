@@ -14,10 +14,10 @@ export namestrip, namestrip!
               '|', '}', '~', '\x7f']
 =#
 
-@doc """
+"""
     namestrip(s::String, convention::String="File")
 
-Remove bad characters from S. Specify one of the following conventions:
+Remove bad characters from the :name fields of **S**. Specify convention as a string (default is "File"):
 
 * "File" => ['<', '>', ':', '\"', '/', '\\', '|', '?', '*', '^', '\$', '@', '~', '\x7f']
 * "HTML" => ['"', '', '&', ';', '<', '>' , '©', '\x7f']
@@ -26,7 +26,7 @@ Remove bad characters from S. Specify one of the following conventions:
 * "SEED" => ['.', '\x7f']
 * "Strict" => [' ', '!', '"', '#', '\$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '\\', '^', '{', '|', '}', '~', '\x7f']
 
-""" namestrip
+"""
 function namestrip(str::String, convention::String="File")
   chars = UInt8.(codeunits(str))
   deleteat!(chars, chars.<0x20)   # strip non-printing ASCII

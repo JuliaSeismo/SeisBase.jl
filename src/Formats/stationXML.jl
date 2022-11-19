@@ -366,6 +366,9 @@ function FDSN_sta_xml(xmlf::String, msr::Bool, s::String, t::String, v::Integer)
   return S
 end
 
+"""
+    read_sxml(fpat::String, s::String, t::String, memmap::Bool, msr::Bool, v::Integer)
+"""
 function read_sxml(fpat::String, s::String, t::String, memmap::Bool, msr::Bool, v::Integer)
 
   if safe_isfile(fpat)

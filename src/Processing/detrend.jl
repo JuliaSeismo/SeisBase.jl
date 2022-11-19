@@ -1,6 +1,6 @@
 export demean!, demean, detrend!, detrend
 
-@doc """
+"""
     demean!(S::SeisData[; chans=CC, irr=false])
 
 Remove the mean from all channels `i` with `S.fs[i] > 0.0`. Specify `irr=true`
@@ -12,7 +12,7 @@ Specifying a channel list with `chans=CC` restricts processing to channels CC.
 Remove the mean from data in `C`.
 
 Ignores NaNs.
-""" demean!
+"""
 function demean!(S::GphysData;
   chans::ChanSpec=Int64[],
   irr::Bool=false)
@@ -111,7 +111,7 @@ function dtr!(x::AbstractArray{T,1}, ti::Array{Int64,2}, fs::Float64, n::Int64) 
   return p
 end
 
-@doc """
+"""
     detrend!(S::SeisData[; chans=CC, n=1]))
 
 Remove the linear trend from channels `CC`. Ignores NaNs.
@@ -127,7 +127,7 @@ To remove a higher-order polynomial fit than a linear trend, choose n>1.
 !!! warning
 
     detrend! does *not* check for data gaps; if this is problematic, call ungap!(S, m=true) first!
-""" detrend!
+"""
 function detrend!(S::GphysData;
   chans::ChanSpec=Int64[],
   n::Int64=1)

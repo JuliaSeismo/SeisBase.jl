@@ -284,8 +284,15 @@ These are all Booleans; `false` excludes from scan.
 * `seg_times`: Exact gap times (default: `false`)
 * `fs_times`: Exact times of fs changes (default: `false`)
 
-!!! caution
+Note that *seg_times* and *fs_times* dump verbose per-channel tabulation to stdout.
 
+Users are encouraged to submit feature request or issues if there's a need to scan for other changes within a SEED volume.
+
+### Interaction with Online Requests
+*scan_seed* cannot interact directly with online SEED requests. As a workaround, do ``get_data(..., w=true)`` 
+to dump the raw request directly to disk, then scan the file(s) created.
+
+!!! caution
     Rarely, the number of gaps reported is off-by-one from `read_data`.
 """
 function scan_seed(fname::String;

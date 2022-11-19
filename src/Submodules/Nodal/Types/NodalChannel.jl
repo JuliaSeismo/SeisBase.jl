@@ -1,4 +1,10 @@
-@doc (@doc NodalData)
+"""
+    NodalChannel
+
+A single channel of data from a nodal array. Similar to a SeisChannel object.
+
+See [`NodalData`](@ref).
+"""
 mutable struct NodalChannel <: GphysChannel
   ox::Float64                         # origin x
   oy::Float64                         # origin y

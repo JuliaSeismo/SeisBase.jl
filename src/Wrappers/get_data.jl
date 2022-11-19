@@ -1,8 +1,7 @@
 export get_data!, get_data
 
-@doc """
+"""
     S = get_data(method, chans [, keywords])
-    get_data!(S, method, chans [, keywords])
 
 Wrapper to web requests for time-series data. Request data using `method` from channels `chans` using keywords `KWs`, storing the output in `S`.
 
@@ -13,7 +12,7 @@ Wrapper to web requests for time-series data. Request data using `method` from c
 This function is fully described in the official documentation at https://SeisBase.readthedocs.io/ under subheading **Web Requests**.
 
 See also: `web_chanspec`, `parsetimewin`, `seis_www`, `SeisBase.KW`
-""" get_data
+"""
 function get_data(method_in::String, C::ChanOpts="*";
    autoname::Bool              = false         , # Auto-generate file names?
      demean::Bool              = false         , # Demean after download?
@@ -153,7 +152,11 @@ function get_data(method_in::String, C::ChanOpts="*";
   return S
 end
 
-@doc (@doc get_data)
+"""
+    get_data!(S, method, chans [, keywords])
+
+See [`get_data`](@ref) for details.
+"""
 function get_data!(S::SeisData, method_in::String, C::ChanOpts="*";
    autoname::Bool              = false         , # Auto-generate file names?
      demean::Bool              = false         , # Demean after download?

@@ -1,10 +1,10 @@
 # This is type-stable for S = NodalData() but not for keyword args
-@doc """
+"""
     NodalData
 
 SeisData variant for multichannel nodal array data.
 
-  NodalChannel
+    NodalChannel
 
 SeisChannel variant for a channel from a nodal array.
 
@@ -34,7 +34,7 @@ SeisChannel variant for a channel from a nodal array.
 [^1] Not present in, or retained by, NodalChannel objects.
 
 See also: `SeisData`, `InstrumentPosition`, `InstrumentResponse`
-""" NodalData
+"""
 mutable struct NodalData <: GphysData
   n::Int64
   ox::Float64                         # origin x
