@@ -1,6 +1,6 @@
-# SeisIO
+# SeisBase
 
-SeisIO is a collection of utilities for reading and downloading geophysical timeseries data.
+SeisBase is a collection of utilities for reading and downloading geophysical timeseries data.
 
 ```@contents
 Pages = [
