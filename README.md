@@ -15,7 +15,7 @@ From the Julia prompt, type: `] add https://github.com/SeismoJulia/SeisBase.jl`;
 Designed for speed, efficiency, and ease of use. Includes web clients, readers for common seismic data formats, and fast file writers. Utility functions allow time synchronization, data merging, padding time gaps, and other basic data processing.
 
 * Web clients: SeedLink, FDSN (dataselect, event, station), IRIS (TauP, timeseries)
-* File formats: ASDF (r/w), Bottles, GeoCSV (slist, tspair), QuakeML (r/w), SAC (r/w), SEED (dataless, mini-SEED, resp), SEG Y (rev 0, rev 1, PASSCAL), SLIST, SUDS, StationXML (r/w), Win32, UW
+* File formats: ASDF (r/w), QuakeML (r/w), SAC (r/w), SEED (dataless, mini-SEED, resp), SEG Y (rev 0, rev 1, PASSCAL), StationXML (r/w), Win32
 
 ## Getting Started | [Formats](docs/FORMATS.md) | [Web Clients](docs/WEB.md)
 Start the tutorials in your browser from the Julia prompt with
