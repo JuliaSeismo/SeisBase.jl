@@ -2,13 +2,13 @@
 
 [![Build Status](https://github.com/SeismoJulia/SeisBase.jl/actions/workflows/ci.yml/badge.svg)](https://github.com/SeismoJulia/SeisBase.jl/actions/workflows/ci.yml)  
 
-<!-- [![codecov](https://codecov.io/gh/jpjones76/SeisBase.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/jpjones76/SeisBase.jl)[![Coverage Status](https://coveralls.io/repos/github/jpjones76/SeisBase.jl/badge.svg?branch=master)](https://coveralls.io/github/jpjones76/SeisBase.jl?branch=master) [![Documentation Status](https://readthedocs.org/projects/SeisBase/badge/?version=latest)](https://juliaseismo.github.io/SeisBase.jl/dev/) -->
+<!-- [![codecov](https://codecov.io/gh/jpjones76/SeisBase.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/jpjones76/SeisBase.jl)[![Coverage Status](https://coveralls.io/repos/github/jpjones76/SeisBase.jl/badge.svg?branch=master)](https://coveralls.io/github/jpjones76/SeisBase.jl?branch=master) [![Documentation Status](https://readthedocs.org/projects/SeisBase/badge/?version=latest)](https://SeisBase.readthedocs.io/en/latest/?badge=latest) -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 A minimalist, platform-agnostic package for univariate geophysical data.
 This version is a follow up from SeisIO.jl (https://github.com/jpjones76/SeisIO.jl). It is intended to be an stable community maintained package.
 
-## Installation | [Documentation](http://SeisBase.readthedocs.org)
+## Installation | [Documentation](https://juliaseismo.github.io/SeisBase.jl/dev/)
 From the Julia prompt, type: `] add https://github.com/SeismoJulia/SeisBase.jl`; (Backspace); `using SeisBase`
 
 ## Summary | [Collaboration](docs/CONTRIBUTE.md)
