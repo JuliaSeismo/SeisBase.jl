@@ -1,5 +1,5 @@
 # Getting Help
-In addition to the Juypter notebooks and :ref:`online tutorial guide<tutorial>`,
+In addition to the Juypter notebooks and [online tutorial guide](../../../tutorial/),
 other sources of help are available:
 
 * [Examples](@ref)
