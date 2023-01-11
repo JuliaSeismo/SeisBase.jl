@@ -43,7 +43,7 @@ makedocs(
 )
 
 deploydocs(
-    repo = "github.com/SeismoJulia/SeisBase.jl.git",
+    repo = "github.com/JuliaSeismo/SeisBase.jl.git",
     devbranch = "main",
     push_preview = true,
     forcepush = true,

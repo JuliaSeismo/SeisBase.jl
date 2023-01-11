@@ -1,6 +1,6 @@
 The SeisBase.jl package is licensed under the MIT License:
 
-> Copyright (c) 2022: SeismoJulia organization
+> Copyright (c) 2022: JuliaSeismo organization
 >
 > Permission is hereby granted, free of charge, to any person obtaining
 > a copy of this software and associated documentation files (the

@@ -18,7 +18,7 @@ Ready to contribute? Here's a quick guide.
 2. Clone your fork locally:
 
     ```sh
-    git clone https://github.com/SeismoJulia/SeisBase.jl
+    git clone https://github.com/JuliaSeismo/SeisBase.jl
     cd SeisBase.jl
     ```
 
@@ -39,7 +39,7 @@ Ready to contribute? Here's a quick guide.
     git push origin name-of-your-bugfix-or-feature
     ```
 
-6. Open a pull request through the GitHub website: https://github.com/SeismoJulia/SeisBase.jl
+6. Open a pull request through the GitHub website: https://github.com/JuliaSeismo/SeisBase.jl
 
 
 Old version:
