@@ -1,6 +1,6 @@
-# SeedLink
+# [SeedLink](@id seedlink)
 
-[SeedLink](https://www.seiscomp3.org/wiki/doc/applications/seedlink) is a TCP/IP-based data transmission protocol that allows near-real-time access to data from thousands of geophysical monitoring instruments. See :ref:`data keywords list <dkw>` and :ref:`channel id syntax <cid>` for options.
+[SeedLink](https://www.seiscomp3.org/wiki/doc/applications/seedlink) is a TCP/IP-based data transmission protocol that allows near-real-time access to data from thousands of geophysical monitoring instruments. See [data keywords list](@ref seisbase_std_keyword) and [channel id syntax](@ref channel_id) for options.
 
 ```@docs
 seedlink
@@ -17,13 +17,13 @@ Channel specification can use any of the following options:
 
 1. A comma-separated String where each pattern follows the syntax NET.STA.LOC.CHA.DFLAG, e.g. UW.TDH..EHZ.D. Use "?" to match any single character.
 2. An Array{String,1} with one pattern per entry, following the above syntax.
-3. The name of a configuration text file, with one channel pattern per line; see :ref:`Channel Configuration File syntax<ccfg>`.
+3. The name of a configuration text file, with one channel pattern per line; see [Channel Configuration File syntax](@ref channel_config).
 
 **patts**
 Data selection patterns. See official SeedLink documentation; syntax is identical.
 
 ## Keywords
-:ref:`Shared Keywords<dkw>`
+[Shared Keywords](@ref seisbase_std_keyword)
 
 * v, w
 

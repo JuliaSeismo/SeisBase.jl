@@ -1,4 +1,4 @@
-# Working with Data
+# [Working with Data](@id working_with_data)
 This section is a tutorial for tracking and managing SeisBase data.
 
 ## Creating Data Containers
@@ -19,10 +19,10 @@ Create a new, empty object using any of the following commands:
 ## Keeping Track
 A number of auxiliary functions exist to keep track of channels:
 
+* [`namestrip`](@ref utility_func)
 ```@docs
 findchan
 findid
-namestrip
 ```
 | Convention | Characters Removed:sup:`¹`                 |
 | ---------- | ------------------------------------------ | 

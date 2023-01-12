@@ -1,7 +1,7 @@
 # Web Services
 
 Data requests use `get_data!` for FDSN, IRISWS, and IRIS PH5WS data services; for (near)
-real-time streaming, see :ref:`SeedLink<seedlink-section>`.
+real-time streaming, see [SeedLink](@ref seedlink).
 
 ## Time-Series Data
 
@@ -13,17 +13,17 @@ get_data
 Retrieve time-series data from a web archive to SeisData structure **S**.
 
 **method**
-**"FDSN"**: :FDSNWS dataselect. Change FDSN servers with keyword `src` using the :ref:`server list<servers>` (see `?seis_www`).
+**"FDSN"**: :FDSNWS dataselect. Change FDSN servers with keyword `src` using the [server list](@ref server) (see `?seis_www`).
 **"IRIS"**: IRISWS timeseries.
 **"PH5"**: PH5WS timeseries.
 
 **channels**
-:ref:`Channels to retrieve<cid>` -- string, string array, or parameter file.
+[Channels to retrieve](@ref channel_id) -- string, string array, or parameter file.
 Type `?chanspec` at the Julia prompt for more info.
 
 
 ### Keywords
-:ref:`Shared Keywords<dkw>`
+[Shared Keywords](@ref seisbase_std_keyword)
 
 fmt, nd, opts, rad, reg, si, to, v, w, y
 
@@ -66,7 +66,7 @@ FDSNsta
 
 Fill channels `chans` of SeisData structure `S` with information retrieved from remote station XML files by web query.
 
-:ref:`Shared Keywords<dkw>`
+[Shared Keywords](@ref seisbase_std_keyword)
 
 * src, to, v
 

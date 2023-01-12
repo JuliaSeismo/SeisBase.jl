@@ -10,11 +10,11 @@ type `?TimeSpec` for more information about how these are interpreted.
 |KW     | Type      | Default   | Meaning                                     |
 |:---   |:---       |:---       |:---                                         |
 | id    | String    | "*"       | id pattern, formated nn.sss.ll.ccc          |
-|       |           |           |  (net.sta.loc.cha); FDSN wildcards [^1]     |
+|       |           |           |  (net.sta.loc.cha); FDSN wildcards [1]      |
 | msr   | Bool      | true      | read full (MultiStageResp) instrument resp? |
 | v     | Integer   | 0         | verbosity                                   |
 
-[^1] A question mark ('?') is a wildcard for a single character; an asterisk ('*') is a wildcard for zero or more characters
+1. A question mark ('?') is a wildcard for a single character; an asterisk ('*') is a wildcard for zero or more characters
 
 See also: `TimeSpec`, `parsetimewin`, `read_data`
 """ read_hdf5!

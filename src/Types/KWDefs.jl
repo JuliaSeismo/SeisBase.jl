@@ -69,7 +69,7 @@ keyword isn't specified.
 
 | KW       | Default    | Allowed Data Types | Meaning                        |
 |----------|:-----------|:-------------------|:-------------------------------|
-| comp     | 0x00       | UInt8              | compress data on write?[^1]    |
+| comp     | 0x00       | UInt8              | compress data on write?[1]     |
 | fmt      | "miniseed" | String             | request data format            |
 | full     | false      | Bool               | read full headers?             |
 | n_zip    | 100000     | Int64              | compress if length(x) > n_zip  |
@@ -78,7 +78,7 @@ keyword isn't specified.
 |          |            |                    |  undersized data array         |
 | nx_new   | 8640000    | Int64              | number of samples allocated    |
 |          |            |                    |   for a new data channel       |
-| opts     | ""         | String             | user-specified options[^2]     |
+| opts     | ""         | String             | user-specified options[2]      |
 | prune    | true       | Bool               | call prune! after get_data?    |
 | rad      | []         | Array{Float64,1}   | radius search: `[center_lat,`  |
 |          |            |                    |   `center_lon, r_min, r_max]`  |
@@ -96,15 +96,15 @@ keyword isn't specified.
 | w        | false      | Bool               | write requests to disk?        |
 | y        | false      | Bool               | sync after web requests?       |
 
-[^1]: If `comp == 0x00`, never compress data; if `comp == 0x01`, only compress channel `i` if `length(S.x[i]) > KW.n_zip`; if `comp == 0x02`, always compress data.
-[^2]: Format like an http request string, e.g. "szsrecs=true&repo=realtime" for FDSN. String shouldn't begin with an ampersand.
+1. If `comp == 0x00`, never compress data; if `comp == 0x01`, only compress channel `i` if `length(S.x[i]) > KW.n_zip`; if `comp == 0x02`, always compress data.
+2. Format like an http request string, e.g. "szsrecs=true&repo=realtime" for FDSN. String shouldn't begin with an ampersand.
 
 ### SeisBase.KW.SL
 Seedlink-specific keyword default values. SeedLink also uses some general keywords.
 
 | Name    | Default | Type    | Description                                 |
 |:--------|:--------|:--------|:----------------------------------          |
-| gap     | 3600    | Real    | allowed time since last packet [s] [^1]     |
+| gap     | 3600    | Real    | allowed time since last packet [s] [1]      |
 | kai     | 600     | Real    | keepalive interval [s]                      |
 | port    | 18000   | Int64   | port number                                 |
 | refresh | 20      | Real    | base refresh interval [s]                   |
@@ -112,22 +112,22 @@ Seedlink-specific keyword default values. SeedLink also uses some general keywor
 | u       | (iris)  | String  | Default URL ("rtserve.iris.washington.edu") |
 | xonerr  | true    | Bool    | exit on error?                              |
 
-[^1]: A channel is considered non-transmitting (hence, excluded from the SeedLink session) if the time since last packet exceeds `gap` seconds.
+1. A channel is considered non-transmitting (hence, excluded from the SeedLink session) if the time since last packet exceeds `gap` seconds.
 
 ### SeisBase.KW.Filt
 Default keyword values for time-series filtering.
 
 | Name  | Default       | Type    | Description                         |
 |:------|:--------------|:--------|:------------------------------------|
-| fl    | 1.0           | Float64 | lower corner frequency [Hz] [^1]    |
-| fh    | 15.0          | Float64 | upper corner frequency [Hz] [^1]    |
+| fl    | 1.0           | Float64 | lower corner frequency [Hz] [1]     |
+| fh    | 15.0          | Float64 | upper corner frequency [Hz] [1]     |
 | np    | 4             | Int64   | number of poles                     |
 | rp    | 8             | Int64   | pass-band ripple (dB)               |
 | rs    | 30            | Int64   | stop-band ripple (dB)               |
 | rt    | "Bandpass"    | String  | response type (type of filter)      |
 | dm    | "Butterworth" | String  | design mode (name of filter)        |
 
-[^1]: Remember the (counter-intuitive) convention that the lower corner frequency (fl) is used in a Highpass filter, and fh is used in a Lowpass filter. This convention is preserved in SeisBase.
+1. Remember the (counter-intuitive) convention that the lower corner frequency (fl) is used in a Highpass filter, and fh is used in a Lowpass filter. This convention is preserved in SeisBase.
 
 """
 const KW = KWDefs(

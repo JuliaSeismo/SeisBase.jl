@@ -11,7 +11,7 @@ This function is fully described in the official documentation at https://SeisBa
 - `fmt::String`: Lowercase string describing the file format.
 - `fpat::Union{String, Vector{String}}`: Read files with names matching pattern ``filepat``. Supports wildcards.
 
-For information on keyword arguments, see [SeisBase.KW](@ref)
+For information on keyword arguments, see [SeisBase.KW](@ref seisbase_std_keyword)
 
 See also: `SeisBase.KW`, `get_data`, `read_data`
 """

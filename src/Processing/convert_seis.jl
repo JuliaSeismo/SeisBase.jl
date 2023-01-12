@@ -31,7 +31,7 @@ Convert all seismic data channels in `S` to velocity seismograms, differentiatin
     uses an in-place variant of [Kahan-Babuška-Neumaier summation](https://github.com/JuliaMath/KahanSummation.jl)
 
 ### References
-[^1] Neumaier, A. (1974). "Rundungsfehleranalyse einiger Verfahren zur Summation endlicher Summen" [Rounding Error Analysis of Some Methods for Summing Finite Sums]. Zeitschrift für Angewandte Mathematik und Mechanik (in German). 54 (1): 39–51. doi:10.1002/zamm.19740540106.
+1. Neumaier, A. (1974). "Rundungsfehleranalyse einiger Verfahren zur Summation endlicher Summen" [Rounding Error Analysis of Some Methods for Summing Finite Sums]. Zeitschrift für Angewandte Mathematik und Mechanik (in German). 54 (1): 39-51. doi:10.1002/zamm.19740540106.
 
 """
 function convert_seis!(S::GphysData;

@@ -41,7 +41,7 @@ If *s* and *t* are both Real numbers, they're treated as seconds measured relati
 
 ## Data Requests Syntax
 
-### Channel ID Syntax
+### [Channel ID Syntax](@id channel_id)
 `NN.SSSSS.LL.CC` (net.sta.loc.cha, separated by periods) is the expected syntax for all web functions. The maximum field width in characters corresponds to the length of each field (e.g. 2 for network). Fields can't contain whitespace.
 
 `NN.SSSSS.LL.CC.T` (net.sta.loc.cha.tflag) is allowed in SeedLink. `T` is a single-character data type flag and must be one of `DECOTL`: Data, Event, Calibration, blOckette, Timing, or Logs. Calibration, timing, and logs are not in the scope of SeisBase and may crash SeedLink sessions.
@@ -75,7 +75,7 @@ Allowed wildcards are client-specific.
 * Partial specifiers are OK, but a network and station are always required: `"UW.EL?"` is OK, `".ELK.."` fails.
 
 
-### Channel Configuration Files
+### [Channel Configuration Files](@id channel_config)
 One entry per line, ASCII text, format NN.SSSSS.LL.CCC.D. Due to client-specific wildcard rules, the most versatile configuration files are those that specify each channel most completely:
 
 ```
@@ -111,7 +111,7 @@ CC.VALT..BHN
 CC.VALT..BHE
 ```
 
-### Server List
+### [Server List](@id server)
 
 | String | Source                                |
 | :----- | :---------   |
@@ -138,7 +138,7 @@ CC.VALT..BHE
 | USP    | http://sismo.iag.usp.br               |
 
 
-## SeisBase Standard Keywords
+## [SeisBase Standard Keywords](@id seisbase_std_keyword)
 
 SeisBase.KW is a memory-resident structure of default values for common keywords
 used by package functions. KW has one substructure, SL, with keywords specific
@@ -178,7 +178,7 @@ default for nev to 2.
 .. [`8`] If **w=true**, a file name is automatically generated from the request parameters, in addition to parsing data to a SeisData structure. Files are created from the raw download even if data processing fails, in contrast to get_data(... wsac=true).
 .. _function_list:
 
-## Utility Functions
+## [Utility Functions](@id utility_func)
 This appendix covers utility functions that belong in no other category.
 
 ```@docs
@@ -239,7 +239,7 @@ strings that contain the null character (0x00 or ``'\x0'``).
 |  | "SeisBase" | UInt8 | 6 |
 | `V` | SeisBase file format version | Float32 | 1 |
 | `J` | \# of SeisBase objects in file | UInt32 | 1 |
-| `C` | :ref:`SeisBase object codes<object_codes>` for each object | UInt32 | J |
+| `C` | [SeisBase object codes](@ref seisbase_object_code) for each object | UInt32 | J |
 | `B` | Byte indices for each object | UInt64 | J |
 | {  |   |   |  for i = 1:J |
 |  | (Objects) | variable | J |
@@ -433,7 +433,7 @@ how this field is written to disk.
 | N |  Int64 |  1 |  number of items in dictionary [`1`] |
 | K |  (StringVec) |  1 |  dictionary keys |
 | {  |   |   |  for i = 1:N |
-| c  |  UInt8 |  1 |  :ref:`Type code <type_codes>` of object i |
+| c  |  UInt8 |  1 |  [Type code](@ref other_type_code) of object i |
 | o |  variable |  1 |  object i |
 | }  |   |   |  |
 
@@ -464,7 +464,7 @@ These subtables describe how to read the possible data types in a Misc dictionar
 | str |  UInt8 |  1 |  string |
 
 #### Bits Type (c == 0x00 or 0x01 < c < 0x7f)
-Read a single value whose Type corresponds to the UInt8 :ref:`Type code <type_codes>`.
+Read a single value whose Type corresponds to the UInt8 [Type code](@ref other_type_code).
 
 ### Compound Object Types
 Each of these objects contains at least one of the above simple object types.
@@ -488,11 +488,11 @@ A single channel of data related to a seismic event
 | id |  UInt8 |  Ni |  id string | 
 | Nn |  Int64 |  1 |  size of name string in bytes | 
 | name |  UInt8 |  Nn |  name string | 
-| Lt |  UInt8 |  1 |  :ref:`location Type code<loc_codes>` | 
+| Lt |  UInt8 |  1 |  [location Type codes](@ref loc_type_code) | 
 | loc |  (Loc Type) |  1 |  instrument position | 
 | fs |  Float64 |  1 |  sampling frequency in Hz | 
 | gain |  Float64 |  1 |  scalar gain | 
-| Rt |  UInt8 |  1 |  :ref:`response Type code<resp_codes>` | 
+| Rt |  UInt8 |  1 |  [response Type codes](@ref resp_type_code) | 
 | resp |  (Resp Type) |  1 |  instrument response | 
 | Nu |  Int64 |  1 |  size of units string in bytes | 
 | units |  UInt8 |  Nu |  units string | 
@@ -506,7 +506,7 @@ A single channel of data related to a seismic event
 | notes |  (StringVec) |  1 |  notes and automated logging | 
 | Nt |  Int64 |  1 |  length of time gaps matrix | 
 | T |  Int64 |  2Nt |  time gaps matrix | 
-| Xc |  UInt8 |  1 |  :ref:`Type code <type_codes>` of data vector | 
+| Xc |  UInt8 |  1 |  [Type code](@ref other_type_code) of data vector | 
 | Nx |  Int64 |  1 |  number of samples in data vector | 
 | X |  variable |  NX |  data vector | 
 
@@ -520,11 +520,11 @@ A single channel of univariate geophysical data
 | id | UInt8 | Ni | id string |    
 | Nn | Int64 | 1 | size of name string in bytes |  
 | name | UInt8 | Nn | name string |    
-| Lt | UInt8 | 1 | :ref:`location Type code<loc_codes>` |  
+| Lt | UInt8 | 1 | [location Type codes](@ref loc_type_code) |  
 | loc | (Loc Type) | 1 | instrument position | 
 | fs | Float64 | 1 | sampling frequency in Hz |    
 | gain | Float64 | 1 | scalar gain |   
-| Rt | UInt8 | 1 | :ref:`response Type code<resp_codes>` | 
+| Rt | UInt8 | 1 | [response Type codes](@ref resp_type_code) | 
 | resp | (Resp Type) | 1 | instrument response |   
 | Nu | Int64 | 1 | size of units string in bytes | 
 | units | UInt8 | Nu | units string |  
@@ -534,7 +534,7 @@ A single channel of univariate geophysical data
 | notes | (StringVec) | 1 | notes and automated logging |  
 | Nt | Int64 | 1 | length of time gaps matrix |    
 | T | Int64 | 2Nt | time gaps matrix | 
-| Xc | UInt8 | 1 | :ref:`Type code <type_codes>` of data vector |  
+| Xc | UInt8 | 1 | [Type code](@ref other_type_code) of data vector |  
 | Nx | Int64 | 1 | number of samples in data vector |  
 | X | variable | NX | data vector |    
 
@@ -544,9 +544,9 @@ A multichannel record of time-series data related to a seismic event.
 | Var |  Type |  N |  Meaning |
 | :---- | :---- | :---- | :----
 | N | Int64 | 1 | number of data channels |
-| Lc | UInt8 | N | :ref:`location Type codes<loc_codes>` for each data channel |
-| Rc | UInt8 | N | :ref:`response Type codes<resp_codes>` for each data channel |
-| Xc | UInt8 | N | data :ref:`Type codes <type_codes>` for each data channel |
+| Lc | UInt8 | N | [location Type codes](@ref loc_type_code) for each data channel |
+| Rc | UInt8 | N | [response Type codes](@ref resp_type_code) for each data channel |
+| Xc | UInt8 | N | data [Type code](@ref other_type_code) for each data channel |
 | cmp | UInt8 | 1 | are data compressed? (0x01 = yes) |
 | Nt | Int64 | N | number of rows in time gaps matrix for each channel |
 | Nx | Int64 | N | length of data vector for each channel [`1`] |
@@ -580,9 +580,9 @@ A record containing multiple channels of univariate geophysical data.
 | Var |  Type |  N |  Meaning |
 | :---- | :---- | :---- | :----
 | N | Int64 | 1 | number of data channels |
-| Lc | UInt8 | N | :ref:`location Type codes<loc_codes>` for each data channel |
-| Rc | UInt8 | N | :ref:`response Type codes<resp_codes>` for each data channel |
-| Xc | UInt8 | N | data :ref:`Type codes <type_codes>` for each data channel |
+| Lc | UInt8 | N | [location Type codes](@ref loc_type_code) for each data channel |
+| Rc | UInt8 | N | [response Type codes](@ref resp_type_code) for each data channel |
+| Xc | UInt8 | N | data [Type code](@ref other_type_code) for each data channel |
 | cmp | UInt8 | 1 | are data compressed? (0x01 = yes) |
 | Nt | Int64 | N | number of rows in time gaps matrix for each channel |
 | Nx | Int64 | N | length of data vector for each channel [`1`] |
@@ -665,7 +665,7 @@ A record containing multiple channels of univariate geophysical data.
 Each Type code is written to disk as a UInt8, with the important exception of
 SeisBase custom object Type codes (which use UInt32).
 
-#### Loc Type Codes
+#### [Loc Type Codes](@id loc_type_code)
 
 | UInt8 | Type |
 | :---- | :---- |
@@ -675,7 +675,7 @@ SeisBase custom object Type codes (which use UInt32).
 | 0x03 | XYLoc |
 
 
-#### Resp Type Codes
+#### [Resp Type Codes](@id resp_type_code)
 
 | UInt8 | Type |
 | :---- | :---- |
@@ -684,7 +684,7 @@ SeisBase custom object Type codes (which use UInt32).
 | 0x02 | PZResp64 |
 
 
-#### Other Type Codes
+#### [Other Type Codes](@id other_type_code)
 Only the Types below are faithfully preserved in write/read of a :misc field
 dictionary; other Types are not written to file and can cause ``wseis`` to
 throw errors.
@@ -720,7 +720,7 @@ throw errors.
 |Complex{Float32} | 0x71 | Array{Complex{Float32},N} | 0xf1 |
 |Complex{Float64} | 0x72 | Array{Complex{Float64},N} | 0xf2 |
 
-#### SeisBase Object Type codes
+#### [SeisBase Object Type codes](@id seisbase_object_code)
 
 | UInt32 Code | Object Type |
 | :-------- | :------------ |

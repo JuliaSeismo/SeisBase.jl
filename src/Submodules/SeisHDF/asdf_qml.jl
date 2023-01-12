@@ -104,10 +104,10 @@ As above, for the `:hdr` and `:source` fields of `evt`.
 
 |KW     | Type      | Default   | Meaning                                     |
 |:---   |:---       |:---       |:---                                         |
-| ovr   | Bool      | false     | overwrite QML in existing ASDF file? [^1]   |
+| ovr   | Bool      | false     | overwrite QML in existing ASDF file? [1]    |
 | v     | Integer   | 0         | verbosity                                   |
 
-[^1] By default, data are appended to the existing contents of "QuakeML/".
+1. By default, data are appended to the existing contents of "QuakeML/".
 
 !!! warning
 

@@ -1,4 +1,4 @@
-# SeisHDF
+# [SeisHDF](@id seishdf)
 This submodule contains dedicated support for seismic subformats of the HDF5 file format.
 
 ## Additional Functions
