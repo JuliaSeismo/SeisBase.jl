@@ -30,7 +30,7 @@ Almost never. By default, the **:resp** field of each channel contains a
 simple instrument response with poles, zeros, sensitivity (**:a0**), and
 sensitivity frequency (**:f0**). Very few use cases require more detail.
 
-## QuakeML
+## [QuakeML](@id quakeml)
 
 ```@docs
 read_qml

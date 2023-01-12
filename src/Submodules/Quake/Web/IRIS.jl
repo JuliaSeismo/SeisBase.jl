@@ -12,8 +12,8 @@ Keywords:
 * v: verbosity
 
 ### References
-[1] TauP manual: http://www.seis.sc.edu/downloads/TauP/taup.pdf
-[2] Crotwell, H. P., Owens, T. J., & Ritsema, J. (1999). The TauP Toolkit:
+1. TauP manual: http://www.seis.sc.edu/downloads/TauP/taup.pdf
+2. Crotwell, H. P., Owens, T. J., & Ritsema, J. (1999). The TauP Toolkit:
 Flexible seismic travel-time and ray-path utilities, SRL 70(2), 154-160.
 """
 function get_pha!(Ev::SeisEvent;

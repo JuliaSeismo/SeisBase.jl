@@ -16,8 +16,8 @@ processing univariate geophysical data.
 
 | **Field** | **Description**                                               |
 |:-------|:------                                                           |
-| :n     | Number of channels [^1]                                          |
-| :c     | TCP connections feeding data to this object [^1]                 |
+| :n     | Number of channels [1]                                           |
+| :c     | TCP connections feeding data to this object [1]                  |
 | :id    | Channel id. Uses NET.STA.LOC.CHA format when possible            |
 | :name  | Freeform channel name                                            |
 | :loc   | Location (position) vector; any subtype of InstrumentPosition    |
@@ -31,7 +31,7 @@ processing univariate geophysical data.
 | :t     | Matrix of time gaps in integer μs, formatted [Sample# Length]    |
 | :x     | Time-series data                                                 |
 
-[^1]: Not present in SeisChannel objects.
+1. Not present in SeisChannel objects.
 
 See also: `InstrumentPosition`, `PZResp`
 """

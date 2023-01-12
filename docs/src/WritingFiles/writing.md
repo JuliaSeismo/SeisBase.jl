@@ -1,4 +1,4 @@
-# Write Suppport
+# [Write Suppport](@id write_support)
 The table below sumamrizes the current write options for SeisBase. Each function is described in detail in this chapter.
 
 | Structure/Description                 | Output Format         | Function      |
@@ -25,7 +25,7 @@ The table below sumamrizes the current write options for SeisBase. Each function
 | any SeisBase structure                | SeisBase file         | wseis         |
 | primitive data type or array          | ASDF AuxiliaryData    | asdf_waux     |
 
-Methods for SeisEvent, SeisHdr, or SeisSrc are part of submodule SeisBase.Quake. *asdf_waux* and *asdf_wqml* are part of :ref:`SeisBase.SeisHDF.<seishdf>`.
+Methods for SeisEvent, SeisHdr, or SeisSrc are part of submodule SeisBase.Quake. *asdf_waux* and *asdf_wqml* are part of [SeisBase.SeisHDF](@ref seishdf).
 
 
 ## Write Functions
@@ -36,10 +36,10 @@ Functions are organized by file format.
 write_hdf5
 ```
 
-## QuakeML
+## [QuakeML](@id write_qml)
 
 ```@docs
-write_qml
+SeisBase.Quake.write_qml
 ```
 
 ## SAC

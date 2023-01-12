@@ -178,12 +178,12 @@ Generate a random channel of geophysical time-series data as a SeisChannel.
 |-------- |:--------|:----------|:-------------------------------         |
 | s       | false   | Bool      | force channel to have seismic data?     |
 | c       | false   | Bool      | force channel to have irregular data?   |
-| nx      | 0       | Int64     | number of samples in channel [^1]       |
+| nx      | 0       | Int64     | number of samples in channel [1]        |
 | fs_min  | 0.0     | Float64   | channels will have fs ≥ fs_min          |
-| fc      | 0.0     | Float64   | rolloff frequency [^2]                  |
+| fc      | 0.0     | Float64   | rolloff frequency [2]                   |
 
-[^1]: if `nx ≤ 0`, the number of samples is determined randomly
-[^2]: specifing `fc` with `c=false` returns a geophone instrument response
+1. if `nx ≤ 0`, the number of samples is determined randomly
+2. specifing `fc` with `c=false` returns a geophone instrument response
 
 See also: `randSeisData`, `fctoresp`
 """

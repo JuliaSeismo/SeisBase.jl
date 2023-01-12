@@ -9,7 +9,6 @@ oscillators with a single lower corner frequency) at low frequencies.
 
 See also: `fctoresp`, `PZResp`
 """
-
 function resptofc(R::Union{PZResp, PZResp64})
   T = typeof(R.a0)
   P = R.p

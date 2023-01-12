@@ -16,7 +16,7 @@ SeisChannel variant for a channel from a nodal array.
 | :ox    | Origin longitude                                                 |
 | :oy    | Origin latitude                                                  |
 | :oz    | Origin elevation                                                 |
-| :info  | Critical array info, shared by all sensors. [^1]                 |
+| :info  | Critical array info, shared by all sensors. [1]                  |
 | :id    | Channel id. Uses NET.STA.LOC.CHA format when possible            |
 | :name  | Freeform channel name                                            |
 | :loc   | Location (position) vector; only accepts NodalLoc                |
@@ -31,7 +31,7 @@ SeisChannel variant for a channel from a nodal array.
 | :data  | Matrix underlying time-series data                               |
 | :x     | Views into :data corresponding to each channel                   |
 
-[^1] Not present in, or retained by, NodalChannel objects.
+1. Not present in, or retained by, NodalChannel objects.
 
 See also: `SeisData`, `InstrumentPosition`, `InstrumentResponse`
 """

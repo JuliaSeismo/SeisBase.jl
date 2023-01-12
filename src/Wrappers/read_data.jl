@@ -46,7 +46,7 @@ matching pattern `filestr`. Much slower than manually specifying file type.
 
 This function is fully described in the official documentation at https://SeisBase.readthedocs.io/ (TODO: Change site) in section **Time-Series Files**.
 
-See also: [`SeisBase.KW`](@ref), [`get_data`](@ref), [`guess`](@ref), [`rseis`](@ref)
+See also: [`SeisBase.KW`](@ref seisbase_std_keyword), [`get_data`](@ref), [`guess`](@ref), [`rseis`](@ref)
 """
 function read_data!(S::GphysData, fmt::String, fpat::Union{String, Array{String,1}};
   cf      ::String  = "",                 # win32 channel info file
@@ -309,7 +309,7 @@ matching pattern `filestr`. Much slower than manually specifying file type.
 
 This function is fully described in the official documentation at https://SeisBase.readthedocs.io/ (TODO: Change site) in section **Time-Series Files**.
 
-See also: [`SeisBase.KW`](@ref), [`get_data`](@ref), [`guess`](@ref), [`rseis`](@ref)
+See also: [`SeisBase.KW`](@ref seisbase_std_keyword), [`get_data`](@ref), [`guess`](@ref), [`rseis`](@ref)
 """
 function read_data(fmt::String, filestr::Union{String, Array{String, 1}};
   full    ::Bool    = false,              # full SAC/SEGY hdr

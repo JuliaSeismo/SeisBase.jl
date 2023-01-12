@@ -1,4 +1,4 @@
-# Time-Series Files
+# [Time-Series Files](@id time_series_file)
 
 ```@docs
 read_data!
@@ -123,7 +123,7 @@ for a list.
 
 ## Format-Specific Information
 
-### SEG Y
+### [SEG Y](@id segy)
 Only SEG Y rev 0 and [rev 1](https://seg.org/Portals/0/SEG/News%20and%20Resources/Technical%20Standards/seg_y_rev1.pdf) with standard headers are supported. The following are known support limitations:
 
 1. A few SEG Y headers are partially implemented or unused. These will be refined as we obtain more test data with standardized SEG Y headers and known results.

@@ -15,7 +15,7 @@ discrete event (earthquake).
 
 | **Field** | **Description**                                               |
 |:-------|:------                                                           |
-| :n     | Number of channels [^1]                                          |
+| :n     | Number of channels [1]                                          |
 | :id    | Channel id. Uses NET.STA.LOC.CHA format when possible            |
 | :name  | Freeform channel name                                            |
 | :loc   | Location (position) vector; any subtype of InstrumentPosition    |
@@ -33,7 +33,7 @@ discrete event (earthquake).
 | :t     | Matrix of time gaps in integer μs, formatted [Sample# Length]    |
 | :x     | Time-series data                                                 |
 
-[^1]: Not present in EventChannel objects.
+1. Not present in EventChannel objects.
 
 See also: `PhaseCat`, `SeisPha`, `SeisData`
 """

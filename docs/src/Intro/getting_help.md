@@ -1,12 +1,12 @@
 # Getting Help
-In addition to the Juypter notebooks and [online tutorial guide](../../../tutorial/),
+In addition to the Juypter notebooks and [online tutorial guide](https://github.com/JuliaSeismo/SeisBase.jl/tree/main/tutorial),
 other sources of help are available:
 
-* [Examples](@ref)
-* [Tests](@ref)
-* [Command-Line Help](@ref)
+* [Examples](@ref gettinghelp_examples)
+* [Tests](@ref gettinghelp_tests)
+* [Command-Line Help](@ref gettinghelp_clhelp)
 
-## Examples
+## [Examples](@id gettinghelp_examples)
 
 Several worked examples exist throughout these documents, in addition to *examples.jl* and the interactive tutorial.
 
@@ -19,7 +19,7 @@ cd(d)
 include("../test/examples.jl")
 ```
 
-## Tests
+## [Tests](@id gettinghelp_tests)
 The commands in *tests/* can be used as templates; to install test data and run all tests, execute these commands:
 
 ```julia
@@ -30,7 +30,7 @@ p = pathof(SeisBase)
 cd(realpath(dirname(p) * "/../test/"))
 ```
 
-## Command-Line Help
+## [Command-Line Help](@id gettinghelp_clhelp)
 A great deal of additional help functions are available at the Julia command prompt. All SeisBase functions and structures have their own docstrings. For example, typing `?SeisData` at the Julia prompt produces the following:
 
 ```@docs
@@ -66,12 +66,12 @@ These functions contain help docstrings but execute nothing. They exist to answe
 web_chanspec
 ```
 
-Answers: how do I specify channels in a web request? Outputs :ref:`channel id syntax <cid>` to stdout.
+Answers: how do I specify channels in a web request? Outputs [channel id syntax](@ref channel_id) to stdout.
 
 ```@docs
 seis_www
 ```
-Answers: which servers are available for FDSN queries? Outputs :ref:`the FDSN server list<servers>` to stdout.
+Answers: which servers are available for FDSN queries? Outputs [the FDSN server list](@ref server) to stdout.
 
 ```@docs
 TimeSpec

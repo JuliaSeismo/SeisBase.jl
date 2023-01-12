@@ -8,11 +8,11 @@ Read nodal data from file `filestr` into new NodalData object `S`.
 |:---   |:---       |:---       |:---       |:---                             |
 | chans | ChanSpec  | Int64[]   | all       | channel numbers to read in      |
 | nn    | String    | "N0"      | all       | network name in `:id`           |
-| s     | TimeSpec  |           | silixa    | start time [^1]                 |
+| s     | TimeSpec  |           | silixa    | start time [1]                  |
 | t     | TimeSpec  |           | silixa    | end time                        |
 | v     | Integer   | 0         | silixa    | verbosity                       |
 
-[^1] Special behavior: Real values supplied to `s=` and `t=` are treated as seconds *from file begin*; 
+1. Special behavior: Real values supplied to `s=` and `t=` are treated as seconds *from file begin*; 
     most SeisBase functions treat Real as seconds relative to current time.
 
 ## Non-Standard Behavior
@@ -39,7 +39,7 @@ Most SeisBase functions that accept TimeSpec arguments treat Real values as seco
     * frequency response; currently ``:resp`` is an all-pass placeholder
 
 ## Nodal SEG Y Support Status
-See :ref:`SEG Y Support<segy-support>`.
+See [SEG Y Support](@ref segy).
 
 
 See also: `TimeSpec`, `parsetimewin`, `read_data`

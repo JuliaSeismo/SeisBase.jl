@@ -12,7 +12,7 @@ Create a new, empty **SeisChannel** object with
 Ch = SeisChannel()
 ```
 
-The meanings of the field names are explained :ref:`here<dkw>`; you can also type
+The meanings of the field names are explained [here](@ref seisbase_std_keyword); you can also type
 ``?SeisChannel`` at the Julia prompt. You can edit field values manually, e.g.,
 returning to the code block above,
 
@@ -140,5 +140,5 @@ beware of accidental over-matching.
 ## Next Steps
 Because tracking arbitrary operations can be difficult, several functions have
 been written to keep track of data and operations in a semi-automated way. See
-the next section, :ref:`working with data<wwd>`, for detailed discussion of
+the next section, [working with data](@ref working_with_data), for detailed discussion of
 managing data from the Julia command prompt.
