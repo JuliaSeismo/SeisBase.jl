@@ -5,6 +5,9 @@
 <!-- [![codecov](https://codecov.io/gh/jpjones76/SeisBase.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/jpjones76/SeisBase.jl)[![Coverage Status](https://coveralls.io/repos/github/jpjones76/SeisBase.jl/badge.svg?branch=master)](https://coveralls.io/github/jpjones76/SeisBase.jl?branch=master) [![Documentation Status](https://readthedocs.org/projects/SeisBase/badge/?version=latest)](https://SeisBase.readthedocs.io/en/latest/?badge=latest) -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
+
+This is in active refactoring
+
 A minimalist, platform-agnostic package for univariate geophysical data.
 This version is a follow up from SeisIO.jl (https://github.com/jpjones76/SeisIO.jl). It is intended to be an stable community maintained package.
 
