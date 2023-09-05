@@ -1,7 +1,7 @@
 # ===========================================================================
 # All constants needed by tests are here
-const unicode_chars = String.(readdlm(path*"/SampleFiles/julia-unicode.csv", '\n')[:,1])
-const n_unicode = length(unicode_chars)
+#const unicode_chars = String.(readdlm(path*"/SampleFiles/julia-unicode.csv", '\n')[:,1])
+#const n_unicode = length(unicode_chars)
 const breaking_dict = Dict{String, Any}(
     "0" => rand(Char),
     "1" => randstring(2^rand(2:10)),
@@ -60,19 +60,3 @@ const breaking_dict = Dict{String, Any}(
   "242" => rand(Complex{Float64}, rand(4:24)),
   "241" => rand(Complex{Float32}, rand(4:24))
   )
-const NOOF = "
-  HI ITS CLOVER LOL﻿
-          ,-'-,  `---..
-         /             \\
-         =,             .
-  ______<3.  ` ,+,     ,\\`
- ( \\  + `-”.` .; `     `.\\
- (_/   \\    | ((         ) \\
-  |_ ;  \"    \\   (        ,’ |\\
-  \\    ,- '💦 (,\\_____,’   / “\\
-   \\__---+ }._)              |\\
-   / _\\__💧”)/                  +
-  ( /    💧” \\                  ++_
-   \\)    ,“  |)                ++  ++
-   💧     “💧  (                 *    +***
-"

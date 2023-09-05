@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+ <FDSNStationXML xmlns="http://www.fdsn.org/xml/station/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:iris="http://www.fdsn.org/xml/station/1/iris" xsi:schemaLocation="http://www.fdsn.org/xml/station/1 http://www.fdsn.org/xml/station/fdsn-station-1.1.xsd" schemaVersion="1.1">
+  <Source>IRIS-DMC</Source>
+  <Sender>IRIS-DMC</Sender>
+  <Module>IRIS WEB SERVICE: fdsnws-station | version: 1.1.52</Module>
+  <ModuleURI></ModuleURI>
+  <Created>2023-08-31T04:17:09.5917</Created>
+  <Network code="UW" startDate="1963-01-01T00:00:00.0000" restrictedStatus="open">
+   <Description>Pacific Northwest Seismic Network (PNSN)</Description>
+   <Identifier type="DOI">10.7914/SN/UW
+   </Identifier>
+   <TotalNumberStations>856</TotalNumberStations>
+   <SelectedNumberStations>1</SelectedNumberStations>
+   <Station code="VLL" startDate="1980-10-01T00:00:00.0000" restrictedStatus="open" iris:alternateNetworkCodes="_PACNW,_REALTIME,.UNRESTRICTED,_US-REGIONAL">
+    <Comment>
+     <Value>Uncalibrated L4, assumed generic values.</Value>
+     <BeginEffectiveTime>1983-08-16T00:00:00.0000</BeginEffectiveTime>
+     <EndEffectiveTime>2500-12-31T23:59:59.0000</EndEffectiveTime>
+    </Comment>
+    <Comment>
+     <Value>Shape of high frequency response uncertain (&gt;10 Hz). Gain OK.</Value>
+     <BeginEffectiveTime>1980-10-01T00:00:00.0000</BeginEffectiveTime>
+     <EndEffectiveTime>2006-05-25T23:59:59.0000</EndEffectiveTime>
+    </Comment>
+    <Latitude>45.463169</Latitude>
+    <Longitude>-121.680351</Longitude>
+    <Elevation>1195.0</Elevation>
+    <Site>
+     <Name>Laurance Lk., Oregon</Name>
+    </Site>
+    <CreationDate>1980-10-01T00:00:00.0000</CreationDate>
+    <TotalNumberChannels>15</TotalNumberChannels>
+    <SelectedNumberChannels>1</SelectedNumberChannels>
+    <Channel code="EHZ" locationCode="" startDate="2009-01-29T00:00:00.0000" restrictedStatus="open">
+     <Latitude>45.463169</Latitude>
+     <Longitude>-121.680351</Longitude>
+     <Elevation>1195</Elevation>
+     <Depth>0</Depth>
+     <Azimuth>0</Azimuth>
+     <Dip>-90</Dip>
+     <Type>CONTINUOUS</Type>
+     <Type>GEOPHYSICAL</Type>
+     <SampleRate>1E02</SampleRate>
+     <ClockDrift>1E-04</ClockDrift>
+     <CalibrationUnits>
+      <Name>A</Name>
+      <Description>Amperes</Description>
+     </CalibrationUnits>
+     <Sensor>
+      <Description>L4-XXXX=McVCO=J120D=Wrmsn-XXXX</Description>
+     </Sensor>
+     <Response>
+     <InstrumentSensitivity>
+       <Value>1.1062E8</Value>
+       <Frequency>1.0</Frequency>
+       <InputUnits>
+         <Name>M/S</Name>
+         <Description>Velocity in Meters/Second</Description>
+       </InputUnits>
+       <OutputUnits>
+         <Name>COUNTS</Name>
+         <Description>Digital Counts</Description>
+       </OutputUnits>
+     </InstrumentSensitivity>
+      <Stage number="1">
+      <PolesZeros>
+        <InputUnits>
+          <Name>M/S</Name>
+          <Description>Velocity in Meters/Second</Description>
+        </InputUnits>
+        <OutputUnits>
+          <Name>V</Name>
+          <Description>Volts</Description>
+        </OutputUnits>
+        <PzTransferFunctionType>LAPLACE (RADIANS/SECOND)</PzTransferFunctionType>
+        <NormalizationFactor>1.6</NormalizationFactor>
+        <NormalizationFrequency>1.0</NormalizationFrequency>
+        <Zero number="0">
+          <Real minusError="0.0" plusError="0.0">0.0</Real>
+          <Imaginary minusError="0.0" plusError="0.0">0.0</Imaginary>
+        </Zero>
+        <Zero number="1">
+          <Real minusError="0.0" plusError="0.0">0.0</Real>
+          <Imaginary minusError="0.0" plusError="0.0">0.0</Imaginary>
+        </Zero>
+        <Pole number="0">
+          <Real minusError="0.0" plusError="0.0">-5.0265</Real>
+          <Imaginary minusError="0.0" plusError="0.0">-3.7699</Imaginary>
+        </Pole>
+        <Pole number="1">
+          <Real minusError="0.0" plusError="0.0">-5.0265</Real>
+          <Imaginary minusError="0.0" plusError="0.0">3.7699</Imaginary>
+        </Pole>
+      </PolesZeros>
+      <StageGain>
+        <Value>135.0</Value>
+        <Frequency>1.0</Frequency>
+      </StageGain>
+
+      </Stage>
+      <Stage number="2">
+      <PolesZeros>
+        <InputUnits>
+          <Name>V</Name>
+          <Description>Volts</Description>
+        </InputUnits>
+        <OutputUnits>
+          <Name>V</Name>
+          <Description>Volts</Description>
+        </OutputUnits>
+        <PzTransferFunctionType>LAPLACE (RADIANS/SECOND)</PzTransferFunctionType>
+        <NormalizationFactor>1.26245E9</NormalizationFactor>
+        <NormalizationFrequency>1.0</NormalizationFrequency>
+        <Pole number="0">
+          <Real minusError="0.0" plusError="0.0">-72.134</Real>
+          <Imaginary minusError="0.0" plusError="0.0">-174.15</Imaginary>
+        </Pole>
+        <Pole number="1">
+          <Real minusError="0.0" plusError="0.0">-174.15</Real>
+          <Imaginary minusError="0.0" plusError="0.0">72.134</Imaginary>
+        </Pole>
+        <Pole number="2">
+          <Real minusError="0.0" plusError="0.0">-174.15</Real>
+          <Imaginary minusError="0.0" plusError="0.0">-72.134</Imaginary>
+        </Pole>
+        <Pole number="3">
+          <Real minusError="0.0" plusError="0.0">-72.134</Real>
+          <Imaginary minusError="0.0" plusError="0.0">174.15</Imaginary>
+        </Pole>
+      </PolesZeros>
+      <StageGain>
+        <Value>41686.9</Value>
+        <Frequency>1.0</Frequency>
+      </StageGain>
+
+      </Stage>
+      <Stage number="3">
+      <PolesZeros>
+        <InputUnits>
+          <Name>V</Name>
+          <Description>Volts</Description>
+        </InputUnits>
+        <OutputUnits>
+          <Name>V</Name>
+          <Description>Volts</Description>
+        </OutputUnits>
+        <PzTransferFunctionType>LAPLACE (RADIANS/SECOND)</PzTransferFunctionType>
+        <NormalizationFactor>2.49365E8</NormalizationFactor>
+        <NormalizationFrequency>1.0</NormalizationFrequency>
+        <Pole number="0">
+          <Real minusError="0.0" plusError="0.0">-48.0915</Real>
+          <Imaginary minusError="0.0" plusError="0.0">-116.097</Imaginary>
+        </Pole>
+        <Pole number="1">
+          <Real minusError="0.0" plusError="0.0">-48.0915</Real>
+          <Imaginary minusError="0.0" plusError="0.0">116.097</Imaginary>
+        </Pole>
+        <Pole number="2">
+          <Real minusError="0.0" plusError="0.0">-116.101</Real>
+          <Imaginary minusError="0.0" plusError="0.0">-48.0832</Imaginary>
+        </Pole>
+        <Pole number="3">
+          <Real minusError="0.0" plusError="0.0">-116.101</Real>
+          <Imaginary minusError="0.0" plusError="0.0">48.0832</Imaginary>
+        </Pole>
+      </PolesZeros>
+      <StageGain>
+        <Value>0.0239883</Value>
+        <Frequency>1.0</Frequency>
+      </StageGain>
+
+      </Stage>
+      <Stage number="4">
+      <Coefficients>
+        <InputUnits>
+          <Name>V</Name>
+          <Description>Volts</Description>
+        </InputUnits>
+        <OutputUnits>
+          <Name>COUNTS</Name>
+          <Description>Digital Counts</Description>
+        </OutputUnits>
+        <CfTransferFunctionType>DIGITAL</CfTransferFunctionType>
+        <Numerator minusError="0.0" plusError="0.0">1.0</Numerator>
+      </Coefficients>
+      <Decimation>
+        <InputSampleRate>100.0</InputSampleRate>
+        <Factor>1</Factor>
+        <Offset>0</Offset>
+        <Delay>0.0</Delay>
+        <Correction>0.0</Correction>
+      </Decimation>
+      <StageGain>
+        <Value>819.408</Value>
+        <Frequency>1.0</Frequency>
+      </StageGain>
+
+      </Stage>
+     </Response>
+    </Channel>
+   </Station>
+  </Network>
+ </FDSNStationXML>

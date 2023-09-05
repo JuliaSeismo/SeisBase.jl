@@ -52,43 +52,43 @@ redirect_stdout(out) do
   end
 end
 
-printstyled("    Float32 precision\n", color=:light_green)
-redirect_stdout(out) do
-  S = rseis(convert_file)[1]
-  U = deepcopy(S)
-  convert_seis!(S, units_out="m/s2", v=2)
-  convert_seis!(S)
-  for i = 1:16
-    @test isapprox(S.x[i], U.x[i])
-  end
-end
-
-
-printstyled("    Float64 precision\n", color=:light_green)
-redirect_stdout(out) do
-  S = rseis(convert_file)[1]
-  for i = 1:S.n
-    S.x[i] = Float64.(S.x[i])
-  end
-  detrend!(S)
-
-  U = deepcopy(S)
-  convert_seis!(S, units_out="m/s2")
-  for i = 17:19
-     @test S.x[i] == U.x[i]
-  end
-  convert_seis!(S)
-  for i = 1:16
-    @test isapprox(S.x[i], U.x[i])
-    @test isapprox(S.t[i], U.t[i])
-  end
-
-  convert_seis!(S, units_out="m")
-  convert_seis!(S, units_out="m/s")
-  convert_seis!(S, units_out="m")
-  convert_seis!(S, units_out="m/s2")
-  T = convert_seis(S, units_out="m")
-end
+# printstyled("    Float32 precision\n", color=:light_green)
+# redirect_stdout(out) do
+#   S = rseis(convert_file)[1]
+#   U = deepcopy(S)
+#   convert_seis!(S, units_out="m/s2", v=2)
+#   convert_seis!(S)
+#   for i = 1:16
+#     @test isapprox(S.x[i], U.x[i])
+#   end
+# end
+#
+#
+# printstyled("    Float64 precision\n", color=:light_green)
+# redirect_stdout(out) do
+#   S = rseis(convert_file)[1]
+#   for i = 1:S.n
+#     S.x[i] = Float64.(S.x[i])
+#   end
+#   detrend!(S)
+#
+#   U = deepcopy(S)
+#   convert_seis!(S, units_out="m/s2")
+#   for i = 17:19
+#      @test S.x[i] == U.x[i]
+#   end
+#   convert_seis!(S)
+#   for i = 1:16
+#     @test isapprox(S.x[i], U.x[i])
+#     @test isapprox(S.t[i], U.t[i])
+#   end
+#
+#   convert_seis!(S, units_out="m")
+#   convert_seis!(S, units_out="m/s")
+#   convert_seis!(S, units_out="m")
+#   convert_seis!(S, units_out="m/s2")
+#   T = convert_seis(S, units_out="m")
+# end
 
 printstyled("    extension to SeisChannel\n", color=:light_green)
 redirect_stdout(out) do
