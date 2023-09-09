@@ -154,7 +154,7 @@ function rseis(patts::Union{String,Array{String,1}};
     io  = memmap ? IOBuffer(Mmap.mmap(f)) : open(f, "r")
 
     # All SeisBase files begin with "SeisBase"
-    if fastread(io, 6) != UInt8[0x53, 0x45, 0x49, 0x53, 0x49, 0x4f]
+    if fastread(io, 8) != UInt8[0x53, 0x45, 0x49, 0x53, 0x42, 0x41, 0x53, 0x45] # SEISBASE
       @warn string("Skipped ", f, ": not a SeisBase file!")
       close(io)
       continue
@@ -221,7 +221,7 @@ function wseis(fname::String, S...)
 
     # open file for writing
     io = open(fname, "w")
-    write(io, "SeisBase")
+    write(io, "SEISBASE")
     write(io, vSeisBase)
     write(io, L)
     p = fastpos(io)

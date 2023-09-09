@@ -1,5 +1,5 @@
 # Seedlink with command-line stations
-config_file = path*"/SampleFiles/seedlink.conf"
+config_file = path*"/seedlink.conf"
 st = 0.0
 en = 60.0
 seq = "500000"

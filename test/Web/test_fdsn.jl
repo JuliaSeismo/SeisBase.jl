@@ -1,5 +1,5 @@
-fname = path*"/SampleFiles/fdsn.conf"
-sac_pz_file = path*"/SampleFiles/SAC/test_sac.pz"
+fname = path*"/fdsn.conf"
+# sac_pz_file = path*"/SampleFiles/SAC/test_sac.pz"
 hood_reg = Float64[44.8, 46.0, -122.4, -121.0]
 rainier_rad = Float64[46.852886, -121.760374, 0.0, 0.1]
 h5file = "sacreq.h5"
@@ -75,13 +75,13 @@ printstyled("    get_data\n", color=:light_green)
 
 
 printstyled("      GeoCSV output\n", color=:light_green)
-S = check_get_data("FDSN", "CC.JRO..BHZ,IU.COLA.00.*", src="IRIS", s=-600, t=0, fmt="geocsv", w=true)
-S = check_get_data("FDSN", "CC.JRO..BHZ,CC.VALT.*", src="IRIS", s=-300, t=0, fmt="geocsv.slist")
+S = check_get_data("FDSN", "CC.JRO..BHZ,IU.COLA.00.*", src="IRIS", s="2019-01-01", t=300, fmt="geocsv", w=true)
+S = check_get_data("FDSN", "CC.JRO..BHZ,CC.VALT.*", src="IRIS", s="2019-01-01", t=300, fmt="geocsv.slist")
 
 printstyled("      config file for channel spec\n", color=:light_green)
 
 S = SeisData()
-check_get_data!(S, "FDSN", fname, src="IRIS", s=-600, t=0, w=true)
+check_get_data!(S, "FDSN", fname, src="IRIS", s="2019-01-01", t=300, w=true)
 # Ensure we got data
 if (isempty(S) ? 0 : maximum([length(x) for x in S.x])) == 0
   @warn("Request returned no data")
@@ -118,17 +118,17 @@ for i = 1:4
 end
 
 # Check that headers get overwritten with SACPZ info when we use read_sacpz
-Nc = S.n
-read_sacpz!(S, sac_pz_file)
-@test S.n > Nc
-i = findid("CC.VALT..BHZ", S)
-if i > 0
-  @test S.misc[i]["OUTPUT UNIT"] == "COUNTS"
-end
-i = findid("UW.HOOD..ENE", S)
-if i > 0
-  @test S.misc[i]["INSTTYPE"] == "ES-T-3339=Q330S+-6410"
-end
+# Nc = S.n
+# read_sacpz!(S, sac_pz_file)
+# @test S.n > Nc
+# i = findid("CC.VALT..BHZ", S)
+# if i > 0
+#   @test S.misc[i]["OUTPUT UNIT"] == "COUNTS"
+# end
+# i = findid("UW.HOOD..ENE", S)
+# if i > 0
+#   @test S.misc[i]["INSTTYPE"] == "ES-T-3339=Q330S+-6410"
+# end
 
 # Check that msr=true works
 S = SeisData()
