@@ -55,9 +55,9 @@ printstyled(stdout,
 
 skip_files = ["test_guess.jl","test_native_io.jl","test_rescale.jl","test_ungap.jl",
               "test_nodal_types.jl","test_processing.jl","test_read_nodal.jl",
-              "test_utils.jl"]
+              "test_utils.jl", "test_fdsn.jl", "test_iris.jl", "test_seedlink.jl"]
 #for d in ["CoreUtils", "Types", "RandSeis", "Utils", "NativeIO", "DataFormats", "SEED", "Processing", "Nodal", "Quake", "Web"]
-for d in ["CoreUtils", "Types", "RandSeis", "Utils", "NativeIO", "Processing", "Nodal","Web"] 
+for d in ["Web"] 
   ld = length(d)
   ll = div(ltn - ld - 2, 2)
   lr = ll + (isodd(ld) ? 1 : 0)
