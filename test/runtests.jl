@@ -55,7 +55,7 @@ printstyled(stdout,
 
 skip_files = ["test_guess.jl","test_native_io.jl","test_rescale.jl","test_ungap.jl",
               "test_nodal_types.jl","test_processing.jl","test_read_nodal.jl",
-              "test_utils.jl", "test_fdsn.jl", "test_iris.jl", "test_seedlink.jl"]
+              "test_utils.jl"]
 #for d in ["CoreUtils", "Types", "RandSeis", "Utils", "NativeIO", "DataFormats", "SEED", "Processing", "Nodal", "Quake", "Web"]
 for d in ["CoreUtils", "Types", "RandSeis", "Utils", "NativeIO", "Processing", "Nodal","Web"]
   ld = length(d)

@@ -153,7 +153,7 @@ function rseis(patts::Union{String,Array{String,1}};
     nf  = nf + 1
     io  = memmap ? IOBuffer(Mmap.mmap(f)) : open(f, "r")
 
-    # All SeisBase files begin with "SeisBase"
+    # All SeisBase files begin with "SEISBASE"
     if fastread(io, 8) != UInt8[0x53, 0x45, 0x49, 0x53, 0x42, 0x41, 0x53, 0x45] # SEISBASE
       @warn string("Skipped ", f, ": not a SeisBase file!")
       close(io)
