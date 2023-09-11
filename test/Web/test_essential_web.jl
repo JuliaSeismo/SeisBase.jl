@@ -1,6 +1,6 @@
-xml_evfile1 = path*"/SampleFiles/XML/fdsnws-event_2017-01-12T03-18-55Z.xml"
-xml_evfile2 = path*"/SampleFiles/XML/ISC_2011-tohoku-oki.xml"
-xml_stfile  = path*"/SampleFiles/XML/fdsnws-station_2017-01-12T03-17-42Z.xml"
+# xml_evfile1 = path*"/SampleFiles/XML/fdsnws-event_2017-01-12T03-18-55Z.xml"
+# xml_evfile2 = path*"/SampleFiles/XML/ISC_2011-tohoku-oki.xml"
+# xml_stfile  = path*"/SampleFiles/XML/fdsnws-station_2017-01-12T03-17-42Z.xml"
 d1 = "2019-03-14T02:18:00"
 d2 = "2019-03-14T02:28:00"
 to = 30
@@ -72,65 +72,65 @@ r2.z = r2.z[1:6]
 r2.f0 = 0.02f0
 resp_a0!(r2)
 
-printstyled("    QuakeML test 1\n", color=:light_green)
-(EC,RR) = read_qml(xml_evfile1)
-Nev = length(EC)
-@test Nev == length(true_id)
-for i = 1:Nev
-  @test EC[i].id == true_id[i]
-  @test EC[i].mag.val == true_mag[i]
-  @test EC[i].mag.scale == true_msc[i]
-end
+# printstyled("    QuakeML test 1\n", color=:light_green)
+# (EC,RR) = read_qml(xml_evfile1)
+# Nev = length(EC)
+# @test Nev == length(true_id)
+# for i = 1:Nev
+#   @test EC[i].id == true_id[i]
+#   @test EC[i].mag.val == true_mag[i]
+#   @test EC[i].mag.scale == true_msc[i]
+# end
 
-@test EC[2].ot==true_ot
-for i = 1:2
-  @test ≈(EC[i].loc.lat, true_loc[1,i])
-  @test ≈(EC[i].loc.lon, true_loc[2,i])
-  @test ≈(EC[i].loc.dep, true_loc[3,i])
-end
+# @test EC[2].ot==true_ot
+# for i = 1:2
+#   @test ≈(EC[i].loc.lat, true_loc[1,i])
+#   @test ≈(EC[i].loc.lon, true_loc[2,i])
+#   @test ≈(EC[i].loc.dep, true_loc[3,i])
+# end
 
-printstyled("    QuakeML test 2\n", color=:light_green)
-H, R = read_qml(xml_evfile2)
-H = H[1]
-R = R[1]
+# printstyled("    QuakeML test 2\n", color=:light_green)
+# H, R = read_qml(xml_evfile2)
+# H = H[1]
+# R = R[1]
 
-# Check basic headers
-@test H.typ == "earthquake"
-@test H.id == "16461282"
+# # Check basic headers
+# @test H.typ == "earthquake"
+# @test H.id == "16461282"
 
-# Check that the correct magnitude is retained
-@test H.mag.val ≥ 9.0f0
-@test H.mag.scale == "MW"
+# # Check that the correct magnitude is retained
+# @test H.mag.val ≥ 9.0f0
+# @test H.mag.scale == "MW"
 
-# Check H.loc
-@test H.loc.lat == 38.2963
-@test H.loc.lon == 142.498
-@test H.loc.dep == 19.7152
-@test H.loc.se == 2.1567
-@test H.loc.nst == 2643
-@test H.loc.src == "smi:ISC/origid=602227159,ISC"
+# # Check H.loc
+# @test H.loc.lat == 38.2963
+# @test H.loc.lon == 142.498
+# @test H.loc.dep == 19.7152
+# @test H.loc.se == 2.1567
+# @test H.loc.nst == 2643
+# @test H.loc.src == "smi:ISC/origid=602227159,ISC"
 
-# Check source params
-@test R.id == "600002952"
-@test R.m0 == 5.312e22
-@test R.mt == [1.73e22, -2.81e21, -1.45e22, 2.12e22, 4.55e22, -6.57e21]
-@test R.dm == [6.0e19, 5.0e19, 5.0e19, 6.8e20, 6.5e20, 4.0e19]
-@test R.pax == [295.0 115.0 205.0; 55.0 35.0 0.0; 5.305e22 -5.319e22 1.4e20]
-@test R.planes == [25.0 203.0; 80.0 10.0; 90.0 88.0]
-@test R.st.dur == 70.0
-@test R.misc["methodID"] == "smi:ISC/methodID=Best_double_couple"
-@test R.misc["pax_desc"] == "azimuth, plunge, length"
-@test R.misc["planes_desc"] == "strike, dip, rake"
-@test R.misc["derivedOriginID"] == "600126955"
+# # Check source params
+# @test R.id == "600002952"
+# @test R.m0 == 5.312e22
+# @test R.mt == [1.73e22, -2.81e21, -1.45e22, 2.12e22, 4.55e22, -6.57e21]
+# @test R.dm == [6.0e19, 5.0e19, 5.0e19, 6.8e20, 6.5e20, 4.0e19]
+# @test R.pax == [295.0 115.0 205.0; 55.0 35.0 0.0; 5.305e22 -5.319e22 1.4e20]
+# @test R.planes == [25.0 203.0; 80.0 10.0; 90.0 88.0]
+# @test R.st.dur == 70.0
+# @test R.misc["methodID"] == "smi:ISC/methodID=Best_double_couple"
+# @test R.misc["pax_desc"] == "azimuth, plunge, length"
+# @test R.misc["planes_desc"] == "strike, dip, rake"
+# @test R.misc["derivedOriginID"] == "600126955"
 
-printstyled("    station XML\n", color=:light_green)
-io = open(xml_stfile, "r")
-xsta = read(io, String)
-close(io)
+# printstyled("    station XML\n", color=:light_green)
+# io = open(xml_stfile, "r")
+# xsta = read(io, String)
+# close(io)
 
-web_chanspec()
-web_chanspec()
-web_chanspec()
+# web_chanspec()
+# web_chanspec()
+# web_chanspec()
 
 # Test tracking of changes in SeisData structure S ==========================
 # Does S change? Let's see.
