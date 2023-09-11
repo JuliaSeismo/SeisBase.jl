@@ -28,14 +28,12 @@ printstyled(stdout,
 # notes on testing:
 # The submodules "DataFormats," "SEED," and "Quake" are almost completely reliant
 # on the (non-existent) sample files, so they have been removed from the suite of
-# tests performed. The submodule "Web" has also been removed as it is failing both
-# due to dependence on the sample files and unsuccesful web resquests. For the other
-# submodules, only a portion of the tests actually rely on the sample files. In
-# such cases, I've commented out only the lines within the test files that require
-# the sample files, so that the rest of the useful tests can be performed. A few
-# specific files (in the variable "skip_files" below) are also dependent on the
-# sample files, so we skip them in testing via the "if" statement at line 70.
-# Overall, this is a bit complicated since multiple methods have been used to
+# tests performed. For the other submodules, only a portion of the tests actually rely
+# on the sample files. In such cases, I've commented out only the lines within the test
+# files that require the sample files, so that the rest of the useful tests can be
+# performed. A few specific files (in the variable "skip_files" below) are also
+# dependent on the sample files, so we skip them in testing via the "if" statement at
+# line 70. Overall, this is a bit complicated since multiple methods have been used to
 # eliminate certain tests, but one should be able to begin the process of replacing
 # the test files (if they so choose) by cloning a version of the SeisBase repo
 # from before August 2023, running the tests, and addressing the errors one-by-one as
@@ -52,6 +50,8 @@ printstyled(stdout,
 # Processing/test_merge.jl: 848-862
 # Processing/test_resp.jl: 137,147-149
 # Nodal/0_prelim.jl: 26,28
+# Web/test_essential_web.jl: 75-133
+# Web/test_fdsn.jl: 120-131
 
 skip_files = ["test_guess.jl","test_native_io.jl","test_rescale.jl","test_ungap.jl",
               "test_nodal_types.jl","test_processing.jl","test_read_nodal.jl",
