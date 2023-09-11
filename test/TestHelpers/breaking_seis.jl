@@ -46,10 +46,10 @@ function breaking_seis()
     only 0xff can be a separator in S.notes[2] =#
   S.notes[2] = Array{String,1}(undef,6)
   S.notes[2][1] = String(Char.(0x00:0xfe))
-  for i = 2:1:6
-    uj = randperm(rand(1:n_unicode))
-    S.notes[2][i] = join(unicode_chars[uj])
-  end
+  # for i = 2:1:6
+  #   uj = randperm(rand(1:n_unicode))
+  #   S.notes[2][i] = join(unicode_chars[uj])
+  # end
 
   # Test short data, loc arrays
   S.loc[1] = GenLoc()

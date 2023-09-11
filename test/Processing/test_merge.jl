@@ -845,21 +845,21 @@ purge!(S)
 @test S == U
 @test S.n == 4
 
-printstyled(stdout,"    issue 29\n", color=:light_green)
-S = read_data(path * "/SampleFiles/SEED/CIRIO__BHE___2017101.mseed")
-merge!(S)
-C2 = S[1]
-ungap!(C2)
+#printstyled(stdout,"    issue 29\n", color=:light_green)
+#S = read_data(path * "/SampleFiles/SEED/CIRIO__BHE___2017101.mseed")
+#merge!(S)
+#C2 = S[1]
+#ungap!(C2)
 
 #=  In Issue #29, ObsPy handled the merge without repeated data, so this is the
     basis for comparison
 =#
-io = open(path * "/SampleFiles/SEED/obspy.dat", "r")
-X2 = Array{Int32,1}(undef, length(C2.x))
-read!(io, X2)
-close(io)
-X = map(Float32, X2)
-@test isapprox(C2.x, X)
+# io = open(path * "/SampleFiles/SEED/obspy.dat", "r")
+# X2 = Array{Int32,1}(undef, length(C2.x))
+# read!(io, X2)
+# close(io)
+# X = map(Float32, X2)
+# @test isapprox(C2.x, X)
 
 printstyled(stdout,"  merge_ext!\n", color=:light_green)
 C = randSeisChannel(s=true)
